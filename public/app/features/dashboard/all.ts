@@ -38,7 +38,7 @@ import { DashboardImportCtrl } from './dashboard_import_ctrl';
 import DashboardPermissions from './permissions/DashboardPermissions';
 import { FolderDashboardsCtrl } from './folder_dashboards_ctrl';
 import coreModule from 'app/core/core_module';
-import { react2AngularDirective } from 'app/core/utils/react2angular';
+import { react2AngularDirective } from 'app/core/bridge';
 
 // angular wrappers
 react2AngularDirective('dashboardPermissions', DashboardPermissions, ['dashboardId', 'folder']);

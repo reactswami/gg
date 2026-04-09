@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Drop from 'tether-drop';
 import { ColorPickerPopover } from './ColorPickerPopover';
-import { react2AngularDirective } from 'app/core/utils/react2angular';
+import { react2AngularDirective } from 'app/core/bridge';
 
 export interface Props {
   color: string;

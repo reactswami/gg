@@ -1,0 +1,170 @@
+# Angular → React Migration Tracker
+
+> Auto-generated snapshot — update statuses as components are migrated.
+> Current state: **76 React components / 65 Angular directive files / 71 HTML templates / 17 Angular routes / 2 React routes**
+
+---
+
+## How to use this document
+
+| Status | Meaning |
+|--------|---------|
+| 🔴 Angular | Pure AngularJS — controller + HTML template, no React yet |
+| 🟡 Bridged | React component registered via `react2AngularDirective`; still consumed by Angular templates |
+| 🟢 React | Fully React; Angular wrapper can be removed once all `.html` refs are gone |
+| ✅ Done | Angular code deleted; no bridge needed |
+
+When you migrate a component:
+1. Change its row from 🔴 to 🟡 (bridged) or 🟢 (fully React)
+2. Open a PR, reference this file in the description
+3. When the last `.html` template reference is removed, flip to ✅ Done and delete the directive file
+
+---
+
+## Routes
+
+| Route | Template / Controller | Status |
+|-------|-----------------------|--------|
+| `/` | `dashboard.html` / `LoadDashboardCtrl` | 🔴 Angular |
+| `/d/:uid/:slug` | `dashboard.html` / `LoadDashboardCtrl` | 🔴 Angular |
+| `/dashboard/import` | `dashboard_import.html` / `DashboardImportCtrl` | 🔴 Angular |
+| `/template/import` | `template_import.html` / `TemplateImportCtrl` | 🔴 Angular |
+| `/dashboards` | `dashboard_list.html` / `DashboardListCtrl` | 🔴 Angular |
+| `/templates` | `template_list.html` / `TemplateListCtrl` | 🔴 Angular |
+| `/dashboards/folder/new` | `create_folder.html` / `CreateFolderCtrl` | 🔴 Angular |
+| `/dashboards/f/:uid/:slug` | `folder_dashboards.html` / `FolderDashboardsCtrl` | 🔴 Angular |
+| `/profile` | `profile.html` / `ProfileCtrl` | 🔴 Angular |
+| `/dashboard/snapshots` | `snapshot_list.html` / `SnapshotListCtrl` | 🔴 Angular |
+| `/d-solo/:uid/:slug` | `soloPanel.html` / `SoloPanelCtrl` | 🔴 Angular |
+| **`/dashboards/f/:uid/:slug/permissions`** | `<react-container>` / `FolderPermissions` | 🟢 React |
+| **`/dashboards/f/:uid/:slug/settings`** | `<react-container>` / `FolderSettingsPage` | 🟢 React |
+
+---
+
+## Core UI Directives (`public/app/core/`)
+
+| Directive | File | React Component | Status |
+|-----------|------|-----------------|--------|
+| `page-header` | `components/PageHeader/PageHeader.tsx` | `PageHeader` | 🟡 Bridged |
+| `empty-list-cta` | `components/EmptyListCTA/EmptyListCTA.tsx` | `EmptyListCTA` | 🟡 Bridged |
+| `search-result` | `components/search/SearchResult.tsx` | `SearchResult` | 🟡 Bridged |
+| `tag-filter` | `components/TagFilter/TagFilter.tsx` | `TagFilter` | 🟡 Bridged |
+| `gf-form-switch` | `components/Switch/Switch.tsx` | `Switch` | 🟡 Bridged |
+| `delete-button` | `components/DeleteButton/DeleteButton.tsx` | `DeleteButton` | 🟡 Bridged |
+| `info-tooltip` | `components/Tooltip/Tooltip.tsx` | `Tooltip` | 🟡 Bridged |
+| `navbar` | `components/navbar/navbar.ts` | — | 🔴 Angular |
+| `dashboard-search` | `components/search/search.ts` | — | 🔴 Angular |
+| `dashboard-search-results` | `components/search/search_results.ts` | — | 🔴 Angular |
+| `gf-form-dropdown` | `components/form_dropdown/form_dropdown.ts` | — | 🔴 Angular |
+| `grafana-scrollbar` | `components/scroll/scroll.ts` | — | 🔴 Angular |
+| `page-scrollbar` | `components/scroll/page_scroll.ts` | — | 🔴 Angular |
+| `gf-page` | `components/gf_page.ts` | — | 🔴 Angular |
+| `info-popover` | `components/info_popover.ts` | — | 🔴 Angular |
+| `gf-dashboard-link` | `components/link.ts` | — | 🔴 Angular |
+| `manage-dashboards` | `components/manage_dashboards/manage_dashboards.ts` | — | 🔴 Angular |
+| `manage-templates` | `components/manage_templates/manage_templates.ts` | — | 🔴 Angular |
+| `query-part-editor` | `components/query_part/query_part.ts` | — | 🔴 Angular |
+| `sql-part-editor` | `components/sql_part/sql_part_editor.ts` | — | 🔴 Angular |
+| `spectrum-picker` | `components/colorpicker/spectrum_picker.ts` | `SpectrumPicker.tsx` exists | 🟡 Bridged |
+| `code-editor` | `components/code_editor/code_editor.ts` | — | 🔴 Angular |
+| `json-tree` | `components/jsontree/jsontree.ts` | — | 🔴 Angular |
+
+---
+
+## Core Directives (`public/app/core/directives/`)
+
+| Directive | File | Status |
+|-----------|------|--------|
+| `value-select-dropdown` | `directives/value_select_dropdown.ts` | 🔴 Angular |
+| `metric-segment` | `directives/metric_segment.ts` | 🔴 Angular |
+| `metric-segment-model` | `directives/metric_segment.ts` | 🔴 Angular |
+| `dropdown-typeahead` | `directives/dropdown_typeahead.ts` | 🔴 Angular |
+| `ng-model-onblur` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
+| `valid-time-span` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
+| `empty-to-null` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
+| `bootstrap-tagsinput` | `directives/tags.ts` | 🔴 Angular |
+| `tag-color-from-name` | `directives/tags.ts` | 🔴 Angular |
+| `give-focus` | `directives/give_focus.ts` | 🔴 Angular |
+| `rebuild-on-change` | `directives/rebuild_on_change.ts` | 🔴 Angular |
+| `dash-class` | `directives/dash_class.ts` | 🔴 Angular |
+| `diff-delta` | `directives/diff-view.ts` | 🔴 Angular |
+| `diff-link-json` | `directives/diff-view.ts` | 🔴 Angular |
+| `array-join` | `directives/array_join.ts` | 🔴 Angular |
+| `watch-change` | `directives/misc.ts` | 🔴 Angular |
+| `compile` | `directives/misc.ts` | 🔴 Angular |
+| `tip` | `directives/misc.ts` | 🔴 Angular |
+
+---
+
+## Dashboard Feature (`public/app/features/dashboard/`)
+
+| Directive / Component | File | React Component | Status |
+|-----------------------|------|-----------------|--------|
+| `dashboard-grid` | `dashgrid/DashboardGridDirective.ts` | `DashboardGrid.tsx` | 🟡 Bridged |
+| `dashboard-panel` | `dashgrid/DashboardPanel.tsx` | `DashboardPanel` | 🟢 React |
+| `dashboard-row` | `dashgrid/DashboardRow.tsx` | `DashboardRow` | 🟢 React |
+| `add-panel-panel` | `dashgrid/AddPanelPanel.tsx` | `AddPanelPanel` | 🟢 React |
+| `panel-header` | `dashgrid/PanelHeader/PanelHeader.tsx` | `PanelHeader` | 🟢 React |
+| `dashboard-settings` | `settings/` | — | 🔴 Angular |
+| `ad-hoc-filters` | `ad_hoc_filters.ts` | — | 🔴 Angular |
+| `row-options` | `dashgrid/` | — | 🔴 Angular |
+| `dashboard-permissions` | `permissions/DashboardPermissions.tsx` | `DashboardPermissions` | 🟢 React |
+| `folder-picker` | `folder_picker/folder_picker.ts` | — | 🔴 Angular |
+| `dash-repeat-option` | `repeat_option/` | — | 🔴 Angular |
+| `save-dashboard-modal` | `export/` | — | 🔴 Angular |
+| `dash-export-modal` | `export/export_modal.ts` | — | 🔴 Angular |
+
+---
+
+## Panel Feature (`public/app/features/panel/`)
+
+| Directive | File | Status |
+|-----------|------|--------|
+| `metrics-tab` | `metrics_tab.ts` | 🔴 Angular |
+| `viz-tab` | `viz_tab.ts` | 🔴 Angular (wraps `VizTypePicker.tsx`) |
+| `query-editor-row` | `query_editor_row.ts` | 🔴 Angular |
+| `query-troubleshooter` | `query_troubleshooter.ts` | 🔴 Angular |
+
+---
+
+## Controllers to Migrate
+
+| Controller | File | Status |
+|------------|------|--------|
+| `GrafanaCtrl` | `routes/GrafanaCtrl.ts` | 🔴 Angular |
+| `LoadDashboardCtrl` | `routes/dashboard_loaders.ts` | 🔴 Angular |
+| `DashboardCtrl` | `features/dashboard/dashboard_ctrl.ts` | 🔴 Angular |
+| `ProfileCtrl` | `features/profile/ProfileCtrl.ts` | 🔴 Angular |
+| `PrefControlCtrl` | `features/profile/PrefControlCtrl.ts` | 🔴 Angular |
+| `ValueSelectDropdownCtrl` | `core/directives/value_select_dropdown.ts` | 🔴 Angular |
+| `SearchCtrl` | `core/components/search/search.ts` | 🔴 Angular |
+| `NavbarCtrl` | `core/components/navbar/navbar.ts` | 🔴 Angular |
+| `DashboardImportCtrl` | `features/dashboard/` | 🔴 Angular |
+| `FolderDashboardsCtrl` | `features/folders/` | 🔴 Angular |
+
+---
+
+## Services to Migrate
+
+| Service | File | Migration Path |
+|---------|------|---------------|
+| `backendSrv` | `core/services/backend_srv.ts` | RTK Query / axios module |
+| `datasourceSrv` | `features/plugins/datasource_srv.ts` | React datasource registry |
+| `contextSrv` | `core/services/context_srv.ts` | Redux slice |
+| `searchSrv` | `core/services/search_srv.ts` | RTK Query |
+| `KeybindingSrv` | `core/services/keybindingSrv.ts` | `useEffect` + event listeners |
+
+---
+
+## Bridge Infrastructure
+
+| File | Purpose | Status |
+|------|---------|--------|
+| `core/bridge/react2angular.tsx` | Wraps React → usable in Angular templates | ✅ Done |
+| `core/bridge/angular2react.tsx` | Wraps Angular directives → usable in React JSX | ✅ Done |
+| `core/bridge/index.ts` | Central exports + pre-wrapped Angular components | ✅ Done |
+| `core/hooks/useAngularService.ts` | `$injector.get()` as a React hook | ✅ Done |
+| `core/hooks/useAppEvents.ts` | Angular `appEvents` subscribe/emit as hooks | ✅ Done |
+| `routes/ReactContainer.tsx` | Full-page React route renderer (React 18 createRoot) | ✅ Done |
+| `core/utils/react2angular.ts` | Deprecated shim → re-exports from bridge | ✅ Done |
+| `core/services/ng_react.ts` | Legacy ng-react service (keep until app.ts cleaned up) | 🔴 Remove last |

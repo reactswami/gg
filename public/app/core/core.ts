@@ -20,6 +20,11 @@ import './components/colorpicker/SeriesColorPickerPopover';
 import './components/colorpicker/spectrum_picker';
 import './components/code_editor/code_editor';
 import './services/search_srv';
+// ng_react registers the Angular 'react' module (angular.module('react', [])) which
+// is listed as a dependency in app.ts ngModuleDependencies. The new bridge in
+// app/core/bridge/react2angular.tsx no longer uses ng_react's reactDirective factory
+// internally, but this import must stay until app.ts is updated to drop 'react' from
+// ngModuleDependencies. TODO: move angular.module('react',[]) into bridge and delete ng_react.ts.
 import './services/ng_react';
 import 'app/core/controllers/all';
 import 'app/core/services/all';

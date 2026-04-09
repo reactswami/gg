@@ -1,7 +1,7 @@
 import coreModule from 'app/core/core_module';
 import { DashboardModel } from '../dashboard/dashboard_model';
 import { VizTypePicker } from '../dashboard/dashgrid/VizTypePicker';
-import { react2AngularDirective } from 'app/core/utils/react2angular';
+import { react2AngularDirective } from 'app/core/bridge';
 import { PanelPlugin } from 'app/types/plugins';
 
 export class VizTabCtrl {
