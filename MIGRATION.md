@@ -53,9 +53,11 @@ When you migrate a component:
 | `delete-button` | `components/DeleteButton/DeleteButton.tsx` | `DeleteButton` | 🟡 Bridged |
 | `info-tooltip` | `components/Tooltip/Tooltip.tsx` | `Tooltip` | 🟡 Bridged |
 | `navbar` | `components/Navbar/Navbar.tsx` | `Navbar` | 🟡 Bridged |
+| `dashnav` | `features/dashboard/components/DashNav/DashNav.tsx` | `DashNav` | 🟡 Bridged |
 | `dashboard-search` | `components/Search/SearchPanel.tsx` | `SearchPanel` | 🟡 Bridged |
 | `dashboard-search-results` | `components/Search/SearchResults.tsx` | `SearchResults` | 🟡 Bridged |
 | `gf-form-dropdown` | `components/FormDropdown/FormDropdown.tsx` | `FormDropdown` | 🟡 Bridged |
+| `dashboard-submenu` | `features/dashboard/components/DashboardSubmenu/DashboardSubmenu.tsx` | `DashboardSubmenu` | 🟡 Bridged |
 | `grafana-scrollbar` | `components/scroll/scroll.ts` | — | 🔴 Angular |
 | `page-scrollbar` | `components/scroll/page_scroll.ts` | — | 🔴 Angular |
 | `gf-page` | `components/gf_page.ts` | — | 🔴 Angular |
@@ -109,7 +111,7 @@ When you migrate a component:
 | `ad-hoc-filters` | `ad_hoc_filters.ts` | — | 🔴 Angular |
 | `row-options` | `dashgrid/` | — | 🔴 Angular |
 | `dashboard-permissions` | `permissions/DashboardPermissions.tsx` | `DashboardPermissions` | 🟢 React |
-| `folder-picker` | `folder_picker/folder_picker.ts` | — | 🔴 Angular |
+| `folder-picker` | `features/dashboard/components/FolderPicker/FolderPicker.tsx` | `FolderPicker` | 🟡 Bridged |
 | `dash-repeat-option` | `repeat_option/` | — | 🔴 Angular |
 | `save-dashboard-modal` | `export/` | — | 🔴 Angular |
 | `dash-export-modal` | `export/export_modal.ts` | — | 🔴 Angular |

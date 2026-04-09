@@ -28,6 +28,12 @@ import ValueSelectDropdown from './components/ValueSelectDropdown/ValueSelectDro
 import FormDropdown from './components/FormDropdown/FormDropdown';
 import GrafanaAppRoot from './components/GrafanaApp/GrafanaAppRoot';
 
+
+// ── Sprint 4: Dashboard directives ─────────────────────────────────────────
+import DashNav from 'app/features/dashboard/components/DashNav/DashNav';
+import FolderPicker from 'app/features/dashboard/components/FolderPicker/FolderPicker';
+import DashboardSubmenu from 'app/features/dashboard/components/DashboardSubmenu/DashboardSubmenu';
+
 // ── Routing ────────────────────────────────────────────────────────────────
 // AppRouterMount self-registers its directive on import — no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
@@ -97,6 +103,29 @@ export function registerAngularDirectives() {
   // grafanaAppRoot: headless component, mount once in the main template.
   // Manages sidemenu, kiosk, inactivity detection and body-click handling.
   react2AngularDirective('grafanaAppRoot', GrafanaAppRoot, []);
+
+
+  // ── Sprint 4: Dashboard directives ─────────────────────────────────────────
+
+  // dashnav: replaces DashNavCtrl + dashnav.html
+  react2AngularDirective('dashnav', DashNav, [
+    ['dashboard', { watchDepth: 'reference' }],
+  ]);
+
+  // folderPicker: replaces FolderPickerCtrl + folder_picker.html
+  react2AngularDirective('folderPicker', FolderPicker, [
+    'initialTitle', 'initialFolderId', 'labelClass',
+    'enableCreateNew', 'enableReset',
+    ['onChange',              { watchDepth: 'reference' }],
+    ['onLoad',                { watchDepth: 'reference' }],
+    ['enterFolderCreation',   { watchDepth: 'reference' }],
+    ['exitFolderCreation',    { watchDepth: 'reference' }],
+  ]);
+
+  // dashboardSubmenu: replaces SubmenuCtrl + submenu.html
+  react2AngularDirective('dashboardSubmenu', DashboardSubmenu, [
+    ['dashboard', { watchDepth: 'reference' }],
+  ]);
 
   // ── ⏳ Next up ─────────────────────────────────────────────────────────────
   // Add entries here as components are converted. Pattern:
