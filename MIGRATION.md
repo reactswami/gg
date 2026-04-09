@@ -55,7 +55,7 @@ When you migrate a component:
 | `navbar` | `components/Navbar/Navbar.tsx` | `Navbar` | 🟡 Bridged |
 | `dashboard-search` | `components/Search/SearchPanel.tsx` | `SearchPanel` | 🟡 Bridged |
 | `dashboard-search-results` | `components/Search/SearchResults.tsx` | `SearchResults` | 🟡 Bridged |
-| `gf-form-dropdown` | `components/form_dropdown/form_dropdown.ts` | — | 🔴 Angular |
+| `gf-form-dropdown` | `components/FormDropdown/FormDropdown.tsx` | `FormDropdown` | 🟡 Bridged |
 | `grafana-scrollbar` | `components/scroll/scroll.ts` | — | 🔴 Angular |
 | `page-scrollbar` | `components/scroll/page_scroll.ts` | — | 🔴 Angular |
 | `gf-page` | `components/gf_page.ts` | — | 🔴 Angular |
@@ -136,9 +136,9 @@ When you migrate a component:
 | `DashboardCtrl` | `features/dashboard/dashboard_ctrl.ts` | 🔴 Angular |
 | `ProfileCtrl` | `features/profile/ProfileCtrl.ts` | 🔴 Angular |
 | `PrefControlCtrl` | `features/profile/PrefControlCtrl.ts` | 🔴 Angular |
-| `ValueSelectDropdownCtrl` | `core/directives/value_select_dropdown.ts` | 🔴 Angular |
-| `SearchCtrl` | `core/components/search/search.ts` | 🔴 Angular |
-| `NavbarCtrl` | `core/components/navbar/navbar.ts` | 🔴 Angular |
+| `ValueSelectDropdownCtrl` | `core/directives/value_select_dropdown.ts` | ✅ Done — ValueSelectDropdown.tsx |
+| `SearchCtrl` | `core/components/search/search.ts` | ✅ Done — SearchPanel.tsx |
+| `NavbarCtrl` | `core/components/navbar/navbar.ts` | ✅ Done — Navbar.tsx |
 | `DashboardImportCtrl` | `features/dashboard/` | 🔴 Angular |
 | `FolderDashboardsCtrl` | `features/folders/` | 🔴 Angular |
 

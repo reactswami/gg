@@ -1,18 +1,15 @@
 /**
  * angular_wrappers.ts
  *
- * Registers React components as AngularJS directives so they can be used
- * in existing Angular templates during the migration.
+ * Central registry: registers React components as AngularJS directives so
+ * existing Angular templates can consume them during the migration.
  *
- * Migration status key:
- *   ✅ React-native — registered here so Angular templates can consume them
- *   🆕 Newly migrated this sprint
- *   ⏳ Planned
+ * Remove an entry once all .html template references to that directive are gone.
  */
 
 import { react2AngularDirective } from 'app/core/bridge';
 
-// ✅ Pre-existing React components
+// ── Pre-existing React components ──────────────────────────────────────────
 import PageHeader from './components/PageHeader/PageHeader';
 import EmptyListCTA from './components/EmptyListCTA/EmptyListCTA';
 import { SearchResult } from './components/search/SearchResult';
@@ -21,13 +18,18 @@ import { Switch } from './components/Switch/Switch';
 import { DeleteButton } from './components/DeleteButton/DeleteButton';
 import { Tooltip } from './components/Tooltip/Tooltip';
 
-// 🆕 Newly migrated this sprint
+// ── Sprint 2: Navbar + Search ──────────────────────────────────────────────
 import Navbar from './components/Navbar/Navbar';
 import SearchPanel from './components/Search/SearchPanel';
 import SearchResults from './components/Search/SearchResults';
 
+// ── Sprint 3: ValueSelectDropdown + FormDropdown + GrafanaAppRoot ──────────
+import ValueSelectDropdown from './components/ValueSelectDropdown/ValueSelectDropdown';
+import FormDropdown from './components/FormDropdown/FormDropdown';
+import GrafanaAppRoot from './components/GrafanaApp/GrafanaAppRoot';
+
 export function registerAngularDirectives() {
-  // --- Core UI ---------------------------------------------------------------
+  // ── Core UI ───────────────────────────────────────────────────────────────
 
   react2AngularDirective('pageHeader', PageHeader, ['model', 'noTabs']);
   react2AngularDirective('emptyListCta', EmptyListCTA, ['model']);
@@ -38,53 +40,62 @@ export function registerAngularDirectives() {
     ['tagOptions', { watchDepth: 'reference' }],
   ]);
 
-  // --- Form controls ---------------------------------------------------------
+  // ── Form controls ─────────────────────────────────────────────────────────
 
   react2AngularDirective('gfFormSwitch', Switch, [
     'checked',
     ['onChange', { watchDepth: 'reference' }],
-    'label',
-    'labelClass',
-    'switchClass',
-    'transparent',
+    'label', 'labelClass', 'switchClass', 'transparent',
   ]);
   react2AngularDirective('deleteButton', DeleteButton, [
     ['onConfirm', { watchDepth: 'reference' }],
   ]);
-
-  // --- Tooltip ---------------------------------------------------------------
-
   react2AngularDirective('infoTooltip', Tooltip, ['content', 'placement', 'className']);
 
-  // --- 🆕 Navbar (replaces navbar.ts + navbar.html) -------------------------
-  // Angular templates use: <navbar model="ctrl.navModel"></navbar>
-  // The React Navbar internally renders SearchPanel (no more dashboard-search
-  // directive needed in the navbar.html template).
+  // ── Sprint 2 ──────────────────────────────────────────────────────────────
+
+  // navbar: replaces NavbarCtrl + navbar.html
   react2AngularDirective('navbar', Navbar, ['model']);
 
-  // --- 🆕 Search (replaces search.ts + search.html) -------------------------
-  // SearchPanel is self-contained: subscribes to appEvents show/hide-dash-search.
-  // No props needed — drop it in once as a singleton in GrafanaCtrl's template.
+  // searchPanel: self-contained, no props — drop in once as a singleton
   react2AngularDirective('searchPanel', SearchPanel, []);
 
-  // --- 🆕 SearchResults (replaces dashboard-search-results directive) --------
+  // searchResults: replaces SearchResultsCtrl + search_results.html
   react2AngularDirective('searchResults', SearchResults, [
-    'results',
-    'editable',
-    'isTemplate',
-    ['onTagSelected', { watchDepth: 'reference' }],
-    ['onFolderExpanding', { watchDepth: 'reference' }],
-    ['onToggleSelection', { watchDepth: 'reference' }],
-    ['onEditSelected', { watchDepth: 'reference' }],
-    ['onHideMenu', { watchDepth: 'reference' }],
-    ['onShowAllFolders', { watchDepth: 'reference' }],
+    'results', 'editable', 'isTemplate',
+    ['onTagSelected',      { watchDepth: 'reference' }],
+    ['onFolderExpanding',  { watchDepth: 'reference' }],
+    ['onToggleSelection',  { watchDepth: 'reference' }],
+    ['onEditSelected',     { watchDepth: 'reference' }],
+    ['onHideMenu',         { watchDepth: 'reference' }],
+    ['onShowAllFolders',   { watchDepth: 'reference' }],
     'selectedFolderId',
   ]);
 
-  // ---------------------------------------------------------------------------
-  // ⏳ Next up — add entries here as components are converted:
-  //
-  //   import ValueSelectDropdown from './components/ValueSelectDropdown/ValueSelectDropdown';
-  //   react2AngularDirective('valueSelectDropdown', ValueSelectDropdown, [...]);
-  // ---------------------------------------------------------------------------
+  // ── Sprint 3 ──────────────────────────────────────────────────────────────
+
+  // valueSelectDropdown: replaces ValueSelectDropdownCtrl + valueSelectDropdown.html
+  // Same directive element name so no .html changes needed.
+  react2AngularDirective('valueSelectDropdown', ValueSelectDropdown, [
+    ['variable',  { watchDepth: 'reference' }],
+    ['onUpdated', { watchDepth: 'reference' }],
+  ]);
+
+  // gfFormDropdown: replaces FormDropdownCtrl + jQuery typeahead
+  react2AngularDirective('gfFormDropdown', FormDropdown, [
+    ['model',      { watchDepth: 'reference' }],
+    ['getOptions', { watchDepth: 'reference' }],
+    ['onChange',   { watchDepth: 'reference' }],
+    'cssClass', 'allowCustom', 'labelMode',
+    'lookupText', 'placeholder', 'startOpen', 'debounce',
+  ]);
+
+  // grafanaAppRoot: headless component, mount once in the main template.
+  // Manages sidemenu, kiosk, inactivity detection and body-click handling.
+  react2AngularDirective('grafanaAppRoot', GrafanaAppRoot, []);
+
+  // ── ⏳ Next up ─────────────────────────────────────────────────────────────
+  // Add entries here as components are converted. Pattern:
+  //   import MyComp from './components/MyComp/MyComp';
+  //   react2AngularDirective('myComp', MyComp, ['propA', 'propB']);
 }
