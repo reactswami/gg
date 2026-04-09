@@ -1,8 +1,39 @@
+/**
+ * routes.ts
+ *
+ * Angular route configuration — only routes NOT yet migrated to React remain
+ * here. As each route is converted, remove its .when() block.
+ *
+ * React routes live in: app/routes/routeRegistry.ts
+ * React router mounts via: <app-router-mount> in index.html
+ *
+ * MIGRATED TO REACT (removed from Angular):
+ *   /dashboards                          → DashboardListPage
+ *   /templates                           → TemplateListPage
+ *   /dashboard/snapshots                 → SnapshotListPage
+ *   /profile                             → ProfilePage
+ *   /dashboards/f/:uid/:slug/permissions → FolderPermissions (already React)
+ *   /dashboards/f/:uid/:slug/settings    → FolderSettingsPage (already React)
+ *   /dashboards/f/:uid/:slug             → FolderDashboardsPage
+ *   /dashboards/f/:uid                   → FolderDashboardsPage
+ *
+ * STILL ANGULAR (pending migration):
+ *   /                                    → LoadDashboardCtrl (dashboard)
+ *   /d/:uid/:slug                        → LoadDashboardCtrl (dashboard)
+ *   /d/:uid                              → LoadDashboardCtrl (dashboard)
+ *   /dashboard/:type/:slug               → LoadDashboardCtrl (dashboard)
+ *   /d-solo/:uid/:slug                   → SoloPanelCtrl
+ *   /dashboard-solo/:type/:slug          → SoloPanelCtrl
+ *   /dashboard/new                       → NewDashboardCtrl
+ *   /dashboard/import                    → DashboardImportCtrl
+ *   /template/import                     → TemplateImportCtrl
+ *   /dashboards/folder/new               → CreateFolderCtrl
+ */
+
 import './dashboard_loaders';
 import './ReactContainer';
+import './AppRouterMount';       // registers <app-router-mount> directive
 
-import FolderPermissions from 'app/features/folders/FolderPermissions';
-import FolderSettingsPage from 'app/features/folders/FolderSettingsPage';
 import { applyRouteRegistrationHandlers } from './registry';
 
 /** @ngInject */
@@ -10,6 +41,7 @@ export function setupAngularRoutes($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $routeProvider
+    // ── Dashboard viewer (not yet migrated — complex DashboardCtrl) ────────
     .when('/', {
       templateUrl: 'public/app/partials/dashboard.html',
       controller: 'LoadDashboardCtrl',
@@ -34,6 +66,8 @@ export function setupAngularRoutes($routeProvider, $locationProvider) {
       reloadOnSearch: false,
       pageClass: 'page-dashboard',
     })
+
+    // ── Solo panel ─────────────────────────────────────────────────────────
     .when('/d-solo/:uid/:slug', {
       templateUrl: 'public/app/features/panel/partials/soloPanel.html',
       controller: 'SoloPanelCtrl',
@@ -46,6 +80,8 @@ export function setupAngularRoutes($routeProvider, $locationProvider) {
       reloadOnSearch: false,
       pageClass: 'page-dashboard',
     })
+
+    // ── New / import dashboard ─────────────────────────────────────────────
     .when('/dashboard/new', {
       templateUrl: 'public/app/partials/dashboard.html',
       controller: 'NewDashboardCtrl',
@@ -62,53 +98,16 @@ export function setupAngularRoutes($routeProvider, $locationProvider) {
       controller: 'TemplateImportCtrl',
       controllerAs: 'ctrl',
     })
-    .when('/dashboards', {
-      templateUrl: 'public/app/features/manage-dashboards/partials/dashboard_list.html',
-      controller: 'DashboardListCtrl',
-      controllerAs: 'ctrl',
-    })
-    .when('/templates', {
-      templateUrl: 'public/app/features/manage-dashboards/partials/template_list.html',
-      controller: 'TemplateListCtrl',
-      controllerAs: 'ctrl',
-    })
+
+    // ── New folder ─────────────────────────────────────────────────────────
     .when('/dashboards/folder/new', {
       templateUrl: 'public/app/features/dashboard/partials/create_folder.html',
       controller: 'CreateFolderCtrl',
       controllerAs: 'ctrl',
     })
-    .when('/dashboards/f/:uid/:slug/permissions', {
-      template: '<react-container />',
-      resolve: {
-        component: () => FolderPermissions,
-      },
-    })
-    .when('/dashboards/f/:uid/:slug/settings', {
-      template: '<react-container />',
-      resolve: {
-        component: () => FolderSettingsPage,
-      },
-    })
-    .when('/dashboards/f/:uid/:slug', {
-      templateUrl: 'public/app/features/dashboard/partials/folder_dashboards.html',
-      controller: 'FolderDashboardsCtrl',
-      controllerAs: 'ctrl',
-    })
-    .when('/dashboards/f/:uid', {
-      templateUrl: 'public/app/features/dashboard/partials/folder_dashboards.html',
-      controller: 'FolderDashboardsCtrl',
-      controllerAs: 'ctrl',
-    })
-    .when('/profile', {
-      templateUrl: 'public/app/features/profile/partials/profile.html',
-      controller: 'ProfileCtrl',
-      controllerAs: 'ctrl',
-    })
-    .when('/dashboard/snapshots', {
-      templateUrl: 'public/app/features/manage-dashboards/partials/snapshot_list.html',
-      controller: 'SnapshotListCtrl',
-      controllerAs: 'ctrl',
-    })
+
+    // ── Catch-all: Angular 404 (React catch-all in routeRegistry handles
+    //    React-owned paths before Angular sees them) ─────────────────────────
     .otherwise({
       templateUrl: 'public/app/partials/error.html',
       controller: 'ErrorCtrl',

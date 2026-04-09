@@ -28,6 +28,10 @@ import ValueSelectDropdown from './components/ValueSelectDropdown/ValueSelectDro
 import FormDropdown from './components/FormDropdown/FormDropdown';
 import GrafanaAppRoot from './components/GrafanaApp/GrafanaAppRoot';
 
+// ── Routing ────────────────────────────────────────────────────────────────
+// AppRouterMount self-registers its directive on import — no react2AngularDirective needed
+import 'app/routes/AppRouterMount';
+
 export function registerAngularDirectives() {
   // ── Core UI ───────────────────────────────────────────────────────────────
 

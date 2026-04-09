@@ -29,12 +29,12 @@ When you migrate a component:
 | `/d/:uid/:slug` | `dashboard.html` / `LoadDashboardCtrl` | 🔴 Angular |
 | `/dashboard/import` | `dashboard_import.html` / `DashboardImportCtrl` | 🔴 Angular |
 | `/template/import` | `template_import.html` / `TemplateImportCtrl` | 🔴 Angular |
-| `/dashboards` | `dashboard_list.html` / `DashboardListCtrl` | 🔴 Angular |
-| `/templates` | `template_list.html` / `TemplateListCtrl` | 🔴 Angular |
+| `/dashboards` | `DashboardListPage.tsx` | 🟢 React |
+| `/templates` | `TemplateListPage.tsx` | 🟢 React |
 | `/dashboards/folder/new` | `create_folder.html` / `CreateFolderCtrl` | 🔴 Angular |
-| `/dashboards/f/:uid/:slug` | `folder_dashboards.html` / `FolderDashboardsCtrl` | 🔴 Angular |
-| `/profile` | `profile.html` / `ProfileCtrl` | 🔴 Angular |
-| `/dashboard/snapshots` | `snapshot_list.html` / `SnapshotListCtrl` | 🔴 Angular |
+| `/dashboards/f/:uid/:slug` | `FolderDashboardsPage.tsx` | 🟢 React |
+| `/profile` | `ProfilePage.tsx` | 🟢 React |
+| `/dashboard/snapshots` | `SnapshotListPage.tsx` | 🟢 React |
 | `/d-solo/:uid/:slug` | `soloPanel.html` / `SoloPanelCtrl` | 🔴 Angular |
 | **`/dashboards/f/:uid/:slug/permissions`** | `<react-container>` / `FolderPermissions` | 🟢 React |
 | **`/dashboards/f/:uid/:slug/settings`** | `<react-container>` / `FolderSettingsPage` | 🟢 React |
@@ -134,7 +134,7 @@ When you migrate a component:
 | `GrafanaCtrl` | `routes/GrafanaCtrl.ts` | 🔴 Angular |
 | `LoadDashboardCtrl` | `routes/dashboard_loaders.ts` | 🔴 Angular |
 | `DashboardCtrl` | `features/dashboard/dashboard_ctrl.ts` | 🔴 Angular |
-| `ProfileCtrl` | `features/profile/ProfileCtrl.ts` | 🔴 Angular |
+| `ProfileCtrl` | `features/profile/ProfileCtrl.ts` | ✅ Done — ProfilePage.tsx |
 | `PrefControlCtrl` | `features/profile/PrefControlCtrl.ts` | 🔴 Angular |
 | `ValueSelectDropdownCtrl` | `core/directives/value_select_dropdown.ts` | ✅ Done — ValueSelectDropdown.tsx |
 | `SearchCtrl` | `core/components/search/search.ts` | ✅ Done — SearchPanel.tsx |
@@ -168,3 +168,40 @@ When you migrate a component:
 | `routes/ReactContainer.tsx` | Full-page React route renderer (React 18 createRoot) | ✅ Done |
 | `core/utils/react2angular.ts` | Deprecated shim → re-exports from bridge | ✅ Done |
 | `core/services/ng_react.ts` | Legacy ng-react service (keep until app.ts cleaned up) | 🔴 Remove last |
+
+## Routing Infrastructure
+
+| File | Purpose | Status |
+|------|---------|--------|
+| `routes/routeRegistry.ts` | React route table (lazy page imports) | ✅ Done |
+| `routes/AppRouter.tsx` | BrowserRouter + Switch, coexists with Angular ngRoute | ✅ Done |
+| `routes/AppRouterMount.tsx` | Angular directive that mounts AppRouter into the DOM | ✅ Done |
+| `routes/routes.ts` | Angular ngRoute config — 8 routes removed, 9 remain | 🔄 Shrinking |
+| `core/bridge/angularComponents.ts` | Pre-wrapped Angular directives for React pages | ✅ Done |
+
+### React routes active (11 total)
+| Path | Page Component |
+|------|---------------|
+| `/dashboards` | `DashboardListPage` |
+| `/templates` | `TemplateListPage` |
+| `/dashboard/snapshots` | `SnapshotListPage` |
+| `/profile` | `ProfilePage` |
+| `/dashboards/f/:uid/:slug/permissions` | `FolderPermissions` |
+| `/dashboards/f/:uid/:slug/settings` | `FolderSettingsPage` |
+| `/dashboards/f/:uid/:slug` | `FolderDashboardsPage` |
+| `/dashboards/f/:uid` | `FolderDashboardsPage` |
+| `*` | `NotFoundPage` |
+
+### Angular routes remaining (9 total)
+| Path | Controller |
+|------|-----------|
+| `/` | `LoadDashboardCtrl` |
+| `/d/:uid/:slug` | `LoadDashboardCtrl` |
+| `/d/:uid` | `LoadDashboardCtrl` |
+| `/dashboard/:type/:slug` | `LoadDashboardCtrl` |
+| `/d-solo/:uid/:slug` | `SoloPanelCtrl` |
+| `/dashboard-solo/:type/:slug` | `SoloPanelCtrl` |
+| `/dashboard/new` | `NewDashboardCtrl` |
+| `/dashboard/import` | `DashboardImportCtrl` |
+| `/template/import` | `TemplateImportCtrl` |
+| `/dashboards/folder/new` | `CreateFolderCtrl` |
