@@ -52,9 +52,9 @@ When you migrate a component:
 | `gf-form-switch` | `components/Switch/Switch.tsx` | `Switch` | 🟡 Bridged |
 | `delete-button` | `components/DeleteButton/DeleteButton.tsx` | `DeleteButton` | 🟡 Bridged |
 | `info-tooltip` | `components/Tooltip/Tooltip.tsx` | `Tooltip` | 🟡 Bridged |
-| `navbar` | `components/navbar/navbar.ts` | — | 🔴 Angular |
-| `dashboard-search` | `components/search/search.ts` | — | 🔴 Angular |
-| `dashboard-search-results` | `components/search/search_results.ts` | — | 🔴 Angular |
+| `navbar` | `components/Navbar/Navbar.tsx` | `Navbar` | 🟡 Bridged |
+| `dashboard-search` | `components/Search/SearchPanel.tsx` | `SearchPanel` | 🟡 Bridged |
+| `dashboard-search-results` | `components/Search/SearchResults.tsx` | `SearchResults` | 🟡 Bridged |
 | `gf-form-dropdown` | `components/form_dropdown/form_dropdown.ts` | — | 🔴 Angular |
 | `grafana-scrollbar` | `components/scroll/scroll.ts` | — | 🔴 Angular |
 | `page-scrollbar` | `components/scroll/page_scroll.ts` | — | 🔴 Angular |
