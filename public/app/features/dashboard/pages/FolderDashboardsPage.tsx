@@ -11,10 +11,7 @@ import PageHeader from 'app/core/components/PageHeader/PageHeader';
 import { useAngularService } from 'app/core/hooks/useAngularService';
 import locationUtil from 'app/core/utils/location_util';
 
-// ── ManageDashboards angular2react wrapper ─────────────────────────────────
-// Import the bridge-wrapped version so ManageDashboards can still render
-// while its own migration is in progress.
-import { AngularManageDashboards } from 'app/core/bridge/angularComponents';
+import ManageDashboards from 'app/core/components/ManageDashboards/ManageDashboards';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -102,10 +99,7 @@ const FolderDashboardsPage: React.FC<Props> = ({ routeParams }) => {
       {navModel && <PageHeader model={navModel} />}
       <div className="page-container page-body">
         {folderId && routeParams.uid && (
-          <AngularManageDashboards
-            folderId={folderId}
-            folderUid={routeParams.uid}
-          />
+          <ManageDashboards folderId={folderId} folderUid={routeParams.uid} />
         )}
       </div>
     </>

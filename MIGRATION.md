@@ -63,7 +63,7 @@ When you migrate a component:
 | `gf-page` | `components/GfPage/GfPage.tsx` | `GfPage` | 🟡 Bridged |
 | `info-popover` | `components/InfoPopover/InfoPopover.tsx` | `InfoPopover` | 🟡 Bridged |
 | `gf-dashboard-link` | `components/link.ts` | — | 🔴 Angular |
-| `manage-dashboards` | `components/manage_dashboards/manage_dashboards.ts` | — | 🔴 Angular |
+| `manage-dashboards` | `components/ManageDashboards/ManageDashboards.tsx` | `ManageDashboards` | 🟡 Bridged |
 | `manage-templates` | `components/manage_templates/manage_templates.ts` | — | 🔴 Angular |
 | `query-part-editor` | `components/query_part/query_part.ts` | — | 🔴 Angular |
 | `sql-part-editor` | `components/sql_part/sql_part_editor.ts` | — | 🔴 Angular |
@@ -84,8 +84,8 @@ When you migrate a component:
 | `ng-model-onblur` | `core/hooks/utilityHooks.ts` → `useOnBlurModel` | ✅ Done |
 | `valid-time-span` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
 | `empty-to-null` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
-| `bootstrap-tagsinput` | `directives/tags.ts` | 🔴 Angular |
-| `tag-color-from-name` | `directives/tags.ts` | 🔴 Angular |
+| `bootstrap-tagsinput` | `components/TagsInput/TagsInput.tsx` | `TagsInput` | 🟡 Bridged |
+| `tag-color-from-name` | `components/TagsInput/TagsInput.tsx` → `useTagColor` hook | ✅ Done |
 | `give-focus` | `core/hooks/utilityHooks.ts` → `useGiveFocus` | ✅ Done |
 | `rebuild-on-change` | `core/hooks/utilityHooks.ts` → `useRebuildOnChange` | ✅ Done |
 | `dash-class` | `core/hooks/utilityHooks.ts` → `useDashClass` | ✅ Done |
@@ -109,7 +109,7 @@ When you migrate a component:
 | `panel-header` | `dashgrid/PanelHeader/PanelHeader.tsx` | `PanelHeader` | 🟢 React |
 | `dashboard-settings` | `features/dashboard/components/DashboardSettings/DashboardSettings.tsx` | `DashboardSettings` | 🟡 Bridged |
 | `ad-hoc-filters` | `ad_hoc_filters.ts` | — | 🔴 Angular |
-| `row-options` | `dashgrid/` | — | 🔴 Angular |
+| `row-options` | `features/dashboard/components/RowOptions/RowOptions.tsx` | `RowOptions` | 🟡 Bridged |
 | `dashboard-permissions` | `permissions/DashboardPermissions.tsx` | `DashboardPermissions` | 🟢 React |
 | `folder-picker` | `features/dashboard/components/FolderPicker/FolderPicker.tsx` | `FolderPicker` | 🟡 Bridged |
 | `dash-repeat-option` | `features/dashboard/components/DashRepeatOption/DashRepeatOption.tsx` | `DashRepeatOption` | 🟡 Bridged |

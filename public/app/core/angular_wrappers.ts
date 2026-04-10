@@ -45,6 +45,12 @@ import DashRepeatOption from 'app/features/dashboard/components/DashRepeatOption
 // ── Sprint 6: DashboardSettings ────────────────────────────────────────────
 import DashboardSettings from 'app/features/dashboard/components/DashboardSettings/DashboardSettings';
 
+
+// ── Sprint 7: ManageDashboards, TagsInput, RowOptions ──────────────────────
+import ManageDashboards from './components/ManageDashboards/ManageDashboards';
+import TagsInput from './components/TagsInput/TagsInput';
+import RowOptions from 'app/features/dashboard/components/RowOptions/RowOptions';
+
 // ── Routing ────────────────────────────────────────────────────────────────
 // AppRouterMount self-registers its directive on import — no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
@@ -166,6 +172,30 @@ export function registerAngularDirectives() {
   // dashboardSettings: replaces SettingsCtrl + settings.html
   react2AngularDirective('dashboardSettings', DashboardSettings, [
     ['dashboard', { watchDepth: 'reference' }],
+  ]);
+
+
+  // ── Sprint 7 ──────────────────────────────────────────────────────────────
+
+  // manageDashboards: replaces ManageDashboardsCtrl + manage_dashboards.html
+  react2AngularDirective('manageDashboards', ManageDashboards, [
+    ['folderId',  { watchDepth: 'reference' }],
+    ['folderUid', { watchDepth: 'reference' }],
+  ]);
+
+  // tagsInput: replaces bootstrap-tagsinput Angular directive
+  react2AngularDirective('tagsInput', TagsInput, [
+    ['value',    { watchDepth: 'reference' }],
+    ['onChange', { watchDepth: 'reference' }],
+    'placeholder',
+    'tagClass',
+  ]);
+
+  // rowOptions: replaces RowOptionsCtrl + row_options.html
+  react2AngularDirective('rowOptions', RowOptions, [
+    ['row',       { watchDepth: 'reference' }],
+    ['onUpdated', { watchDepth: 'reference' }],
+    ['dismiss',   { watchDepth: 'reference' }],
   ]);
 
   // ── ⏳ Next up ─────────────────────────────────────────────────────────────

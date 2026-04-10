@@ -10,11 +10,14 @@
 
 import { angular2React } from 'app/core/bridge/angular2react';
 
-// ── manage-dashboards directive ────────────────────────────────────────────
+// ── manage-dashboards — now a native React component ──────────────────────
+// Use ManageDashboards from app/core/components/ManageDashboards/ManageDashboards instead.
+// AngularManageDashboards kept only for FolderDashboardsPage during transition.
 interface ManageDashboardsProps {
   folderId?: number;
   folderUid?: string;
 }
+/** @deprecated Use ManageDashboards from core/components/ManageDashboards/ManageDashboards */
 export const AngularManageDashboards = angular2React<ManageDashboardsProps>(
   'manage-dashboards',
   ['folderId', 'folderUid']
