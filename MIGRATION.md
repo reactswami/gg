@@ -64,7 +64,7 @@ When you migrate a component:
 | `info-popover` | `components/InfoPopover/InfoPopover.tsx` | `InfoPopover` | 🟡 Bridged |
 | `gf-dashboard-link` | `features/dashboard/components/DashLinksEditor/DashLinksEditor.tsx` (sub-component) | `DashLinksEditor` | 🟡 Bridged |
 | `manage-dashboards` | `components/ManageDashboards/ManageDashboards.tsx` | `ManageDashboards` | 🟡 Bridged |
-| `manage-templates` | `components/manage_templates/manage_templates.ts` | — | 🔴 Angular |
+| `manage-templates` | `components/ManageTemplates/ManageTemplates.tsx` | `ManageTemplates` | 🟡 Bridged |
 | `query-part-editor` | `components/query_part/query_part.ts` | — | 🔴 Angular |
 | `sql-part-editor` | `components/sql_part/sql_part_editor.ts` | — | 🔴 Angular |
 | `spectrum-picker` | `components/colorpicker/spectrum_picker.ts` | `SpectrumPicker.tsx` exists | 🟡 Bridged |
@@ -125,7 +125,7 @@ When you migrate a component:
 | `metrics-tab` | `metrics_tab.ts` | 🔴 Angular |
 | `viz-tab` | `viz_tab.ts` | 🔴 Angular (wraps `VizTypePicker.tsx`) |
 | `query-editor-row` | `query_editor_row.ts` | 🔴 Angular |
-| `query-troubleshooter` | `query_troubleshooter.ts` | 🔴 Angular |
+| `query-troubleshooter` | `features/panel/components/QueryTroubleshooter.tsx` | `QueryTroubleshooter` | 🟡 Bridged |
 
 ---
 

@@ -57,6 +57,11 @@ import DashLinksEditor from 'app/features/dashboard/components/DashLinksEditor/D
 import SaveDashboardModal from 'app/features/dashboard/components/SaveDashboardModal/SaveDashboardModal';
 import ExportModal from 'app/features/dashboard/components/ExportModal/ExportModal';
 
+
+// ── Sprint 9: ManageTemplates + QueryTroubleshooter ────────────────────────
+import ManageTemplates from './components/ManageTemplates/ManageTemplates';
+import QueryTroubleshooter from 'app/features/panel/components/QueryTroubleshooter';
+
 // ── Routing ────────────────────────────────────────────────────────────────
 // AppRouterMount self-registers its directive on import — no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
@@ -220,6 +225,18 @@ export function registerAngularDirectives() {
   // dashExportModal: replaces DashExportCtrl + export_modal.html
   react2AngularDirective('dashExportModal', ExportModal, [
     ['dismiss', { watchDepth: 'reference' }],
+  ]);
+
+
+  // ── Sprint 9 ──────────────────────────────────────────────────────────────
+
+  // manageTemplates: replaces ManageTemplatesCtrl + manage_templates.html
+  react2AngularDirective('manageTemplates', ManageTemplates, []);
+
+  // queryTroubleshooter: replaces QueryTroubleshooterCtrl + template
+  react2AngularDirective('queryTroubleshooter', QueryTroubleshooter, [
+    ['panelCtrl', { watchDepth: 'reference' }],
+    'isOpen',
   ]);
 
   // ── ⏳ Next up ─────────────────────────────────────────────────────────────

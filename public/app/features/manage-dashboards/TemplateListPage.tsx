@@ -3,13 +3,11 @@
  *
  * React page replacing TemplateListCtrl + template_list.html.
  * Route: /templates
- *
- * ManageTemplates is still Angular — bridged via angularComponents.
  */
 
 import React, { useState } from 'react';
 import PageHeader from 'app/core/components/PageHeader/PageHeader';
-import { AngularManageTemplates } from 'app/core/bridge/angularComponents';
+import ManageTemplates from 'app/core/components/ManageTemplates/ManageTemplates';
 import { useAngularService } from 'app/core/hooks/useAngularService';
 
 const TemplateListPage: React.FC = () => {
@@ -20,7 +18,7 @@ const TemplateListPage: React.FC = () => {
     <>
       <PageHeader model={navModel} />
       <div className="page-container page-body">
-        <AngularManageTemplates />
+        <ManageTemplates />
       </div>
     </>
   );
