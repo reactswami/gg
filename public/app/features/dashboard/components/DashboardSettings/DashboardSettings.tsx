@@ -15,6 +15,7 @@ import FolderPicker from '../FolderPicker/FolderPicker';
 import { Switch } from 'app/core/components/Switch/Switch';
 import InfoPopover from 'app/core/components/InfoPopover/InfoPopover';
 import { DashboardPermissions } from 'app/features/dashboard/permissions/DashboardPermissions';
+import DashboardHistory from '../DashboardHistory/DashboardHistory';
 import { useAngularService } from 'app/core/hooks/useAngularService';
 import { useAppEvents, useEmitAppEvent } from 'app/core/hooks/useAppEvents';
 import appEvents from 'app/core/app_events';
@@ -355,9 +356,15 @@ const DashboardSettings: React.FC<DashboardSettingsProps> = ({ dashboard }) => {
 
       case 'templating':
       case 'links':
-      case 'versions':
         // Still Angular-owned — rendered via angular2react bridge or ng-include
         return <AngularTab id={viewId} />;
+
+      case 'versions':
+        return (
+          <div className="dashboard-settings__content">
+            <DashboardHistory dashboard={dashboard} />
+          </div>
+        );
 
       case 'permissions':
         return (
