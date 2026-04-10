@@ -41,6 +41,10 @@ import GfPage from './components/GfPage/GfPage';
 import PageScrollbar from './components/Scrollbar/PageScrollbar';
 import DashRepeatOption from 'app/features/dashboard/components/DashRepeatOption/DashRepeatOption';
 
+
+// ── Sprint 6: DashboardSettings ────────────────────────────────────────────
+import DashboardSettings from 'app/features/dashboard/components/DashboardSettings/DashboardSettings';
+
 // ── Routing ────────────────────────────────────────────────────────────────
 // AppRouterMount self-registers its directive on import — no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
@@ -154,6 +158,14 @@ export function registerAngularDirectives() {
   react2AngularDirective('dashRepeatOption', DashRepeatOption, [
     ['panel',    { watchDepth: 'reference' }],
     ['onChange', { watchDepth: 'reference' }],
+  ]);
+
+
+  // ── Sprint 6 ──────────────────────────────────────────────────────────────
+
+  // dashboardSettings: replaces SettingsCtrl + settings.html
+  react2AngularDirective('dashboardSettings', DashboardSettings, [
+    ['dashboard', { watchDepth: 'reference' }],
   ]);
 
   // ── ⏳ Next up ─────────────────────────────────────────────────────────────

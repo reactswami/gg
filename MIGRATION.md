@@ -27,11 +27,11 @@ When you migrate a component:
 |-------|-----------------------|--------|
 | `/` | `dashboard.html` / `LoadDashboardCtrl` | 🔴 Angular |
 | `/d/:uid/:slug` | `dashboard.html` / `LoadDashboardCtrl` | 🔴 Angular |
-| `/dashboard/import` | `dashboard_import.html` / `DashboardImportCtrl` | 🔴 Angular |
-| `/template/import` | `template_import.html` / `TemplateImportCtrl` | 🔴 Angular |
+| `/dashboard/import` | `dashboard/pages/DashboardImportPage.tsx` | 🟢 React |
+| `/template/import` | `dashboard/pages/DashboardImportPage.tsx` | 🟢 React |
 | `/dashboards` | `DashboardListPage.tsx` | 🟢 React |
 | `/templates` | `TemplateListPage.tsx` | 🟢 React |
-| `/dashboards/folder/new` | `create_folder.html` / `CreateFolderCtrl` | 🔴 Angular |
+| `/dashboards/folder/new` | `dashboard/pages/CreateFolderPage.tsx` | 🟢 React |
 | `/dashboards/f/:uid/:slug` | `FolderDashboardsPage.tsx` | 🟢 React |
 | `/profile` | `ProfilePage.tsx` | 🟢 React |
 | `/dashboard/snapshots` | `SnapshotListPage.tsx` | 🟢 React |
@@ -107,7 +107,7 @@ When you migrate a component:
 | `dashboard-row` | `dashgrid/DashboardRow.tsx` | `DashboardRow` | 🟢 React |
 | `add-panel-panel` | `dashgrid/AddPanelPanel.tsx` | `AddPanelPanel` | 🟢 React |
 | `panel-header` | `dashgrid/PanelHeader/PanelHeader.tsx` | `PanelHeader` | 🟢 React |
-| `dashboard-settings` | `settings/` | — | 🔴 Angular |
+| `dashboard-settings` | `features/dashboard/components/DashboardSettings/DashboardSettings.tsx` | `DashboardSettings` | 🟡 Bridged |
 | `ad-hoc-filters` | `ad_hoc_filters.ts` | — | 🔴 Angular |
 | `row-options` | `dashgrid/` | — | 🔴 Angular |
 | `dashboard-permissions` | `permissions/DashboardPermissions.tsx` | `DashboardPermissions` | 🟢 React |
@@ -141,7 +141,7 @@ When you migrate a component:
 | `ValueSelectDropdownCtrl` | `core/directives/value_select_dropdown.ts` | ✅ Done — ValueSelectDropdown.tsx |
 | `SearchCtrl` | `core/components/search/search.ts` | ✅ Done — SearchPanel.tsx |
 | `NavbarCtrl` | `core/components/navbar/navbar.ts` | ✅ Done — Navbar.tsx |
-| `DashboardImportCtrl` | `features/dashboard/` | 🔴 Angular |
+| `DashboardImportCtrl` | `features/dashboard/` | ✅ Done — DashboardImportPage.tsx |
 | `FolderDashboardsCtrl` | `features/folders/` | 🔴 Angular |
 
 ---

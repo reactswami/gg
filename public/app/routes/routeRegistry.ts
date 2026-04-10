@@ -43,6 +43,9 @@ const FolderDashboardsPage = lazy(() => import('app/features/dashboard/pages/Fol
 const FolderPermissionsPage = lazy(() => import('app/features/folders/FolderPermissions'));
 const FolderSettingsPage  = lazy(() => import('app/features/folders/FolderSettingsPage'));
 const NotFoundPage        = lazy(() => import('app/features/misc/NotFoundPage'));
+const CreateFolderPage     = lazy(() => import('app/features/dashboard/pages/CreateFolderPage'));
+const DashboardImportPage  = lazy(() => import('app/features/dashboard/pages/DashboardImportPage'));
+
 
 // ---------------------------------------------------------------------------
 // Route table
@@ -90,6 +93,25 @@ export const REACT_ROUTES: ReactRoute[] = [
   {
     path: '/profile',
     component: ProfilePage,
+    exact: true,
+  },
+
+  // ── New folder ───────────────────────────────────────────────────────────
+  {
+    path: '/dashboards/folder/new',
+    component: CreateFolderPage,
+    exact: true,
+  },
+
+  // ── Dashboard import ──────────────────────────────────────────────────────
+  {
+    path: '/dashboard/import',
+    component: DashboardImportPage,
+    exact: true,
+  },
+  {
+    path: '/template/import',
+    component: DashboardImportPage,
     exact: true,
   },
 

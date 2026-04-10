@@ -88,23 +88,6 @@ export function setupAngularRoutes($routeProvider, $locationProvider) {
       reloadOnSearch: false,
       pageClass: 'page-dashboard',
     })
-    .when('/dashboard/import', {
-      templateUrl: 'public/app/features/dashboard/partials/dashboard_import.html',
-      controller: 'DashboardImportCtrl',
-      controllerAs: 'ctrl',
-    })
-    .when('/template/import', {
-      templateUrl: 'public/app/features/dashboard/template/partials/template_import.html',
-      controller: 'TemplateImportCtrl',
-      controllerAs: 'ctrl',
-    })
-
-    // ── New folder ─────────────────────────────────────────────────────────
-    .when('/dashboards/folder/new', {
-      templateUrl: 'public/app/features/dashboard/partials/create_folder.html',
-      controller: 'CreateFolderCtrl',
-      controllerAs: 'ctrl',
-    })
 
     // ── Catch-all: Angular 404 (React catch-all in routeRegistry handles
     //    React-owned paths before Angular sees them) ─────────────────────────
