@@ -62,7 +62,7 @@ When you migrate a component:
 | `page-scrollbar` | `components/Scrollbar/PageScrollbar.tsx` | `PageScrollbar` | 🟡 Bridged |
 | `gf-page` | `components/GfPage/GfPage.tsx` | `GfPage` | 🟡 Bridged |
 | `info-popover` | `components/InfoPopover/InfoPopover.tsx` | `InfoPopover` | 🟡 Bridged |
-| `gf-dashboard-link` | `components/link.ts` | — | 🔴 Angular |
+| `gf-dashboard-link` | `features/dashboard/components/DashLinksEditor/DashLinksEditor.tsx` (sub-component) | `DashLinksEditor` | 🟡 Bridged |
 | `manage-dashboards` | `components/ManageDashboards/ManageDashboards.tsx` | `ManageDashboards` | 🟡 Bridged |
 | `manage-templates` | `components/manage_templates/manage_templates.ts` | — | 🔴 Angular |
 | `query-part-editor` | `components/query_part/query_part.ts` | — | 🔴 Angular |
@@ -82,19 +82,19 @@ When you migrate a component:
 | `metric-segment-model` | `directives/metric_segment.ts` | 🔴 Angular |
 | `dropdown-typeahead` | `directives/dropdown_typeahead.ts` | 🔴 Angular |
 | `ng-model-onblur` | `core/hooks/utilityHooks.ts` → `useOnBlurModel` | ✅ Done |
-| `valid-time-span` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
-| `empty-to-null` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
+| `valid-time-span` | Native React form validation | ✅ Done |
+| `empty-to-null` | Native React controlled inputs | ✅ Done |
 | `bootstrap-tagsinput` | `components/TagsInput/TagsInput.tsx` | `TagsInput` | 🟡 Bridged |
 | `tag-color-from-name` | `components/TagsInput/TagsInput.tsx` → `useTagColor` hook | ✅ Done |
 | `give-focus` | `core/hooks/utilityHooks.ts` → `useGiveFocus` | ✅ Done |
 | `rebuild-on-change` | `core/hooks/utilityHooks.ts` → `useRebuildOnChange` | ✅ Done |
 | `dash-class` | `core/hooks/utilityHooks.ts` → `useDashClass` | ✅ Done |
-| `diff-delta` | `directives/diff-view.ts` | 🔴 Angular |
-| `diff-link-json` | `directives/diff-view.ts` | 🔴 Angular |
-| `array-join` | `directives/array_join.ts` | 🔴 Angular |
+| `diff-delta` | `features/dashboard/components/DashboardHistory/DashboardHistory.tsx` (MutationObserver inline) | ✅ Done |
+| `diff-link-json` | `features/dashboard/components/DashboardHistory/DashboardHistory.tsx` (line link inline) | ✅ Done |
+| `array-join` | Native React — split/join handled in controlled inputs | ✅ Done |
 | `watch-change` | Native React `onChange` — no hook needed | ✅ Done |
-| `compile` | `directives/misc.ts` | 🔴 Angular |
-| `tip` | `directives/misc.ts` | 🔴 Angular |
+| `compile` | Native React `dangerouslySetInnerHTML` or JSX — no hook needed | ✅ Done |
+| `tip` | `InfoPopover` React component | ✅ Done |
 
 ---
 
@@ -113,8 +113,8 @@ When you migrate a component:
 | `dashboard-permissions` | `permissions/DashboardPermissions.tsx` | `DashboardPermissions` | 🟢 React |
 | `folder-picker` | `features/dashboard/components/FolderPicker/FolderPicker.tsx` | `FolderPicker` | 🟡 Bridged |
 | `dash-repeat-option` | `features/dashboard/components/DashRepeatOption/DashRepeatOption.tsx` | `DashRepeatOption` | 🟡 Bridged |
-| `save-dashboard-modal` | `export/` | — | 🔴 Angular |
-| `dash-export-modal` | `export/export_modal.ts` | — | 🔴 Angular |
+| `save-dashboard-modal` | `features/dashboard/components/SaveDashboardModal/SaveDashboardModal.tsx` | `SaveDashboardModal` | 🟡 Bridged |
+| `dash-export-modal` | `features/dashboard/components/ExportModal/ExportModal.tsx` | `ExportModal` | 🟡 Bridged |
 
 ---
 

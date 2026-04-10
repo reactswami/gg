@@ -16,6 +16,7 @@ import { Switch } from 'app/core/components/Switch/Switch';
 import InfoPopover from 'app/core/components/InfoPopover/InfoPopover';
 import { DashboardPermissions } from 'app/features/dashboard/permissions/DashboardPermissions';
 import DashboardHistory from '../DashboardHistory/DashboardHistory';
+import DashLinksEditor from '../DashLinksEditor/DashLinksEditor';
 import { useAngularService } from 'app/core/hooks/useAngularService';
 import { useAppEvents, useEmitAppEvent } from 'app/core/hooks/useAppEvents';
 import appEvents from 'app/core/app_events';
@@ -355,9 +356,15 @@ const DashboardSettings: React.FC<DashboardSettingsProps> = ({ dashboard }) => {
         return <GeneralTab dashboard={dashboard} onFolderChange={onFolderChange} />;
 
       case 'templating':
-      case 'links':
-        // Still Angular-owned — rendered via angular2react bridge or ng-include
+        // Still Angular-owned (templating/variable editor) — rendered via angular2react bridge
         return <AngularTab id={viewId} />;
+
+      case 'links':
+        return (
+          <div className="dashboard-settings__content">
+            <DashLinksEditor dashboard={dashboard} />
+          </div>
+        );
 
       case 'versions':
         return (

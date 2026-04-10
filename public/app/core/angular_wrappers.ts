@@ -51,6 +51,12 @@ import ManageDashboards from './components/ManageDashboards/ManageDashboards';
 import TagsInput from './components/TagsInput/TagsInput';
 import RowOptions from 'app/features/dashboard/components/RowOptions/RowOptions';
 
+
+// ── Sprint 8: Modal + link components ──────────────────────────────────────
+import DashLinksEditor from 'app/features/dashboard/components/DashLinksEditor/DashLinksEditor';
+import SaveDashboardModal from 'app/features/dashboard/components/SaveDashboardModal/SaveDashboardModal';
+import ExportModal from 'app/features/dashboard/components/ExportModal/ExportModal';
+
 // ── Routing ────────────────────────────────────────────────────────────────
 // AppRouterMount self-registers its directive on import — no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
@@ -196,6 +202,24 @@ export function registerAngularDirectives() {
     ['row',       { watchDepth: 'reference' }],
     ['onUpdated', { watchDepth: 'reference' }],
     ['dismiss',   { watchDepth: 'reference' }],
+  ]);
+
+
+  // ── Sprint 8 ──────────────────────────────────────────────────────────────
+
+  // dashLinksEditor: replaces DashLinkEditorCtrl + editor.html (Links tab)
+  react2AngularDirective('dashLinksEditor', DashLinksEditor, [
+    ['dashboard', { watchDepth: 'reference' }],
+  ]);
+
+  // saveDashboardModal: replaces SaveDashboardModalCtrl inline template
+  react2AngularDirective('saveDashboardModal', SaveDashboardModal, [
+    ['dismiss', { watchDepth: 'reference' }],
+  ]);
+
+  // dashExportModal: replaces DashExportCtrl + export_modal.html
+  react2AngularDirective('dashExportModal', ExportModal, [
+    ['dismiss', { watchDepth: 'reference' }],
   ]);
 
   // ── ⏳ Next up ─────────────────────────────────────────────────────────────
