@@ -34,6 +34,13 @@ import DashNav from 'app/features/dashboard/components/DashNav/DashNav';
 import FolderPicker from 'app/features/dashboard/components/FolderPicker/FolderPicker';
 import DashboardSubmenu from 'app/features/dashboard/components/DashboardSubmenu/DashboardSubmenu';
 
+
+// ── Sprint 5: Utility components + hooks ───────────────────────────────────
+import InfoPopover from './components/InfoPopover/InfoPopover';
+import GfPage from './components/GfPage/GfPage';
+import PageScrollbar from './components/Scrollbar/PageScrollbar';
+import DashRepeatOption from 'app/features/dashboard/components/DashRepeatOption/DashRepeatOption';
+
 // ── Routing ────────────────────────────────────────────────────────────────
 // AppRouterMount self-registers its directive on import — no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
@@ -125,6 +132,28 @@ export function registerAngularDirectives() {
   // dashboardSubmenu: replaces SubmenuCtrl + submenu.html
   react2AngularDirective('dashboardSubmenu', DashboardSubmenu, [
     ['dashboard', { watchDepth: 'reference' }],
+  ]);
+
+
+  // ── Sprint 5: Utility components ───────────────────────────────────────────
+
+  // infoPopover: replaces Angular tether-drop directive
+  react2AngularDirective('infoPopover', InfoPopover, [
+    'mode', 'placement', 'wide',
+  ]);
+
+  // gfPage: replaces gfPageDirective layout shell
+  react2AngularDirective('gfPage', GfPage, [
+    ['model', { watchDepth: 'reference' }],
+  ]);
+
+  // pageScrollbar: replaces page-scrollbar attribute directive
+  react2AngularDirective('pageScrollbar', PageScrollbar, ['className']);
+
+  // dashRepeatOption: replaces dashRepeatOptionDirective
+  react2AngularDirective('dashRepeatOption', DashRepeatOption, [
+    ['panel',    { watchDepth: 'reference' }],
+    ['onChange', { watchDepth: 'reference' }],
   ]);
 
   // ── ⏳ Next up ─────────────────────────────────────────────────────────────

@@ -58,10 +58,10 @@ When you migrate a component:
 | `dashboard-search-results` | `components/Search/SearchResults.tsx` | `SearchResults` | 🟡 Bridged |
 | `gf-form-dropdown` | `components/FormDropdown/FormDropdown.tsx` | `FormDropdown` | 🟡 Bridged |
 | `dashboard-submenu` | `features/dashboard/components/DashboardSubmenu/DashboardSubmenu.tsx` | `DashboardSubmenu` | 🟡 Bridged |
-| `grafana-scrollbar` | `components/scroll/scroll.ts` | — | 🔴 Angular |
-| `page-scrollbar` | `components/scroll/page_scroll.ts` | — | 🔴 Angular |
-| `gf-page` | `components/gf_page.ts` | — | 🔴 Angular |
-| `info-popover` | `components/info_popover.ts` | — | 🔴 Angular |
+| `grafana-scrollbar` | `components/CustomScrollbar/CustomScrollbar.tsx` | `CustomScrollbar` (existing) | 🟢 React |
+| `page-scrollbar` | `components/Scrollbar/PageScrollbar.tsx` | `PageScrollbar` | 🟡 Bridged |
+| `gf-page` | `components/GfPage/GfPage.tsx` | `GfPage` | 🟡 Bridged |
+| `info-popover` | `components/InfoPopover/InfoPopover.tsx` | `InfoPopover` | 🟡 Bridged |
 | `gf-dashboard-link` | `components/link.ts` | — | 🔴 Angular |
 | `manage-dashboards` | `components/manage_dashboards/manage_dashboards.ts` | — | 🔴 Angular |
 | `manage-templates` | `components/manage_templates/manage_templates.ts` | — | 🔴 Angular |
@@ -81,18 +81,18 @@ When you migrate a component:
 | `metric-segment` | `directives/metric_segment.ts` | 🔴 Angular |
 | `metric-segment-model` | `directives/metric_segment.ts` | 🔴 Angular |
 | `dropdown-typeahead` | `directives/dropdown_typeahead.ts` | 🔴 Angular |
-| `ng-model-onblur` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
+| `ng-model-onblur` | `core/hooks/utilityHooks.ts` → `useOnBlurModel` | ✅ Done |
 | `valid-time-span` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
 | `empty-to-null` | `directives/ng_model_on_blur.ts` | 🔴 Angular |
 | `bootstrap-tagsinput` | `directives/tags.ts` | 🔴 Angular |
 | `tag-color-from-name` | `directives/tags.ts` | 🔴 Angular |
-| `give-focus` | `directives/give_focus.ts` | 🔴 Angular |
-| `rebuild-on-change` | `directives/rebuild_on_change.ts` | 🔴 Angular |
-| `dash-class` | `directives/dash_class.ts` | 🔴 Angular |
+| `give-focus` | `core/hooks/utilityHooks.ts` → `useGiveFocus` | ✅ Done |
+| `rebuild-on-change` | `core/hooks/utilityHooks.ts` → `useRebuildOnChange` | ✅ Done |
+| `dash-class` | `core/hooks/utilityHooks.ts` → `useDashClass` | ✅ Done |
 | `diff-delta` | `directives/diff-view.ts` | 🔴 Angular |
 | `diff-link-json` | `directives/diff-view.ts` | 🔴 Angular |
 | `array-join` | `directives/array_join.ts` | 🔴 Angular |
-| `watch-change` | `directives/misc.ts` | 🔴 Angular |
+| `watch-change` | Native React `onChange` — no hook needed | ✅ Done |
 | `compile` | `directives/misc.ts` | 🔴 Angular |
 | `tip` | `directives/misc.ts` | 🔴 Angular |
 
@@ -112,7 +112,7 @@ When you migrate a component:
 | `row-options` | `dashgrid/` | — | 🔴 Angular |
 | `dashboard-permissions` | `permissions/DashboardPermissions.tsx` | `DashboardPermissions` | 🟢 React |
 | `folder-picker` | `features/dashboard/components/FolderPicker/FolderPicker.tsx` | `FolderPicker` | 🟡 Bridged |
-| `dash-repeat-option` | `repeat_option/` | — | 🔴 Angular |
+| `dash-repeat-option` | `features/dashboard/components/DashRepeatOption/DashRepeatOption.tsx` | `DashRepeatOption` | 🟡 Bridged |
 | `save-dashboard-modal` | `export/` | — | 🔴 Angular |
 | `dash-export-modal` | `export/export_modal.ts` | — | 🔴 Angular |
 
