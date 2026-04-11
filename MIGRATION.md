@@ -68,8 +68,8 @@ When you migrate a component:
 | `query-part-editor` | `components/query_part/query_part.ts` | — | 🔴 Angular |
 | `sql-part-editor` | `components/sql_part/sql_part_editor.ts` | — | 🔴 Angular |
 | `spectrum-picker` | `components/colorpicker/spectrum_picker.ts` | `SpectrumPicker.tsx` exists | 🟡 Bridged |
-| `code-editor` | `components/code_editor/code_editor.ts` | — | 🔴 Angular |
-| `json-tree` | `components/jsontree/jsontree.ts` | — | 🔴 Angular |
+| `code-editor` | `components/CodeEditor/CodeEditor.tsx` | `CodeEditor` | 🟡 Bridged |
+| `json-tree` | `components/JsonTree/JsonTree.tsx` | `JsonTree` | 🟡 Bridged |
 
 ---
 
@@ -77,7 +77,7 @@ When you migrate a component:
 
 | Directive | File | Status |
 |-----------|------|--------|
-| `value-select-dropdown` | `directives/value_select_dropdown.ts` | 🔴 Angular |
+| `value-select-dropdown` | `components/ValueSelectDropdown/ValueSelectDropdown.tsx` | `ValueSelectDropdown` | ✅ Done — directive file still registers but React impl active |
 | `metric-segment` | `directives/metric_segment.ts` | 🔴 Angular |
 | `metric-segment-model` | `directives/metric_segment.ts` | 🔴 Angular |
 | `dropdown-typeahead` | `directives/dropdown_typeahead.ts` | 🔴 Angular |
@@ -124,7 +124,7 @@ When you migrate a component:
 |-----------|------|--------|
 | `metrics-tab` | `metrics_tab.ts` | 🔴 Angular |
 | `viz-tab` | `viz_tab.ts` | 🔴 Angular (wraps `VizTypePicker.tsx`) |
-| `query-editor-row` | `query_editor_row.ts` | 🔴 Angular |
+| `query-editor-row` | `features/panel/components/QueryEditorRow.tsx` | `QueryEditorRow` | 🟡 Bridged |
 | `query-troubleshooter` | `features/panel/components/QueryTroubleshooter.tsx` | `QueryTroubleshooter` | 🟡 Bridged |
 
 ---
@@ -137,12 +137,12 @@ When you migrate a component:
 | `LoadDashboardCtrl` | `routes/dashboard_loaders.ts` | 🔴 Angular |
 | `DashboardCtrl` | `features/dashboard/dashboard_ctrl.ts` | 🔴 Angular |
 | `ProfileCtrl` | `features/profile/ProfileCtrl.ts` | ✅ Done — ProfilePage.tsx |
-| `PrefControlCtrl` | `features/profile/PrefControlCtrl.ts` | 🔴 Angular |
+| `PrefControlCtrl` | `features/profile/PrefControlCtrl.ts` | ✅ Done — already wraps SharedPreferences React component |
 | `ValueSelectDropdownCtrl` | `core/directives/value_select_dropdown.ts` | ✅ Done — ValueSelectDropdown.tsx |
 | `SearchCtrl` | `core/components/search/search.ts` | ✅ Done — SearchPanel.tsx |
 | `NavbarCtrl` | `core/components/navbar/navbar.ts` | ✅ Done — Navbar.tsx |
 | `DashboardImportCtrl` | `features/dashboard/` | ✅ Done — DashboardImportPage.tsx |
-| `FolderDashboardsCtrl` | `features/folders/` | 🔴 Angular |
+| `FolderDashboardsCtrl` | `features/folders/` | ✅ Done — replaced by FolderDashboardsPage React route |
 
 ---
 

@@ -62,6 +62,12 @@ import ExportModal from 'app/features/dashboard/components/ExportModal/ExportMod
 import ManageTemplates from './components/ManageTemplates/ManageTemplates';
 import QueryTroubleshooter from 'app/features/panel/components/QueryTroubleshooter';
 
+
+// ── Sprint 10: CodeEditor, JsonTree, QueryEditorRow ────────────────────────
+import CodeEditor from './components/CodeEditor/CodeEditor';
+import JsonTree from './components/JsonTree/JsonTree';
+import QueryEditorRow from 'app/features/panel/components/QueryEditorRow';
+
 // ── Routing ────────────────────────────────────────────────────────────────
 // AppRouterMount self-registers its directive on import — no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
@@ -237,6 +243,30 @@ export function registerAngularDirectives() {
   react2AngularDirective('queryTroubleshooter', QueryTroubleshooter, [
     ['panelCtrl', { watchDepth: 'reference' }],
     'isOpen',
+  ]);
+
+
+  // ── Sprint 10 ─────────────────────────────────────────────────────────────
+
+  // codeEditor: replaces Ace-based Angular directive
+  react2AngularDirective('codeEditor', CodeEditor, [
+    'content',
+    ['onChange',    { watchDepth: 'reference' }],
+    ['getCompleter',{ watchDepth: 'reference' }],
+    'mode', 'maxLines', 'showGutter', 'tabSize',
+    'behavioursEnabled', 'snippetsEnabled',
+  ]);
+
+  // jsonTree: replaces json-tree directive using JsonExplorer
+  react2AngularDirective('jsonTree', JsonTree, [
+    ['object', { watchDepth: 'reference' }],
+    'startExpanded', 'rootName', 'depth',
+  ]);
+
+  // queryEditorRow: replaces QueryRowCtrl + query_editor_row.html
+  react2AngularDirective('queryEditorRow', QueryEditorRow, [
+    ['queryCtrl', { watchDepth: 'reference' }],
+    'canCollapse',
   ]);
 
   // ── ⏳ Next up ─────────────────────────────────────────────────────────────
