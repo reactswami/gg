@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React ManageDashboards (components/ManageDashboards/ManageDashboards.tsx) — directive still registered for HTML template compat */
 import _ from 'lodash';
 import coreModule from 'app/core/core_module';
 import appEvents from 'app/core/app_events';

@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React MetricsTab (panel/components/MetricsTab.tsx) — directive still registered for HTML template compat */
 // Libraries
 import _ from 'lodash';
 import markdownit from 'markdown-it';

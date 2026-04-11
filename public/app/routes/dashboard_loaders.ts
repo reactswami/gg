@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React DashboardPage (dashboard/pages/DashboardPage.tsx) — directive still registered for HTML template compat */
 import coreModule from 'app/core/core_module';
 import locationUtil from 'app/core/utils/location_util';
 

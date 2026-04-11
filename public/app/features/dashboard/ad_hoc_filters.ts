@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React AdHocFilters (dashboard/components/AdHocFilters/AdHocFilters.tsx) — directive still registered for HTML template compat */
 import _ from 'lodash';
 import angular from 'angular';
 import coreModule from 'app/core/core_module';

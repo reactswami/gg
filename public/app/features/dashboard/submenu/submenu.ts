@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React DashboardSubmenu (dashboard/components/DashboardSubmenu/DashboardSubmenu.tsx) — directive still registered for HTML template compat */
 import _ from 'lodash';
 import angular from 'angular';
 

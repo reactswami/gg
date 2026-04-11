@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React InfoPopover (components/InfoPopover/InfoPopover.tsx) — directive still registered for HTML template compat */
 import _ from 'lodash';
 import coreModule from 'app/core/core_module';
 import Drop from 'tether-drop';

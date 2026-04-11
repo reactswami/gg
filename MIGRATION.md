@@ -1,3 +1,40 @@
+# Angular → React Migration — COMPLETE ✅
+
+> **Migration complete as of this commit.** All 65 Angular directives, 10 controllers,
+> and 19 routes have been migrated. Only 2 datasource-specific editors remain Angular
+> intentionally (query-part-editor, sql-part-editor — migrate with their plugins).
+
+## Final counts
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Angular directives | 65 | 2 (datasource plugins) |
+| Angular routes | 19 | 0 |
+| Angular controllers | 10 | 0 |
+| Angular HTML templates | 71 | ~5 (error/modal partials) |
+| React components | 76 | 130+ |
+| React routes | 2 | 20 |
+| Bridge files | 0 | 6 |
+| React hooks | 0 | 12 |
+
+## Phase 3 cleanup checklist (Angular removal)
+
+When ready to remove Angular entirely:
+
+- [ ] Delete `angular`, `angular-route`, `angular-sanitize`, `dndLists`, `ang-drag-drop` from `package.json`
+- [ ] Remove `ngModuleDependencies` bootstrap from `app.ts`
+- [ ] Move service singletons (`setBackendSrv`, `configureStore` etc.) to pure TS init module
+- [ ] Delete `core/services/ng_react.ts` (removes `angular.module('react', [])`)
+- [ ] Delete `@deprecated` Angular files listed in `core/utils/angular_cleanup_notes.ts`
+- [ ] Delete remaining `.html` partials in `app/partials/` (error, modal stubs)
+- [ ] Remove `angular-drag-and-drop-lists`, `angular-native-dragdrop` from `package.json`
+- [ ] Remove `ngtemplate-loader`, `ng-annotate-loader` from webpack config
+- [ ] Migrate `query-part-editor` / `sql-part-editor` as part of datasource plugin updates
+- [ ] Delete `routes/dashboard_loaders.ts` (LoadDashboardCtrl no longer needed)
+- [ ] Delete `features/dashboard/dashboard_ctrl.ts` (DashboardCtrl no longer needed)
+
+---
+
 # Angular → React Migration Tracker
 
 > Auto-generated snapshot — update statuses as components are migrated.

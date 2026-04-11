@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React ManageTemplates (components/ManageTemplates/ManageTemplates.tsx) — directive still registered for HTML template compat */
 import _ from 'lodash';
 import coreModule from 'app/core/core_module';
 import config from 'app/core/config';

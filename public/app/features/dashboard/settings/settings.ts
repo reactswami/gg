@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React DashboardSettings (dashboard/components/DashboardSettings/DashboardSettings.tsx) — directive still registered for HTML template compat */
 import { coreModule, appEvents, contextSrv } from 'app/core/core';
 import { DashboardModel } from '../dashboard_model';
 import $ from 'jquery';

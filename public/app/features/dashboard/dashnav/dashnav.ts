@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React DashNav (dashboard/components/DashNav/DashNav.tsx) — directive still registered for HTML template compat */
 import { NavModel, appEvents } from 'app/core/core';
 
 import { DashboardModel } from '../dashboard_model';

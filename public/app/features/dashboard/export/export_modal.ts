@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React ExportModal (dashboard/components/ExportModal/ExportModal.tsx) — directive still registered for HTML template compat */
 import angular from 'angular';
 import { saveAs } from 'file-saver';
 

@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React CodeEditor (components/CodeEditor/CodeEditor.tsx) — directive still registered for HTML template compat */
 /**
  * codeEditor directive based on Ace code editor
  * https://github.com/ajaxorg/ace

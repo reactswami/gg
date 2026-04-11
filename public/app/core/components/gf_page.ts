@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React GfPage (components/GfPage/GfPage.tsx) — directive still registered for HTML template compat */
 import coreModule from 'app/core/core_module';
 
 const template = `

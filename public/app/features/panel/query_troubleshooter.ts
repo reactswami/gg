@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React QueryTroubleshooter (panel/components/QueryTroubleshooter.tsx) — directive still registered for HTML template compat */
 import _ from 'lodash';
 import appEvents from 'app/core/app_events';
 import { coreModule, JsonExplorer } from 'app/core/core';

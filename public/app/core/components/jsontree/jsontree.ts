@@ -1,3 +1,4 @@
+/** @deprecated Superseded by React JsonTree (components/JsonTree/JsonTree.tsx) — directive still registered for HTML template compat */
 import coreModule from 'app/core/core_module';
 import { JsonExplorer } from '../json_explorer/json_explorer';
 
