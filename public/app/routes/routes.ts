@@ -1,37 +1,23 @@
 /**
  * routes.ts
  *
- * Angular route configuration — only routes NOT yet migrated to React remain
- * here. As each route is converted, remove its .when() block.
+ * Angular route configuration — ALL routes have been migrated to React.
+ * This file is kept only to:
+ *   1. Bootstrap the AppRouterMount directive (React router)
+ *   2. Register the catch-all .otherwise() for any unmatched paths
+ *      (React's catch-all NotFoundPage handles these first via routeRegistry)
  *
- * React routes live in: app/routes/routeRegistry.ts
- * React router mounts via: <app-router-mount> in index.html
+ * FULLY MIGRATED TO REACT:
+ *   All routes now live in: app/routes/routeRegistry.ts
+ *   React router mounts via: <app-router-mount> in index.html
  *
- * MIGRATED TO REACT (removed from Angular):
- *   /dashboards                          → DashboardListPage
- *   /templates                           → TemplateListPage
- *   /dashboard/snapshots                 → SnapshotListPage
- *   /profile                             → ProfilePage
- *   /dashboards/f/:uid/:slug/permissions → FolderPermissions (already React)
- *   /dashboards/f/:uid/:slug/settings    → FolderSettingsPage (already React)
- *   /dashboards/f/:uid/:slug             → FolderDashboardsPage
- *   /dashboards/f/:uid                   → FolderDashboardsPage
- *
- * STILL ANGULAR (pending migration):
- *   /                                    → LoadDashboardCtrl (dashboard)
- *   /d/:uid/:slug                        → LoadDashboardCtrl (dashboard)
- *   /d/:uid                              → LoadDashboardCtrl (dashboard)
- *   /dashboard/:type/:slug               → LoadDashboardCtrl (dashboard)
- *   /d-solo/:uid/:slug                   → SoloPanelCtrl
- *   /dashboard-solo/:type/:slug          → SoloPanelCtrl
- *   /dashboard/new                       → NewDashboardCtrl
- *   /dashboard/import                    → DashboardImportCtrl
- *   /template/import                     → TemplateImportCtrl
- *   /dashboards/folder/new               → CreateFolderCtrl
+ * TODO: Once ng-view is removed from index.html and Angular is fully
+ * bootstrapped only for service initialization, this file and
+ * setupAngularRoutes can be deleted entirely.
  */
 
-import './dashboard_loaders';
-import './ReactContainer';
+import './dashboard_loaders';   // still needed: registers DashboardLoaderSrv
+import './ReactContainer';       // still needed: registers <react-container>
 import './AppRouterMount';       // registers <app-router-mount> directive
 
 import { applyRouteRegistrationHandlers } from './registry';
@@ -40,15 +26,13 @@ import { applyRouteRegistrationHandlers } from './registry';
 export function setupAngularRoutes($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
-  $routeProvider
-    // ── Dashboard viewer routes migrated to React (DashboardPage.tsx) ────────
-
-    // ── Catch-all: Angular 404 (React catch-all in routeRegistry handles
-    //    React-owned paths before Angular sees them) ─────────────────────────
-    .otherwise({
-      templateUrl: 'public/app/partials/error.html',
-      controller: 'ErrorCtrl',
-    });
+  // All application routes are now handled by the React router (routeRegistry.ts).
+  // Angular only needs the otherwise() as a fallback — React's NotFoundPage
+  // will intercept unmatched paths before Angular's ng-view renders.
+  $routeProvider.otherwise({
+    templateUrl: 'public/app/partials/error.html',
+    controller: 'ErrorCtrl',
+  });
 
   applyRouteRegistrationHandlers($routeProvider);
 }

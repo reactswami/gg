@@ -178,7 +178,7 @@ When you migrate a component:
 | `routes/routeRegistry.ts` | React route table (lazy page imports) | ✅ Done |
 | `routes/AppRouter.tsx` | BrowserRouter + Switch, coexists with Angular ngRoute | ✅ Done |
 | `routes/AppRouterMount.tsx` | Angular directive that mounts AppRouter into the DOM | ✅ Done |
-| `routes/routes.ts` | Angular ngRoute config — 8 routes removed, 9 remain | 🔄 Shrinking |
+| `routes/routes.ts` | Angular ngRoute config — all routes migrated, only .otherwise() catch-all remains | ✅ Nearly done |
 | `core/bridge/angularComponents.ts` | Pre-wrapped Angular directives for React pages | ✅ Done |
 
 ### React routes active (11 total)
@@ -194,7 +194,7 @@ When you migrate a component:
 | `/dashboards/f/:uid` | `FolderDashboardsPage` |
 | `*` | `NotFoundPage` |
 
-### Angular routes remaining (9 total)
+### Angular routes remaining (0 — all migrated to React)
 | Path | Controller |
 |------|-----------|
 | `/` | `LoadDashboardCtrl` |
