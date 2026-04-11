@@ -65,8 +65,8 @@ When you migrate a component:
 | `gf-dashboard-link` | `features/dashboard/components/DashLinksEditor/DashLinksEditor.tsx` (sub-component) | `DashLinksEditor` | 🟡 Bridged |
 | `manage-dashboards` | `components/ManageDashboards/ManageDashboards.tsx` | `ManageDashboards` | 🟡 Bridged |
 | `manage-templates` | `components/ManageTemplates/ManageTemplates.tsx` | `ManageTemplates` | 🟡 Bridged |
-| `query-part-editor` | `components/query_part/query_part.ts` | — | 🔴 Angular |
-| `sql-part-editor` | `components/sql_part/sql_part_editor.ts` | — | 🔴 Angular |
+| `query-part-editor` | `components/query_part/query_part.ts` | Datasource-specific — keep Angular until plugins migrate | 🔴 Angular |
+| `sql-part-editor` | `components/sql_part/sql_part_editor.ts` | Datasource-specific — keep Angular until plugins migrate | 🔴 Angular |
 | `spectrum-picker` | `components/colorpicker/spectrum_picker.ts` | `SpectrumPicker.tsx` exists | 🟡 Bridged |
 | `code-editor` | `components/CodeEditor/CodeEditor.tsx` | `CodeEditor` | 🟡 Bridged |
 | `json-tree` | `components/JsonTree/JsonTree.tsx` | `JsonTree` | 🟡 Bridged |
@@ -78,9 +78,9 @@ When you migrate a component:
 | Directive | File | Status |
 |-----------|------|--------|
 | `value-select-dropdown` | `components/ValueSelectDropdown/ValueSelectDropdown.tsx` | `ValueSelectDropdown` | ✅ Done — directive file still registers but React impl active |
-| `metric-segment` | `directives/metric_segment.ts` | 🔴 Angular |
-| `metric-segment-model` | `directives/metric_segment.ts` | 🔴 Angular |
-| `dropdown-typeahead` | `directives/dropdown_typeahead.ts` | 🔴 Angular |
+| `metric-segment` | `components/MetricSegment/MetricSegment.tsx` | `MetricSegment` | 🟡 Bridged |
+| `metric-segment-model` | `components/MetricSegment/MetricSegment.tsx` | `MetricSegment` (shared) | 🟡 Bridged |
+| `dropdown-typeahead` | `directives/dropdown_typeahead.ts` | Bridge via FormDropdown for menu-style use | 🟡 Bridged |
 | `ng-model-onblur` | `core/hooks/utilityHooks.ts` → `useOnBlurModel` | ✅ Done |
 | `valid-time-span` | Native React form validation | ✅ Done |
 | `empty-to-null` | Native React controlled inputs | ✅ Done |
@@ -108,7 +108,7 @@ When you migrate a component:
 | `add-panel-panel` | `dashgrid/AddPanelPanel.tsx` | `AddPanelPanel` | 🟢 React |
 | `panel-header` | `dashgrid/PanelHeader/PanelHeader.tsx` | `PanelHeader` | 🟢 React |
 | `dashboard-settings` | `features/dashboard/components/DashboardSettings/DashboardSettings.tsx` | `DashboardSettings` | 🟡 Bridged |
-| `ad-hoc-filters` | `ad_hoc_filters.ts` | — | 🔴 Angular |
+| `ad-hoc-filters` | `features/dashboard/components/AdHocFilters/AdHocFilters.tsx` | `AdHocFilters` | 🟡 Bridged |
 | `row-options` | `features/dashboard/components/RowOptions/RowOptions.tsx` | `RowOptions` | 🟡 Bridged |
 | `dashboard-permissions` | `permissions/DashboardPermissions.tsx` | `DashboardPermissions` | 🟢 React |
 | `folder-picker` | `features/dashboard/components/FolderPicker/FolderPicker.tsx` | `FolderPicker` | 🟡 Bridged |
@@ -122,8 +122,8 @@ When you migrate a component:
 
 | Directive | File | Status |
 |-----------|------|--------|
-| `metrics-tab` | `metrics_tab.ts` | 🔴 Angular |
-| `viz-tab` | `viz_tab.ts` | 🔴 Angular (wraps `VizTypePicker.tsx`) |
+| `metrics-tab` | `features/panel/components/MetricsTab.tsx` | `MetricsTab` | 🟡 Bridged |
+| `viz-tab` | `features/panel/components/VizTab.tsx` | `VizTab` | 🟡 Bridged |
 | `query-editor-row` | `features/panel/components/QueryEditorRow.tsx` | `QueryEditorRow` | 🟡 Bridged |
 | `query-troubleshooter` | `features/panel/components/QueryTroubleshooter.tsx` | `QueryTroubleshooter` | 🟡 Bridged |
 

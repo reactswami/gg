@@ -68,6 +68,13 @@ import CodeEditor from './components/CodeEditor/CodeEditor';
 import JsonTree from './components/JsonTree/JsonTree';
 import QueryEditorRow from 'app/features/panel/components/QueryEditorRow';
 
+
+// ── Sprint 11: MetricSegment, AdHocFilters, MetricsTab, VizTab ────────────
+import MetricSegment from './components/MetricSegment/MetricSegment';
+import AdHocFilters from 'app/features/dashboard/components/AdHocFilters/AdHocFilters';
+import MetricsTab from 'app/features/panel/components/MetricsTab';
+import VizTab from 'app/features/panel/components/VizTab';
+
 // ── Routing ────────────────────────────────────────────────────────────────
 // AppRouterMount self-registers its directive on import — no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
@@ -267,6 +274,39 @@ export function registerAngularDirectives() {
   react2AngularDirective('queryEditorRow', QueryEditorRow, [
     ['queryCtrl', { watchDepth: 'reference' }],
     'canCollapse',
+  ]);
+
+
+  // ── Sprint 11 ─────────────────────────────────────────────────────────────
+
+  // metricSegment: replaces jQuery typeahead-based Angular directive
+  react2AngularDirective('metricSegment', MetricSegment, [
+    ['segment',    { watchDepth: 'reference' }],
+    ['getOptions', { watchDepth: 'reference' }],
+    ['onChange',   { watchDepth: 'reference' }],
+    'debounce', 'selectMode',
+  ]);
+
+  // metricSegmentModel: shares the MetricSegment React component
+  react2AngularDirective('metricSegmentModel', MetricSegment, [
+    ['segment',    { watchDepth: 'reference' }],
+    ['getOptions', { watchDepth: 'reference' }],
+    ['onChange',   { watchDepth: 'reference' }],
+  ]);
+
+  // adHocFilters: replaces AdHocFiltersCtrl + template
+  react2AngularDirective('adHocFilters', AdHocFilters, [
+    ['variable', { watchDepth: 'reference' }],
+  ]);
+
+  // metricsTab: replaces MetricsTabCtrl + metrics_tab.html
+  react2AngularDirective('metricsTab', MetricsTab, [
+    ['panelCtrl', { watchDepth: 'reference' }],
+  ]);
+
+  // vizTab: replaces VizTabCtrl + template (VizTypePicker already React)
+  react2AngularDirective('vizTab', VizTab, [
+    ['panelCtrl', { watchDepth: 'reference' }],
   ]);
 
   // ── ⏳ Next up ─────────────────────────────────────────────────────────────
