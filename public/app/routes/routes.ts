@@ -41,53 +41,7 @@ export function setupAngularRoutes($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $routeProvider
-    // ── Dashboard viewer (not yet migrated — complex DashboardCtrl) ────────
-    .when('/', {
-      templateUrl: 'public/app/partials/dashboard.html',
-      controller: 'LoadDashboardCtrl',
-      reloadOnSearch: false,
-      pageClass: 'page-dashboard',
-    })
-    .when('/d/:uid/:slug', {
-      templateUrl: 'public/app/partials/dashboard.html',
-      controller: 'LoadDashboardCtrl',
-      reloadOnSearch: false,
-      pageClass: 'page-dashboard',
-    })
-    .when('/d/:uid', {
-      templateUrl: 'public/app/partials/dashboard.html',
-      controller: 'LoadDashboardCtrl',
-      reloadOnSearch: false,
-      pageClass: 'page-dashboard',
-    })
-    .when('/dashboard/:type/:slug', {
-      templateUrl: 'public/app/partials/dashboard.html',
-      controller: 'LoadDashboardCtrl',
-      reloadOnSearch: false,
-      pageClass: 'page-dashboard',
-    })
-
-    // ── Solo panel ─────────────────────────────────────────────────────────
-    .when('/d-solo/:uid/:slug', {
-      templateUrl: 'public/app/features/panel/partials/soloPanel.html',
-      controller: 'SoloPanelCtrl',
-      reloadOnSearch: false,
-      pageClass: 'page-dashboard',
-    })
-    .when('/dashboard-solo/:type/:slug', {
-      templateUrl: 'public/app/features/panel/partials/soloPanel.html',
-      controller: 'SoloPanelCtrl',
-      reloadOnSearch: false,
-      pageClass: 'page-dashboard',
-    })
-
-    // ── New / import dashboard ─────────────────────────────────────────────
-    .when('/dashboard/new', {
-      templateUrl: 'public/app/partials/dashboard.html',
-      controller: 'NewDashboardCtrl',
-      reloadOnSearch: false,
-      pageClass: 'page-dashboard',
-    })
+    // ── Dashboard viewer routes migrated to React (DashboardPage.tsx) ────────
 
     // ── Catch-all: Angular 404 (React catch-all in routeRegistry handles
     //    React-owned paths before Angular sees them) ─────────────────────────

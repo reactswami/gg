@@ -25,8 +25,8 @@ When you migrate a component:
 
 | Route | Template / Controller | Status |
 |-------|-----------------------|--------|
-| `/` | `dashboard.html` / `LoadDashboardCtrl` | 🔴 Angular |
-| `/d/:uid/:slug` | `dashboard.html` / `LoadDashboardCtrl` | 🔴 Angular |
+| `/` | `features/dashboard/pages/DashboardPage.tsx` | 🟢 React |
+| `/d/:uid/:slug` | `features/dashboard/pages/DashboardPage.tsx` | 🟢 React |
 | `/dashboard/import` | `dashboard/pages/DashboardImportPage.tsx` | 🟢 React |
 | `/template/import` | `dashboard/pages/DashboardImportPage.tsx` | 🟢 React |
 | `/dashboards` | `DashboardListPage.tsx` | 🟢 React |
@@ -35,7 +35,7 @@ When you migrate a component:
 | `/dashboards/f/:uid/:slug` | `FolderDashboardsPage.tsx` | 🟢 React |
 | `/profile` | `ProfilePage.tsx` | 🟢 React |
 | `/dashboard/snapshots` | `SnapshotListPage.tsx` | 🟢 React |
-| `/d-solo/:uid/:slug` | `soloPanel.html` / `SoloPanelCtrl` | 🔴 Angular |
+| `/d-solo/:uid/:slug` | `features/dashboard/pages/DashboardPage.tsx` (soloMode) | 🟢 React |
 | **`/dashboards/f/:uid/:slug/permissions`** | `<react-container>` / `FolderPermissions` | 🟢 React |
 | **`/dashboards/f/:uid/:slug/settings`** | `<react-container>` / `FolderSettingsPage` | 🟢 React |
 
@@ -133,9 +133,9 @@ When you migrate a component:
 
 | Controller | File | Status |
 |------------|------|--------|
-| `GrafanaCtrl` | `routes/GrafanaCtrl.ts` | 🔴 Angular |
-| `LoadDashboardCtrl` | `routes/dashboard_loaders.ts` | 🔴 Angular |
-| `DashboardCtrl` | `features/dashboard/dashboard_ctrl.ts` | 🔴 Angular |
+| `GrafanaCtrl` | `routes/GrafanaCtrl.ts` | ✅ Service init now in GrafanaAppRoot + bridge hooks |
+| `LoadDashboardCtrl` | `routes/dashboard_loaders.ts` | ✅ Replaced by DashboardPage.tsx |
+| `DashboardCtrl` | `features/dashboard/dashboard_ctrl.ts` | ✅ Replaced by DashboardPage.tsx |
 | `ProfileCtrl` | `features/profile/ProfileCtrl.ts` | ✅ Done — ProfilePage.tsx |
 | `PrefControlCtrl` | `features/profile/PrefControlCtrl.ts` | ✅ Done — already wraps SharedPreferences React component |
 | `ValueSelectDropdownCtrl` | `core/directives/value_select_dropdown.ts` | ✅ Done — ValueSelectDropdown.tsx |

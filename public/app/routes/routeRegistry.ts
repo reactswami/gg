@@ -43,6 +43,8 @@ const FolderDashboardsPage = lazy(() => import('app/features/dashboard/pages/Fol
 const FolderPermissionsPage = lazy(() => import('app/features/folders/FolderPermissions'));
 const FolderSettingsPage  = lazy(() => import('app/features/folders/FolderSettingsPage'));
 const NotFoundPage        = lazy(() => import('app/features/misc/NotFoundPage'));
+const DashboardPage        = lazy(() => import('app/features/dashboard/pages/DashboardPage'));
+
 const CreateFolderPage     = lazy(() => import('app/features/dashboard/pages/CreateFolderPage'));
 const DashboardImportPage  = lazy(() => import('app/features/dashboard/pages/DashboardImportPage'));
 
@@ -112,6 +114,40 @@ export const REACT_ROUTES: ReactRoute[] = [
   {
     path: '/template/import',
     component: DashboardImportPage,
+    exact: true,
+  },
+
+  // ── Dashboard viewer ─────────────────────────────────────────────────────
+  // These replace LoadDashboardCtrl + DashboardCtrl + dashboard.html
+  {
+    path: '/d/:uid/:slug',
+    component: DashboardPage,
+    pageClass: 'page-dashboard',
+    exact: true,
+  },
+  {
+    path: '/d/:uid',
+    component: DashboardPage,
+    pageClass: 'page-dashboard',
+    exact: true,
+  },
+  {
+    path: '/dashboard/:type/:slug',
+    component: DashboardPage,
+    pageClass: 'page-dashboard',
+    exact: true,
+  },
+  {
+    path: '/dashboard/new',
+    component: DashboardPage,
+    pageClass: 'page-dashboard',
+    exact: true,
+  },
+  // Home dashboard (root path handled last so specific paths match first)
+  {
+    path: '/',
+    component: DashboardPage,
+    pageClass: 'page-dashboard',
     exact: true,
   },
 
