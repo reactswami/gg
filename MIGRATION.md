@@ -17,6 +17,21 @@
 | Bridge files | 0 | 6 |
 | React hooks | 0 | 12 |
 
+
+## Plugin migration status
+
+| Plugin | Path | Status | Notes |
+|--------|------|--------|-------|
+| `gauge` | `plugins/panel/gauge/` | ✅ React | Uses `app/viz/Gauge` |
+| `graph2` | `plugins/panel/graph2/` | ✅ React | Uses `app/viz/Graph` |
+| `text2` | `plugins/panel/text2/` | ✅ React | Stub — expands with text plugin |
+| `text` | `plugins/panel/text/` | 🟢 React | `TextPanel.tsx` + `TextPanelEditor.tsx` |
+| `dashlist` | `plugins/panel/dashlist/` | 🟢 React | `DashListPanel.tsx` + `DashListPanelEditor.tsx` |
+| `table` | `plugins/panel/table/` | 🟢 React | `TablePanel.tsx` + `TablePanelEditor.tsx`; reuses `TableRenderer` + `transformers.ts` |
+| `singlestat` | `plugins/panel/singlestat/` | 🔴 Angular | Phase 4 — Flot gauge → `app/viz/Gauge` |
+| `graph` | `plugins/panel/graph/` | 🔴 Angular | Phase 5 — promote `graph2` or rewrite |
+| `unknown` | `plugins/panel/unknown/` | 🔴 Angular | Trivial shell — keep for error display |
+
 ## Phase 3 cleanup checklist (Angular removal)
 
 When ready to remove Angular entirely:

@@ -286,3 +286,10 @@ class TablePanelCtrl extends MetricsPanelCtrl {
 }
 
 export { TablePanelCtrl, TablePanelCtrl as PanelCtrl };
+
+// ── React replacement ──────────────────────────────────────────────────────
+// DashboardPanel checks for PanelComponent export first. When present it
+// uses the React render path; TablePanelCtrl is never instantiated.
+// TableRenderer and transformers.ts are reused unchanged — pure TypeScript.
+export { TablePanel as PanelComponent } from './TablePanel';
+export { TablePanelEditor as PanelOptionsComponent } from './TablePanelEditor';
