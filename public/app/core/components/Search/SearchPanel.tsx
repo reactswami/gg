@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { SearchResults, SearchSection, SearchItem } from './SearchResults';
+import { SearchResults, SearchSection } from './SearchResults';
 import { TagFilter } from '../TagFilter/TagFilter';
 import { useAppEvents, useEmitAppEvent } from 'app/core/hooks/useAppEvents';
 import { useAngularService } from 'app/core/hooks/useAngularService';
@@ -29,7 +29,6 @@ const SearchPanel: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const oldVariableTextRef = useRef('');
 
   const isEditor = contextSrv.isEditor;
   const hasEditPermissionInFolders = contextSrv.hasEditPermissionInFolders;
@@ -296,6 +295,12 @@ const SearchPanel: React.FC = () => {
                   <i className="fa fa-remove" /> Clear
                 </a>
               </div>
+              <a
+                className={`search-filter-box-link${query.starred ? ' selected' : ''}`}
+                onClick={handleShowStarred}
+              >
+                <i className={`fa ${query.starred ? 'fa-star' : 'fa-star-o'}`} /> Starred
+              </a>
               <TagFilter
                 tags={query.tag}
                 tagOptions={getTags}

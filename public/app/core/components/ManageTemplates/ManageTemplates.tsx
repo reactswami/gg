@@ -11,7 +11,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import _ from 'lodash';
 import config from 'app/core/config';
-import { SearchResults, SearchSection } from '../Search/SearchResults';
+import { SearchResults } from '../Search/SearchResults';
 import { Switch } from '../Switch/Switch';
 import { useAngularService } from 'app/core/hooks/useAngularService';
 import appEvents from 'app/core/app_events';

@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import SearchPanel from '../Search/SearchPanel';
-import { NavModel, NavModelItem } from 'app/types';
-import { useEmitAppEvent } from 'app/core/hooks/useAppEvents';
+import { NavModel } from 'app/types';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -37,18 +36,6 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({ breadcrumbs }) => (
 // ---------------------------------------------------------------------------
 
 const Navbar: React.FC<NavbarProps> = ({ model }) => {
-  const emitShowSearch = useEmitAppEvent('show-dash-search');
-
-  const handleNavItemClick = useCallback(
-    (navItem: NavModelItem, evt: React.MouseEvent) => {
-      if (navItem.clickHandler) {
-        (navItem as any).clickHandler();
-        evt.preventDefault();
-      }
-    },
-    []
-  );
-
   if (!model) {
     return null;
   }
@@ -59,13 +46,10 @@ const Navbar: React.FC<NavbarProps> = ({ model }) => {
   return (
     <div className="page-nav">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
+      {/* SearchPanel listens for show-dash-search / hide-dash-search appEvents internally */}
       <SearchPanel />
     </div>
   );
 };
-
-// SearchPanel is the fully ported React version of search.ts + search.html.
-// It listens for 'show-dash-search' on appEvents internally.
-// No placeholder or custom element declaration needed.
 
 export default Navbar;

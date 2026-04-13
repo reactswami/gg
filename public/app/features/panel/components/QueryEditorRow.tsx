@@ -12,7 +12,7 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import InfoPopover from 'app/core/components/InfoPopover/InfoPopover';
 import QueryTroubleshooter from './QueryTroubleshooter';
 import { useAngularService } from 'app/core/hooks/useAngularService';
-import { useEmitAppEvent } from 'app/core/hooks/useAppEvents';
+
 import markdownit from 'markdown-it';
 
 // ---------------------------------------------------------------------------
