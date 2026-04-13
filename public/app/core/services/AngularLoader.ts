@@ -40,3 +40,13 @@ export function setAngularLoader(pl: AngularLoader) {
 export function getAngularLoader(): AngularLoader {
   return angularLoaderInstance;
 }
+
+let angularInjector: any;
+
+export function setAngularInjector(injector: any) {
+  angularInjector = injector;
+}
+
+export function getAngularInjector(): any {
+  return angularInjector;
+}

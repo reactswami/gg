@@ -828,3 +828,6 @@ function getColorForValue(data, value, valueString = null, templateSrv?) {
 }
 
 export { SingleStatCtrl, SingleStatCtrl as PanelCtrl, getColorForValue };
+
+// ── React replacement ──────────────────────────────────────────────────────
+export { SingleStatPanel as PanelComponent } from './SingleStatPanel';

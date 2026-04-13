@@ -11,13 +11,14 @@ import { BackendSrv, setBackendSrv } from 'app/core/services/backend_srv';
 import { BackendApiSrv, setBackendApiSrv } from 'app/core/services/backendapi_srv';
 import { TimeSrv, setTimeSrv } from 'app/features/dashboard/time_srv';
 import { DatasourceSrv, setDatasourceSrv } from 'app/features/plugins/datasource_srv';
-import { AngularLoader, setAngularLoader } from 'app/core/services/AngularLoader';
+import { AngularLoader, setAngularLoader, setAngularInjector } from 'app/core/services/AngularLoader';
 import { configureStore } from 'app/store/configureStore';
 
 export class GrafanaCtrl {
   /** @ngInject */
   constructor(
     $scope,
+    $injector,
     utilSrv,
     $rootScope,
     $controller,
@@ -31,6 +32,7 @@ export class GrafanaCtrl {
   ) {
     // make angular loader service available to react components
     setAngularLoader(angularLoader);
+    setAngularInjector($injector);
     setBackendSrv(backendSrv);
     setBackendApiSrv(backendApiSrv);
     setDatasourceSrv(datasourceSrv);

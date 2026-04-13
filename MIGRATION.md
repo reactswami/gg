@@ -28,8 +28,8 @@
 | `text` | `plugins/panel/text/` | 🟢 React | `TextPanel.tsx` + `TextPanelEditor.tsx` |
 | `dashlist` | `plugins/panel/dashlist/` | 🟢 React | `DashListPanel.tsx` + `DashListPanelEditor.tsx` |
 | `table` | `plugins/panel/table/` | 🟢 React | `TablePanel.tsx` + `TablePanelEditor.tsx`; reuses `TableRenderer` + `transformers.ts` |
-| `singlestat` | `plugins/panel/singlestat/` | 🔴 Angular | Phase 4 — Flot gauge → `app/viz/Gauge` |
-| `graph` | `plugins/panel/graph/` | 🔴 Angular | Phase 5 — promote `graph2` or rewrite |
+| `singlestat` | `plugins/panel/singlestat/` | 🟢 React | `SingleStatPanel.tsx`; SVG sparkline; `app/viz/Gauge`; `singlestat-utils.ts` |
+| `graph` | `plugins/panel/graph/` | 🟢 React | `GraphPanel.tsx` (Option A ref wrapper); `GraphElement`+Flot run inside ref div |
 | `unknown` | `plugins/panel/unknown/` | 🔴 Angular | Trivial shell — keep for error display |
 
 ## Phase 3 cleanup checklist (Angular removal)
