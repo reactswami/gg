@@ -21,8 +21,15 @@ export class TagFilter extends React.Component<Props, any> {
     super(props);
   }
 
-  onLoadOptions = query => {
-    return this.props.tagOptions().then(options => {
+  onLoadOptions = (query: string) => {
+    // tagOptions must be a function returning a Promise.
+    // Guard against the Angular bridge passing a non-function (timing edge case).
+    const { tagOptions } = this.props;
+    if (typeof tagOptions !== 'function') {
+      console.warn('TagFilter: tagOptions prop is not a function', tagOptions);
+      return Promise.resolve([]);
+    }
+    return tagOptions().then((options: any[]) => {
       return options.map(option => ({
         value: option.term,
         label: option.term,

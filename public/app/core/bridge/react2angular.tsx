@@ -164,11 +164,23 @@ export function react2AngularDirective(
         return acc;
       }, {});
 
-      // Collect current prop values from the isolated scope
+      // Collect current prop values from the isolated scope.
+      // For function props (watchDepth:'reference'), the isolated scope '=' binding
+      // copies the parent reference. If it arrives as undefined on the first render
+      // (race between scope setup and link), fall back to $parent.$eval.
       const collectProps = (): Record<string, any> => {
         const raw = propDefs.reduce<Record<string, any>>((acc, prop) => {
           const name = getPropName(prop);
-          acc[name] = (scope as any)[name];
+          let value = (scope as any)[name];
+          // Fallback: evaluate from parent scope if undefined and attr exists
+          if (value === undefined && attrs[name]) {
+            try {
+              value = (scope.$parent as any).$eval(attrs[name]);
+            } catch (e) {
+              // attr expression not evaluable -- leave undefined
+            }
+          }
+          acc[name] = value;
           return acc;
         }, {});
         return applyFunctions(raw, scope, configs);
