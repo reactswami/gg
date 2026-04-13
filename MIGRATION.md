@@ -32,7 +32,24 @@
 | `graph` | `plugins/panel/graph/` | 🟢 React | `GraphPanel.tsx` (Option A ref wrapper); `GraphElement`+Flot run inside ref div |
 | `unknown` | `plugins/panel/unknown/` | 🔴 Angular | Trivial shell — keep for error display |
 
-## Phase 3 cleanup checklist (Angular removal)
+
+## Plugin Phase 3 cleanup checklist
+
+When ready to fully remove panel Angular infrastructure:
+
+- [ ] Delete `features/panel/panel_ctrl.ts` (@deprecated — no panel extends it)
+- [ ] Delete `features/panel/metrics_panel_ctrl.ts` (@deprecated — no panel extends it)
+- [ ] Delete `plugins/sdk.ts` (@deprecated — no panel imports it for base classes)
+- [ ] Delete `features/panel/panel_directive.ts` (Angular panel shell)
+- [ ] Delete `features/panel/panel_editor_tab.ts` (Angular dynamic tab directive)
+- [ ] Delete `features/panel/solo_panel_ctrl.ts` (replaced by DashboardPage soloMode)
+- [ ] Delete `features/plugins/plugin_component.ts` (pluginDirectiveLoader — only needed for Angular panels)
+- [ ] Remove the Angular fallback path in `DashboardPanel.tsx` (the `<div ref={element}>` branch)
+- [ ] Add a built-in React "unknown panel type" fallback to DashboardPanel, then delete `plugins/panel/unknown/`
+- [ ] Remove `features/panel/all.ts` imports of the deleted files above
+- [ ] Mark `DashboardPanel.tsx` render() Angular branch as dead code, remove
+
+## App-level Phase 3 cleanup checklist (Angular removal)
 
 When ready to remove Angular entirely:
 

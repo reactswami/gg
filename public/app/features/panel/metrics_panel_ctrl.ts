@@ -1,3 +1,6 @@
+/** @deprecated Superseded by React PanelProps interface (app/types/panel.ts) — MetricsPanelCtrl is no longer extended by any active panel.
+ * All panel plugins now export PanelComponent (React). Safe to delete in Phase 3.
+ */
 import * as dateMath from 'app/core/utils/datemath';
 import * as rangeUtil from 'app/core/utils/rangeutil';
 

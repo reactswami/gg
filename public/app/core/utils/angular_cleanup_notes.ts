@@ -58,3 +58,30 @@
  *   - Delete ng_react.ts after app.ts no longer references 'react' module
  */
 export {};
+
+// ── Plugin migration additions ─────────────────────────────────────────────
+
+/**
+ * Panel plugin Angular base classes — now dead code:
+ *
+ * features/panel/panel_ctrl.ts          — @deprecated, safe to delete
+ * features/panel/metrics_panel_ctrl.ts  — @deprecated, safe to delete
+ * plugins/sdk.ts                        — @deprecated, safe to delete
+ *
+ * All 8 active panel plugins now export PanelComponent (React).
+ * DashboardPanel.tsx uses the React path when PanelComponent is present.
+ * The Angular plugin-component directive path in DashboardPanel is dead.
+ *
+ * Panel Angular infrastructure to remove in Phase 3:
+ *   - features/panel/panel_directive.ts   (Angular panel shell + resizable)
+ *   - features/panel/panel_editor_tab.ts  (Angular dynamic tab directive)
+ *   - features/panel/solo_panel_ctrl.ts   (SoloPanelCtrl)
+ *   - features/panel/all.ts               (imports all of the above)
+ *   - features/plugins/plugin_component.ts (pluginDirectiveLoader)
+ *
+ * Replace with: PanelChrome + DataPanel (already React) handle everything.
+ *
+ * Unknown panel plugin:
+ *   plugins/panel/unknown/module.ts — trivial Angular shell, keep until
+ *   DashboardPanel has a built-in React "unknown panel type" fallback.
+ */
