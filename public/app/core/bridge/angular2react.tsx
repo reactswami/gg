@@ -3,7 +3,7 @@
  *
  * Wraps any existing AngularJS directive as a React component so that
  * newly-written React parent components can render Angular children
- * during the incremental migration — without having to rewrite both
+ * during the incremental migration -- without having to rewrite both
  * parent and child at the same time.
  *
  * Usage:
@@ -151,7 +151,7 @@ export function angular2React<P extends Record<string, any>>(
     }
 
     // ------------------------------------------------------------------
-    // Render — just a plain div that Angular will populate
+    // Render -- just a plain div that Angular will populate
     // ------------------------------------------------------------------
 
     render() {

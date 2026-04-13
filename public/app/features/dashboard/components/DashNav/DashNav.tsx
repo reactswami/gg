@@ -4,7 +4,7 @@
  * React port of DashNavCtrl + dashnav.html.
  * Replaces Angular directive: <dashnav dashboard="ctrl.dashboard">
  *
- * Props mirror the Angular bindings — dashboard is the DashboardModel.
+ * Props mirror the Angular bindings - dashboard is the DashboardModel.
  */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
@@ -70,7 +70,7 @@ const DashNav: React.FC<DashNavProps> = ({ dashboard }) => {
   const [titleTooltip, setTitleTooltip] = useState('');
   const [urlTitle, setUrlTitle] = useState('');
 
-  // ── On mount: parse URL title param + snapshot tooltip ──────────────────
+  // -- On mount: parse URL title param + snapshot tooltip ------------------
 
   useEffect(() => {
     // Parse ?title= from URL
@@ -112,7 +112,7 @@ const DashNav: React.FC<DashNavProps> = ({ dashboard }) => {
     dashboardSrv.saveDashboard();
   });
 
-  // ── Handlers ─────────────────────────────────────────────────────────────
+  // -- Handlers -------------------------------------------------------------
 
   const showSearch = useCallback((folderId?: number) => {
     emitShowSearch({ folderId });
@@ -152,7 +152,7 @@ const DashNav: React.FC<DashNavProps> = ({ dashboard }) => {
   }, [dashboardSrv, dashboard]);
 
   const shareDashboard = useCallback(() => {
-    // Still uses Angular appEvents modal — will be migrated with modal system
+    // Still uses Angular appEvents modal - will be migrated with modal system
     const event = new CustomEvent('show-modal', {
       detail: {
         src: 'public/app/features/dashboard/partials/shareModal.html',
@@ -178,7 +178,7 @@ const DashNav: React.FC<DashNavProps> = ({ dashboard }) => {
     });
   }, [dashboard, emitDashScroll]);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   const meta = dashboard.meta;
   const displayTitle = urlTitle || dashboard.title;
@@ -186,7 +186,7 @@ const DashNav: React.FC<DashNavProps> = ({ dashboard }) => {
 
   return (
     <div className="navbar">
-      {/* ── Title / breadcrumb area ───────────────────────────────────────── */}
+      {/* -- Title / breadcrumb area ----------------------------------------- */}
       {meta.canSearch ? (
         <a className="navbar-page-btn">
           <span
@@ -251,7 +251,7 @@ const DashNav: React.FC<DashNavProps> = ({ dashboard }) => {
         </div>
       )}
 
-      {/* ── Button panel ─────────────────────────────────────────────────── */}
+      {/* -- Button panel --------------------------------------------------- */}
       <div className="navbar-btn-panel">
 
         {/* Playlist controls */}
@@ -336,7 +336,7 @@ const DashNav: React.FC<DashNavProps> = ({ dashboard }) => {
           </div>
         )}
 
-        {/* Time picker — still Angular, bridge-wrapped */}
+        {/* Time picker - still Angular, bridge-wrapped */}
         {!dashboard.timepicker.hidden && (
           <gf-time-picker-wrapper dashboard={dashboard} />
         )}
@@ -349,7 +349,7 @@ const DashNav: React.FC<DashNavProps> = ({ dashboard }) => {
         </div>
       </div>
 
-      {/* Search panel — self-contained, renders via appEvents */}
+      {/* Search panel - self-contained, renders via appEvents */}
       <search-panel-anchor />
     </div>
   );

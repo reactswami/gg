@@ -4,8 +4,8 @@
  * React replacement for SingleStatCtrl + module.html.
  *
  * - Value calculation: singlestat-utils.ts (pure TS, no Angular)
- * - Gauge:            app/viz/Gauge (already React — replaces $.plot gauge)
- * - Sparkline:        SVG path (replaces $.plot sparkline — no Flot needed)
+ * - Gauge:            app/viz/Gauge (already React - replaces $.plot gauge)
+ * - Sparkline:        SVG path (replaces $.plot sparkline - no Flot needed)
  * - Color thresholds: getColorForValue() from singlestat-utils
  *
  * Export name PanelComponent required by DashboardPanel/PanelChrome.
@@ -119,7 +119,7 @@ export const SingleStatPanel: React.FC<Props> = ({ options, panel, dashboard, ti
   const isUtc = dashboard?.timezone === 'utc';
   const templateSrv = getTemplateSrv();
 
-  // ── Build time series objects ──────────────────────────────────────────────
+  // -- Build time series objects ----------------------------------------------
 
   const series = useMemo<TimeSeries[]>(() => {
     if (!timeSeries?.length) return [];
@@ -130,11 +130,11 @@ export const SingleStatPanel: React.FC<Props> = ({ options, panel, dashboard, ti
     });
   }, [timeSeries, opts.nullPointMode]);
 
-  // ── Compute stat value ────────────────────────────────────────────────────
+  // -- Compute stat value ----------------------------------------------------
 
   const data = useMemo(() => computeSingleStatData(series, opts, isUtc), [series, opts, isUtc]);
 
-  // ── Color resolution ──────────────────────────────────────────────────────
+  // -- Color resolution ------------------------------------------------------
 
   const bgColor = useMemo(() => {
     if (!opts.colorBackground) return null;
@@ -146,7 +146,7 @@ export const SingleStatPanel: React.FC<Props> = ({ options, panel, dashboard, ti
     return getColorForValue(data, data.value, data.valueFormatted, s => templateSrv.replace(s)) ?? undefined;
   }, [data, templateSrv]);
 
-  // ── Gauge props ───────────────────────────────────────────────────────────
+  // -- Gauge props -----------------------------------------------------------
 
   const { getTimeSeriesVMs } = require('app/viz/state/timeSeries');
   const { NullValueMode } = require('app/types');
@@ -156,7 +156,7 @@ export const SingleStatPanel: React.FC<Props> = ({ options, panel, dashboard, ti
     return getTimeSeriesVMs({ timeSeries: timeSeries || [], nullValueMode: NullValueMode.Ignore });
   }, [opts.gauge?.show, timeSeries]);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   const containerStyle: React.CSSProperties = {
     width: '100%',

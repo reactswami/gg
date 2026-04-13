@@ -2,7 +2,7 @@
  * useAngularService hook
  *
  * Lets React components access Angular services without having to rewrite
- * the services themselves — a critical escape hatch during incremental
+ * the services themselves -- a critical escape hatch during incremental
  * migration.
  *
  * Usage:
@@ -10,7 +10,7 @@
  *   const backendSrv = useAngularService<BackendSrv>('backendSrv');
  *   const { data } = await backendSrv.get('/api/dashboards');
  *
- * ⚠️  This hook is intentionally temporary.  Once a service's callers are
+ * --  This hook is intentionally temporary.  Once a service's callers are
  *     fully migrated to React, the service itself should be rewritten as a
  *     plain module / hook / RTK Query endpoint and this hook removed from
  *     that call site.
@@ -19,7 +19,7 @@
 import { useRef } from 'react';
 import angular from 'angular';
 
-// Lazily resolved injector — retrieved once and cached for the app lifetime.
+// Lazily resolved injector -- retrieved once and cached for the app lifetime.
 let cachedInjector: angular.auto.IInjectorService | null = null;
 
 function getInjector(): angular.auto.IInjectorService {

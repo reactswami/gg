@@ -21,7 +21,7 @@ export interface FormDropdownOption {
 }
 
 export interface FormDropdownProps {
-  /** Current value — can be an option object or a raw string/value */
+  /** Current value - can be an option object or a raw string/value */
   model: FormDropdownOption | string | any;
   /** Returns available options (may be async) */
   getOptions: (query?: string) => Promise<FormDropdownOption[]> | FormDropdownOption[];
@@ -149,7 +149,7 @@ const FormDropdown: React.FC<FormDropdownProps> = ({
   );
 
   // -------------------------------------------------------------------------
-  // Input change — filter and support custom values
+  // Input change - filter and support custom values
   // -------------------------------------------------------------------------
 
   const handleInputChange = useCallback(
@@ -181,7 +181,7 @@ const FormDropdown: React.FC<FormDropdownProps> = ({
   );
 
   // -------------------------------------------------------------------------
-  // Trigger (link button) — click to open
+  // Trigger (link button) - click to open
   // -------------------------------------------------------------------------
 
   const triggerClass = labelMode

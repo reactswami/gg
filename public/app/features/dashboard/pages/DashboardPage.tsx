@@ -5,7 +5,7 @@
  * Routes: /  /d/:uid/:slug  /d/:uid  /dashboard/:type/:slug
  *
  * Orchestrates the dashboard lifecycle using Angular services via
- * useAngularService — each service is consumed through the existing
+ * useAngularService - each service is consumed through the existing
  * singleton pattern until the service layer itself is migrated.
  *
  * Sub-components rendered here are ALL already React:
@@ -71,7 +71,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ routeParams = {} }) => {
   const emitDashFetchStart = useEmitAppEvent('dashboard-fetch-start');
   const emitDashScrollRestore = useEmitAppEvent('dash-scroll');
 
-  // ── State ─────────────────────────────────────────────────────────────────
+  // -- State -----------------------------------------------------------------
 
   const [dashboard, setDashboard]  = useState<any>(null);
   const [isLoading, setIsLoading]  = useState(true);
@@ -85,7 +85,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ routeParams = {} }) => {
   const isSettingsOpen = !!editview;
   const isFullscreen = searchParams.has('fullscreen');
 
-  // ── Dashboard lifecycle ───────────────────────────────────────────────────
+  // -- Dashboard lifecycle ---------------------------------------------------
 
   const onInitFailed = useCallback((msg: string, fatal: boolean, err: any) => {
     console.log(msg, err);
@@ -157,7 +157,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ routeParams = {} }) => {
     }
   };
 
-  // ── Load dashboard ────────────────────────────────────────────────────────
+  // -- Load dashboard --------------------------------------------------------
 
   useEffect(() => {
     emitDashFetchStart();
@@ -217,7 +217,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ routeParams = {} }) => {
     await setupDashboard(result);
   };
 
-  // ── appEvents wiring ──────────────────────────────────────────────────────
+  // -- appEvents wiring ------------------------------------------------------
 
   useAppEvents('template-variable-value-updated', () => {
     dashboard?.processRepeats();
@@ -229,13 +229,13 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ routeParams = {} }) => {
     if (panelInfo) removePanel(dashboard, panelInfo.panel, true);
   });
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   if (isLoading) {
     return (
       <div className="page-loader-wrapper">
         <i className="page-loader-wrapper__spinner fa fa-spinner fa-spin" />
-        <div className="page-loader-wrapper__text">Loading dashboard…</div>
+        <div className="page-loader-wrapper__text">Loading dashboard-</div>
       </div>
     );
   }

@@ -334,7 +334,7 @@ kbn.formatBuilders.scaledUnits = (factor, extArray) => {
 // offset is given, it adjusts the starting units at the given prefix; a value
 // of 0 starts at no scale; -3 drops to nano, +2 starts at mega, etc.
 kbn.formatBuilders.decimalSIPrefix = (unit, offset) => {
-  let prefixes = ['n', 'µ', 'm', '', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'];
+  let prefixes = ['n', '-', 'm', '', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'];
   prefixes = prefixes.slice(3 + (offset || 0));
   const units = prefixes.map(p => {
     return ' ' + p + unit;
@@ -449,11 +449,11 @@ kbn.valueFormats.locale = (value, decimals) => {
 
 // Currencies
 kbn.valueFormats.currencyUSD = kbn.formatBuilders.currency('$');
-kbn.valueFormats.currencyGBP = kbn.formatBuilders.currency('£');
-kbn.valueFormats.currencyEUR = kbn.formatBuilders.currency('€');
-kbn.valueFormats.currencyJPY = kbn.formatBuilders.currency('¥');
-kbn.valueFormats.currencyRUB = kbn.formatBuilders.currency('₽');
-kbn.valueFormats.currencyUAH = kbn.formatBuilders.currency('₴');
+kbn.valueFormats.currencyGBP = kbn.formatBuilders.currency('-');
+kbn.valueFormats.currencyEUR = kbn.formatBuilders.currency('-');
+kbn.valueFormats.currencyJPY = kbn.formatBuilders.currency('-');
+kbn.valueFormats.currencyRUB = kbn.formatBuilders.currency('-');
+kbn.valueFormats.currencyUAH = kbn.formatBuilders.currency('-');
 kbn.valueFormats.currencyBRL = kbn.formatBuilders.currency('R$');
 kbn.valueFormats.currencyDKK = kbn.formatBuilders.currency('kr');
 kbn.valueFormats.currencyISK = kbn.formatBuilders.currency('kr');
@@ -461,8 +461,8 @@ kbn.valueFormats.currencyNOK = kbn.formatBuilders.currency('kr');
 kbn.valueFormats.currencySEK = kbn.formatBuilders.currency('kr');
 kbn.valueFormats.currencyCZK = kbn.formatBuilders.currency('czk');
 kbn.valueFormats.currencyCHF = kbn.formatBuilders.currency('CHF');
-kbn.valueFormats.currencyPLN = kbn.formatBuilders.currency('zł');
-kbn.valueFormats.currencyBTC = kbn.formatBuilders.currency('฿');
+kbn.valueFormats.currencyPLN = kbn.formatBuilders.currency('z-');
+kbn.valueFormats.currencyBTC = kbn.formatBuilders.currency('-');
 
 // Data (Binary)
 kbn.valueFormats.bits = kbn.formatBuilders.binarySIPrefix('b');
@@ -513,7 +513,7 @@ kbn.valueFormats.watt = kbn.formatBuilders.decimalSIPrefix('W');
 kbn.valueFormats.kwatt = kbn.formatBuilders.decimalSIPrefix('W', 1);
 kbn.valueFormats.mwatt = kbn.formatBuilders.decimalSIPrefix('W', -1);
 kbn.valueFormats.kwattm = kbn.formatBuilders.decimalSIPrefix('W/Min', 1);
-kbn.valueFormats.Wm2 = kbn.formatBuilders.fixedUnit('W/m²');
+kbn.valueFormats.Wm2 = kbn.formatBuilders.fixedUnit('W/m-');
 kbn.valueFormats.voltamp = kbn.formatBuilders.decimalSIPrefix('VA');
 kbn.valueFormats.kvoltamp = kbn.formatBuilders.decimalSIPrefix('VA', 1);
 kbn.valueFormats.voltampreact = kbn.formatBuilders.decimalSIPrefix('var');
@@ -529,12 +529,12 @@ kbn.valueFormats.volt = kbn.formatBuilders.decimalSIPrefix('V');
 kbn.valueFormats.kvolt = kbn.formatBuilders.decimalSIPrefix('V', 1);
 kbn.valueFormats.mvolt = kbn.formatBuilders.decimalSIPrefix('V', -1);
 kbn.valueFormats.dBm = kbn.formatBuilders.decimalSIPrefix('dBm');
-kbn.valueFormats.ohm = kbn.formatBuilders.decimalSIPrefix('Ω');
+kbn.valueFormats.ohm = kbn.formatBuilders.decimalSIPrefix('-');
 kbn.valueFormats.lumens = kbn.formatBuilders.decimalSIPrefix('Lm');
 
 // Temperature
-kbn.valueFormats.celsius = kbn.formatBuilders.fixedUnit('°C');
-kbn.valueFormats.farenheit = kbn.formatBuilders.fixedUnit('°F');
+kbn.valueFormats.celsius = kbn.formatBuilders.fixedUnit('-C');
+kbn.valueFormats.farenheit = kbn.formatBuilders.fixedUnit('-F');
 kbn.valueFormats.kelvin = kbn.formatBuilders.fixedUnit('K');
 kbn.valueFormats.humidity = kbn.formatBuilders.fixedUnit('%H');
 
@@ -561,9 +561,9 @@ kbn.valueFormats.lengthmi = kbn.formatBuilders.fixedUnit('mi');
 kbn.valueFormats.lengthft = kbn.formatBuilders.fixedUnit('ft');
 
 // Area
-kbn.valueFormats.areaM2 = kbn.formatBuilders.fixedUnit('m²');
-kbn.valueFormats.areaF2 = kbn.formatBuilders.fixedUnit('ft²');
-kbn.valueFormats.areaMI2 = kbn.formatBuilders.fixedUnit('mi²');
+kbn.valueFormats.areaM2 = kbn.formatBuilders.fixedUnit('m-');
+kbn.valueFormats.areaF2 = kbn.formatBuilders.fixedUnit('ft-');
+kbn.valueFormats.areaMI2 = kbn.formatBuilders.fixedUnit('mi-');
 
 // Mass
 kbn.valueFormats.massmg = kbn.formatBuilders.decimalSIPrefix('g', -1);
@@ -578,16 +578,16 @@ kbn.valueFormats.velocitymph = kbn.formatBuilders.fixedUnit('mph');
 kbn.valueFormats.velocityknot = kbn.formatBuilders.fixedUnit('kn');
 
 // Acceleration
-kbn.valueFormats.accMS2 = kbn.formatBuilders.fixedUnit('m/sec²');
-kbn.valueFormats.accFS2 = kbn.formatBuilders.fixedUnit('f/sec²');
+kbn.valueFormats.accMS2 = kbn.formatBuilders.fixedUnit('m/sec-');
+kbn.valueFormats.accFS2 = kbn.formatBuilders.fixedUnit('f/sec-');
 kbn.valueFormats.accG = kbn.formatBuilders.fixedUnit('g');
 
 // Volume
 kbn.valueFormats.litre = kbn.formatBuilders.decimalSIPrefix('L');
 kbn.valueFormats.mlitre = kbn.formatBuilders.decimalSIPrefix('L', -1);
-kbn.valueFormats.m3 = kbn.formatBuilders.fixedUnit('m³');
-kbn.valueFormats.Nm3 = kbn.formatBuilders.fixedUnit('Nm³');
-kbn.valueFormats.dm3 = kbn.formatBuilders.fixedUnit('dm³');
+kbn.valueFormats.m3 = kbn.formatBuilders.fixedUnit('m-');
+kbn.valueFormats.Nm3 = kbn.formatBuilders.fixedUnit('Nm-');
+kbn.valueFormats.dm3 = kbn.formatBuilders.fixedUnit('dm-');
 kbn.valueFormats.gallons = kbn.formatBuilders.fixedUnit('gal');
 
 // Flow
@@ -600,7 +600,7 @@ kbn.valueFormats.flowlpm = kbn.formatBuilders.fixedUnit('l/min');
 kbn.valueFormats.flowmlpm = kbn.formatBuilders.fixedUnit('mL/min');
 
 // Angle
-kbn.valueFormats.degree = kbn.formatBuilders.fixedUnit('°');
+kbn.valueFormats.degree = kbn.formatBuilders.fixedUnit('-');
 kbn.valueFormats.radian = kbn.formatBuilders.fixedUnit('rad');
 kbn.valueFormats.grad = kbn.formatBuilders.fixedUnit('grad');
 
@@ -618,14 +618,14 @@ kbn.valueFormats.radsvh = kbn.formatBuilders.decimalSIPrefix('Sv/h');
 // Concentration
 kbn.valueFormats.ppm = kbn.formatBuilders.fixedUnit('ppm');
 kbn.valueFormats.conppb = kbn.formatBuilders.fixedUnit('ppb');
-kbn.valueFormats.conngm3 = kbn.formatBuilders.fixedUnit('ng/m³');
-kbn.valueFormats.conngNm3 = kbn.formatBuilders.fixedUnit('ng/Nm³');
-kbn.valueFormats.conμgm3 = kbn.formatBuilders.fixedUnit('μg/m³');
-kbn.valueFormats.conμgNm3 = kbn.formatBuilders.fixedUnit('μg/Nm³');
-kbn.valueFormats.conmgm3 = kbn.formatBuilders.fixedUnit('mg/m³');
-kbn.valueFormats.conmgNm3 = kbn.formatBuilders.fixedUnit('mg/Nm³');
-kbn.valueFormats.congm3 = kbn.formatBuilders.fixedUnit('g/m³');
-kbn.valueFormats.congNm3 = kbn.formatBuilders.fixedUnit('g/Nm³');
+kbn.valueFormats.conngm3 = kbn.formatBuilders.fixedUnit('ng/m-');
+kbn.valueFormats.conngNm3 = kbn.formatBuilders.fixedUnit('ng/Nm-');
+kbn.valueFormats.con-gm3 = kbn.formatBuilders.fixedUnit('-g/m-');
+kbn.valueFormats.con-gNm3 = kbn.formatBuilders.fixedUnit('-g/Nm-');
+kbn.valueFormats.conmgm3 = kbn.formatBuilders.fixedUnit('mg/m-');
+kbn.valueFormats.conmgNm3 = kbn.formatBuilders.fixedUnit('mg/Nm-');
+kbn.valueFormats.congm3 = kbn.formatBuilders.fixedUnit('g/m-');
+kbn.valueFormats.congNm3 = kbn.formatBuilders.fixedUnit('g/Nm-');
 
 // Time
 kbn.valueFormats.hertz = kbn.formatBuilders.decimalSIPrefix('Hz');
@@ -664,13 +664,13 @@ kbn.valueFormats.s = (size, decimals, scaledDecimals) => {
   if (Math.abs(size) === 0) {
     return kbn.toFixed(size, decimals) + ' s';
   }
-  // Less than 1 µs, divide in ns
+  // Less than 1 -s, divide in ns
   if (Math.abs(size) < 0.000001) {
     return kbn.toFixedScaled(size * 1e9, decimals, scaledDecimals - decimals, -9, ' ns');
   }
-  // Less than 1 ms, divide in µs
+  // Less than 1 ms, divide in -s
   if (Math.abs(size) < 0.001) {
-    return kbn.toFixedScaled(size * 1e6, decimals, scaledDecimals - decimals, -6, ' µs');
+    return kbn.toFixedScaled(size * 1e6, decimals, scaledDecimals - decimals, -6, ' -s');
   }
   // Less than 1 second, divide in ms
   if (Math.abs(size) < 1) {
@@ -696,13 +696,13 @@ kbn.valueFormats.s = (size, decimals, scaledDecimals) => {
   return kbn.toFixedScaled(size / 3.15569e7, decimals, scaledDecimals, 7, ' year');
 };
 
-kbn.valueFormats['µs'] = (size, decimals, scaledDecimals) => {
+kbn.valueFormats['-s'] = (size, decimals, scaledDecimals) => {
   if (size === null) {
     return '';
   }
 
   if (Math.abs(size) < 1000) {
-    return kbn.toFixed(size, decimals) + ' µs';
+    return kbn.toFixed(size, decimals) + ' -s';
   } else if (Math.abs(size) < 1000000) {
     return kbn.toFixedScaled(size / 1000, decimals, scaledDecimals, 3, ' ms');
   } else {
@@ -718,7 +718,7 @@ kbn.valueFormats.ns = (size, decimals, scaledDecimals) => {
   if (Math.abs(size) < 1000) {
     return kbn.toFixed(size, decimals) + ' ns';
   } else if (Math.abs(size) < 1000000) {
-    return kbn.toFixedScaled(size / 1000, decimals, scaledDecimals, 3, ' µs');
+    return kbn.toFixedScaled(size / 1000, decimals, scaledDecimals, 3, ' -s');
   } else if (Math.abs(size) < 1000000000) {
     return kbn.toFixedScaled(size / 1000000, decimals, scaledDecimals, 6, ' ms');
   } else if (Math.abs(size) < 60000000000) {
@@ -971,20 +971,20 @@ kbn.getUnitFormats = () => {
       text: 'currency',
       submenu: [
         { text: 'Dollars ($)', value: 'currencyUSD' },
-        { text: 'Pounds (£)', value: 'currencyGBP' },
-        { text: 'Euro (€)', value: 'currencyEUR' },
-        { text: 'Yen (¥)', value: 'currencyJPY' },
-        { text: 'Rubles (₽)', value: 'currencyRUB' },
-        { text: 'Hryvnias (₴)', value: 'currencyUAH' },
+        { text: 'Pounds (-)', value: 'currencyGBP' },
+        { text: 'Euro (-)', value: 'currencyEUR' },
+        { text: 'Yen (-)', value: 'currencyJPY' },
+        { text: 'Rubles (-)', value: 'currencyRUB' },
+        { text: 'Hryvnias (-)', value: 'currencyUAH' },
         { text: 'Real (R$)', value: 'currencyBRL' },
         { text: 'Danish Krone (kr)', value: 'currencyDKK' },
-        { text: 'Icelandic Króna (kr)', value: 'currencyISK' },
+        { text: 'Icelandic Kr-na (kr)', value: 'currencyISK' },
         { text: 'Norwegian Krone (kr)', value: 'currencyNOK' },
         { text: 'Swedish Krona (kr)', value: 'currencySEK' },
         { text: 'Czech koruna (czk)', value: 'currencyCZK' },
         { text: 'Swiss franc (CHF)', value: 'currencyCHF' },
-        { text: 'Polish Złoty (PLN)', value: 'currencyPLN' },
-        { text: 'Bitcoin (฿)', value: 'currencyBTC' },
+        { text: 'Polish Z-oty (PLN)', value: 'currencyPLN' },
+        { text: 'Bitcoin (-)', value: 'currencyBTC' },
       ],
     },*/
     {
@@ -993,7 +993,7 @@ kbn.getUnitFormats = () => {
         { text: 'Hertz (1/s)', value: 'hertz' },
         { text: 'MegaHertz (MHz)', value: 'megahertz' },
         { text: 'nanoseconds (ns)', value: 'ns' },
-        { text: 'microseconds (µs)', value: 'µs' },
+        { text: 'microseconds (-s)', value: '-s' },
         { text: 'milliseconds (ms)', value: 'ms' },
         { text: 'seconds (s)', value: 's' },
         { text: 'minutes (m)', value: 'm' },
@@ -1092,9 +1092,9 @@ kbn.getUnitFormats = () => {
     {
       text: 'area',
       submenu: [
-        { text: 'Square Meters (m²)', value: 'areaM2' },
-        { text: 'Square Feet (ft²)', value: 'areaF2' },
-        { text: 'Square Miles (mi²)', value: 'areaMI2' },
+        { text: 'Square Meters (m-)', value: 'areaM2' },
+        { text: 'Square Feet (ft-)', value: 'areaF2' },
+        { text: 'Square Miles (mi-)', value: 'areaMI2' },
       ],
     },
     {
@@ -1132,7 +1132,7 @@ kbn.getUnitFormats = () => {
         { text: 'Watt (W)', value: 'watt' },
         { text: 'Kilowatt (kW)', value: 'kwatt' },
         { text: 'Milliwatt (mW)', value: 'mwatt' },
-        { text: 'Watt per square metre (W/m²)', value: 'Wm2' },
+        { text: 'Watt per square metre (W/m-)', value: 'Wm2' },
         { text: 'Volt-ampere (VA)', value: 'voltamp' },
         { text: 'Kilovolt-ampere (kVA)', value: 'kvoltamp' },
         { text: 'Volt-ampere reactive (var)', value: 'voltampreact' },
@@ -1149,15 +1149,15 @@ kbn.getUnitFormats = () => {
         { text: 'Kilovolt (kV)', value: 'kvolt' },
         { text: 'Millivolt (mV)', value: 'mvolt' },
         { text: 'Decibel-milliwatt (dBm)', value: 'dBm' },
-        { text: 'Ohm (Ω)', value: 'ohm' },
+        { text: 'Ohm (-)', value: 'ohm' },
         { text: 'Lumens (Lm)', value: 'lumens' },
       ],
     },
     {
       text: 'temperature',
       submenu: [
-        { text: 'Celsius (°C)', value: 'celsius' },
-        { text: 'Farenheit (°F)', value: 'farenheit' },
+        { text: 'Celsius (-C)', value: 'celsius' },
+        { text: 'Farenheit (-F)', value: 'farenheit' },
         { text: 'Kelvin (K)', value: 'kelvin' },
       ],
     },
@@ -1197,7 +1197,7 @@ kbn.getUnitFormats = () => {
     {
       text: 'angle',
       submenu: [
-        { text: 'Degrees (°)', value: 'degree' },
+        { text: 'Degrees (-)', value: 'degree' },
         { text: 'Radians', value: 'radian' },
         { text: 'Gradian', value: 'grad' },
       ],
@@ -1205,8 +1205,8 @@ kbn.getUnitFormats = () => {
     {
       text: 'acceleration',
       submenu: [
-        { text: 'Meters/sec²', value: 'accMS2' },
-        { text: 'Feet/sec²', value: 'accFS2' },
+        { text: 'Meters/sec-', value: 'accMS2' },
+        { text: 'Feet/sec-', value: 'accFS2' },
         { text: 'G unit', value: 'accG' },
       ],
     },
@@ -1229,14 +1229,14 @@ kbn.getUnitFormats = () => {
       submenu: [
         { text: 'parts-per-million (ppm)', value: 'ppm' },
         { text: 'parts-per-billion (ppb)', value: 'conppb' },
-        { text: 'nanogram per cubic metre (ng/m³)', value: 'conngm3' },
-        { text: 'nanogram per normal cubic metre (ng/Nm³)', value: 'conngNm3' },
-        { text: 'microgram per cubic metre (μg/m³)', value: 'conμgm3' },
-        { text: 'microgram per normal cubic metre (μg/Nm³)', value: 'conμgNm3' },
-        { text: 'milligram per cubic metre (mg/m³)', value: 'conmgm3' },
-        { text: 'milligram per normal cubic metre (mg/Nm³)', value: 'conmgNm3' },
-        { text: 'gram per cubic metre (g/m³)', value: 'congm3' },
-        { text: 'gram per normal cubic metre (g/Nm³)', value: 'congNm3' },
+        { text: 'nanogram per cubic metre (ng/m-)', value: 'conngm3' },
+        { text: 'nanogram per normal cubic metre (ng/Nm-)', value: 'conngNm3' },
+        { text: 'microgram per cubic metre (-g/m-)', value: 'con-gm3' },
+        { text: 'microgram per normal cubic metre (-g/Nm-)', value: 'con-gNm3' },
+        { text: 'milligram per cubic metre (mg/m-)', value: 'conmgm3' },
+        { text: 'milligram per normal cubic metre (mg/Nm-)', value: 'conmgNm3' },
+        { text: 'gram per cubic metre (g/m-)', value: 'congm3' },
+        { text: 'gram per normal cubic metre (g/Nm-)', value: 'congNm3' },
       ],
     },*/
   ];

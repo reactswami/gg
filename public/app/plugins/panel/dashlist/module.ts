@@ -164,7 +164,7 @@ class DashListCtrl extends PanelCtrl {
 
 export { DashListCtrl, DashListCtrl as PanelCtrl };
 
-// ── React replacement ──────────────────────────────────────────────────────
+// -- React replacement ------------------------------------------------------
 // DashboardPanel checks for PanelComponent export first. When present it
 // uses the React render path; DashListCtrl is never instantiated.
 export { DashListPanel as PanelComponent } from './DashListPanel';

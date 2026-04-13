@@ -37,7 +37,7 @@ export function useAppEvents<T = any>(eventName: string, handler: EventHandler<T
     return () => {
       appEvents.off(eventName, handler);
     };
-  // Re-subscribe only if the event name changes — NOT on every handler
+  // Re-subscribe only if the event name changes -- NOT on every handler
   // re-creation, which would cause subscribe/unsubscribe churn.
   // Consumers should memoize the handler if the identity matters.
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,7 +46,7 @@ export function useAppEvents<T = any>(eventName: string, handler: EventHandler<T
 
 /**
  * Emit an appEvents event from a React component.
- * Returns a stable emitter function — safe to call in event handlers.
+ * Returns a stable emitter function -- safe to call in event handlers.
  *
  * Usage:
  *   const emitSearch = useEmitAppEvent('show-dash-search');

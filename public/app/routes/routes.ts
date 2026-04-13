@@ -1,7 +1,7 @@
 /**
  * routes.ts
  *
- * Angular route configuration — ALL routes have been migrated to React.
+ * Angular route configuration - ALL routes have been migrated to React.
  * This file is kept only to:
  *   1. Bootstrap the AppRouterMount directive (React router)
  *   2. Register the catch-all .otherwise() for any unmatched paths
@@ -27,7 +27,7 @@ export function setupAngularRoutes($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   // All application routes are now handled by the React router (routeRegistry.ts).
-  // Angular only needs the otherwise() as a fallback — React's NotFoundPage
+  // Angular only needs the otherwise() as a fallback - React's NotFoundPage
   // will intercept unmatched paths before Angular's ng-view renders.
   $routeProvider.otherwise({
     templateUrl: 'public/app/partials/error.html',

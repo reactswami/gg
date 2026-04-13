@@ -1,4 +1,4 @@
-/** @deprecated Superseded by React SearchResults (components/Search/SearchResults.tsx) — directive still registered for HTML template compat */
+/** @deprecated Superseded by React SearchResults (components/Search/SearchResults.tsx) - directive still registered for HTML template compat */
 import _ from 'lodash';
 import appEvents from 'app/core/app_events';
 import coreModule from 'app/core/core_module';

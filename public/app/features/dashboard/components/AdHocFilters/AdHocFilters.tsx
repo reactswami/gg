@@ -58,7 +58,7 @@ const AdHocFilters: React.FC<AdHocFiltersProps> = ({ variable }) => {
     setFilters([...(variable.filters || [])]);
   });
 
-  // ── Options loaders ───────────────────────────────────────────────────────
+  // -- Options loaders -------------------------------------------------------
 
   const getKeyOptions = useCallback(async (): Promise<SegmentOption[]> => {
     try {
@@ -85,7 +85,7 @@ const AdHocFilters: React.FC<AdHocFiltersProps> = ({ variable }) => {
   const getOperatorOptions = async (): Promise<SegmentOption[]> =>
     OPERATORS.map(op => ({ value: op, text: op }));
 
-  // ── Update variable ───────────────────────────────────────────────────────
+  // -- Update variable -------------------------------------------------------
 
   const commitFilters = useCallback((newFilters: AdHocFilter[]) => {
     variable.filters = newFilters;
@@ -93,7 +93,7 @@ const AdHocFilters: React.FC<AdHocFiltersProps> = ({ variable }) => {
     variableSrv.variableUpdated(variable, true);
   }, [variable, variableSrv]);
 
-  // ── Filter operations ─────────────────────────────────────────────────────
+  // -- Filter operations -----------------------------------------------------
 
   const addFilter = useCallback(() => {
     const newFilter: AdHocFilter = { key: '', operator: '=', value: '' };
@@ -130,7 +130,7 @@ const AdHocFilters: React.FC<AdHocFiltersProps> = ({ variable }) => {
     commitFilters(updated);
   }, [filters, commitFilters]);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div className="gf-form-inline">

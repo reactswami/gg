@@ -105,7 +105,7 @@ const SaveDashboardModal: React.FC<SaveDashboardModalProps> = ({ dismiss }) => {
                 type="text"
                 name="message"
                 className="gf-form-input"
-                placeholder="Add a note to describe your changes…"
+                placeholder="Add a note to describe your changes-"
                 value={message}
                 maxLength={MAX_MESSAGE_LENGTH}
                 autoComplete="off"

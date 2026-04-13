@@ -139,7 +139,7 @@ export class TextPanelCtrl extends PanelCtrl {
 
 export { TextPanelCtrl as PanelCtrl };
 
-// ── React replacement ──────────────────────────────────────────────────────
+// -- React replacement ------------------------------------------------------
 // DashboardPanel checks for PanelComponent export first. When present it
 // uses the React path and never instantiates TextPanelCtrl.
 // The Angular class is kept for legacy embedded dashboards during cut-over.

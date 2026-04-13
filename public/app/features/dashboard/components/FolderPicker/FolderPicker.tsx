@@ -61,7 +61,7 @@ const FolderPicker: React.FC<FolderPickerProps> = ({
   const [validationError, setValidationError]     = useState<string | null>(null);
   const [hasValidationError, setHasValidationError] = useState(false);
 
-  // ── Load options from API ─────────────────────────────────────────────────
+  // -- Load options from API -------------------------------------------------
 
   const getOptions = useCallback(
     async (query: string) => {
@@ -95,7 +95,7 @@ const FolderPicker: React.FC<FolderPickerProps> = ({
     [backendSrv, isEditor, enableCreateNew, enableReset, initialTitle]
   );
 
-  // ── Initial value resolution ──────────────────────────────────────────────
+  // -- Initial value resolution ----------------------------------------------
 
   useEffect(() => {
     getOptions('').then(options => {
@@ -128,7 +128,7 @@ const FolderPicker: React.FC<FolderPickerProps> = ({
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ── Folder selection ──────────────────────────────────────────────────────
+  // -- Folder selection ------------------------------------------------------
 
   const handleFolderChange = useCallback(
     (option: { text: string; value: string | number | null } | null) => {
@@ -155,7 +155,7 @@ const FolderPicker: React.FC<FolderPickerProps> = ({
     [onChange, enterFolderCreation]
   );
 
-  // ── New folder creation ───────────────────────────────────────────────────
+  // -- New folder creation ---------------------------------------------------
 
   const handleNameChange = useCallback(
     async (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -217,7 +217,7 @@ const FolderPicker: React.FC<FolderPickerProps> = ({
     [folder, onChange, exitFolderCreation]
   );
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <>

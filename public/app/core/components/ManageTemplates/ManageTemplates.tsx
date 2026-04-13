@@ -5,7 +5,7 @@
  * Replaces Angular directive: <manage-templates>
  *
  * Features: search, category/type filters, select-all, bulk delete,
- * bulk move, edit template — using SearchResults (already React) for the list.
+ * bulk move, edit template - using SearchResults (already React) for the list.
  */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
@@ -110,7 +110,7 @@ const ManageTemplates: React.FC = () => {
   const isEditor                      = contextSrv.isEditor;
   const hasEditPermissionInCategories = (contextSrv as any).hasEditPermissionInCategories;
 
-  // ── State ─────────────────────────────────────────────────────────────────
+  // -- State -----------------------------------------------------------------
 
   const [allTemplates, setAllTemplates]           = useState<PanelTemplate[]>([]);
   const [filteredTemplates, setFilteredTemplates] = useState<PanelTemplate[]>([]);
@@ -130,7 +130,7 @@ const ManageTemplates: React.FC = () => {
 
   const searchDebounce = useRef<ReturnType<typeof setTimeout>>();
 
-  // ── Initial load ──────────────────────────────────────────────────────────
+  // -- Initial load ----------------------------------------------------------
 
   useEffect(() => {
     backendApiSrv.getTemplates(contextSrv).then((list: PanelTemplate[]) => {
@@ -156,7 +156,7 @@ const ManageTemplates: React.FC = () => {
     });
   }, [backendApiSrv]);
 
-  // ── Apply filters + search ────────────────────────────────────────────────
+  // -- Apply filters + search ------------------------------------------------
 
   const applyFilters = useCallback((
     templates: PanelTemplate[],
@@ -219,7 +219,7 @@ const ManageTemplates: React.FC = () => {
     applyFilters(allTemplates, '', FILTER_BY_CATEGORY, FILTER_BY_TYPE);
   }, [allTemplates, applyFilters]);
 
-  // ── Selection ─────────────────────────────────────────────────────────────
+  // -- Selection -------------------------------------------------------------
 
   const handleToggleSelection = useCallback((item: any) => {
     item.checked = !item.checked;
@@ -265,7 +265,7 @@ const ManageTemplates: React.FC = () => {
     setCanDelete(newSelected.length > 0);
   }, [selectAll, sections, filteredTemplates]);
 
-  // ── Edit ─────────────────────────────────────────────────────────────────
+  // -- Edit -----------------------------------------------------------------
 
   const canEditSelection = useCallback(() => {
     if (contextSrv.user.isGrafanaAdmin) return true;
@@ -300,7 +300,7 @@ const ManageTemplates: React.FC = () => {
     });
   }, [categoryOptions]);
 
-  // ── Bulk actions ──────────────────────────────────────────────────────────
+  // -- Bulk actions ----------------------------------------------------------
 
   const handleDelete = useCallback(() => {
     if (!canEditSelection()) {
@@ -352,7 +352,7 @@ const ManageTemplates: React.FC = () => {
     });
   }, [canEditSelection, selectedTemplates, categoryOptions]);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   const hasResults = sections.length > 0;
 

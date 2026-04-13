@@ -1,8 +1,8 @@
 /**
- * GraphPanel (React — Option A: Flot ref wrapper)
+ * GraphPanel (React - Option A: Flot ref wrapper)
  *
  * Wraps the existing GraphElement/Flot implementation imperatively into a
- * React component using a ref div. No Flot logic is rewritten — GraphCtrl
+ * React component using a ref div. No Flot logic is rewritten - GraphCtrl
  * and GraphElement continue to own all rendering.
  *
  * Strategy:
@@ -10,7 +10,7 @@
  *      a minimal scope shim that provides what GraphElement expects.
  *   2. Pass the ref div to GraphElement as its jQuery elem.
  *   3. On each data/panel change from PanelChrome, call ctrl.onDataReceived()
- *      which triggers ctrl.render() → GraphElement.onRender() → $.plot().
+ *      which triggers ctrl.render() - GraphElement.onRender() - $.plot().
  *   4. On unmount, call ctrl.events.emit('panel-teardown') for cleanup.
  *
  * This approach keeps 100% fidelity with the existing graph behaviour
@@ -92,7 +92,7 @@ export const GraphPanel: React.FC<Props> = ({
   const ctrlRef   = useRef<GraphCtrl | null>(null);
   const scopeRef  = useRef<any>(null);
 
-  // ── Mount: create GraphCtrl + GraphElement ────────────────────────────────
+  // -- Mount: create GraphCtrl + GraphElement --------------------------------
 
   useEffect(() => {
     if (!graphRef.current) return;
@@ -133,7 +133,7 @@ export const GraphPanel: React.FC<Props> = ({
     // GraphElement looks for .graph-legend via elem.parent().find('.graph-legend')
     const $legendElem = legendRef.current ? $(legendRef.current) : null;
 
-    // Dynamically import to avoid circular — graph.ts registers the directive
+    // Dynamically import to avoid circular - graph.ts registers the directive
     // but we need the GraphElement class directly
     import('./graph').then(({ GraphElement }) => {
       // Bind legend elem before constructing GraphElement
@@ -156,11 +156,11 @@ export const GraphPanel: React.FC<Props> = ({
       ctrlRef.current  = null;
       scopeRef.current = null;
     };
-  // Only run on mount/unmount — panel identity doesn't change
+  // Only run on mount/unmount - panel identity doesn't change
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ── Data updates: push new time series into the ctrl ─────────────────────
+  // -- Data updates: push new time series into the ctrl ---------------------
 
   useEffect(() => {
     const ctrl = ctrlRef.current;
@@ -171,7 +171,7 @@ export const GraphPanel: React.FC<Props> = ({
     ctrl.onDataReceived(timeSeries);
   }, [timeSeries, timeRange, refreshCounter]);
 
-  // ── Panel option changes: re-render without new data ─────────────────────
+  // -- Panel option changes: re-render without new data ---------------------
 
   useEffect(() => {
     const ctrl = ctrlRef.current;
@@ -180,17 +180,17 @@ export const GraphPanel: React.FC<Props> = ({
     ctrl.render();
   }, [panel, options]);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div className="graph-panel" style={{ width: '100%', height: '100%', position: 'relative' }}>
-      {/* Graph canvas — GraphElement mounts Flot here */}
+      {/* Graph canvas - GraphElement mounts Flot here */}
       <div
         ref={graphRef}
         className="graph-canvas"
         style={{ width: '100%', height: '100%' }}
       />
-      {/* Legend — GraphElement renders React Legend here via ReactDOM.render */}
+      {/* Legend - GraphElement renders React Legend here via ReactDOM.render */}
       <div ref={legendRef} className="graph-legend" />
     </div>
   );

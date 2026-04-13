@@ -40,7 +40,7 @@ const ProfilePage: React.FC = () => {
   const [saving, setSaving] = useState(false);
   const [error, setError]   = useState<string | null>(null);
 
-  // ── Load data on mount ────────────────────────────────────────────────────
+  // -- Load data on mount ----------------------------------------------------
 
   useEffect(() => {
     backendSrv.get('/api/user').then((u: User) => {
@@ -50,7 +50,7 @@ const ProfilePage: React.FC = () => {
     backendSrv.get('/api/user/orgs').then(setOrgs);
   }, [backendSrv]);
 
-  // ── Handlers ──────────────────────────────────────────────────────────────
+  // -- Handlers --------------------------------------------------------------
 
   const handleChange = useCallback((field: keyof User, value: string) => {
     setUser(u => u ? { ...u, [field]: value } : u);
@@ -82,7 +82,7 @@ const ProfilePage: React.FC = () => {
     [backendSrv]
   );
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   if (!user) {
     return <PageHeader model={navModel} />;
@@ -95,7 +95,7 @@ const ProfilePage: React.FC = () => {
       <PageHeader model={navModel} />
 
       <div className="page-container page-body">
-        {/* ── Basic info form ─────────────────────────────────────────────── */}
+        {/* -- Basic info form ----------------------------------------------- */}
         <div className="gf-form-group">
           <h3 className="page-sub-heading">Edit profile</h3>
 
@@ -138,15 +138,15 @@ const ProfilePage: React.FC = () => {
               onClick={handleSave}
               disabled={saving}
             >
-              {saving ? 'Saving…' : 'Save'}
+              {saving ? 'Saving-' : 'Save'}
             </button>
           </div>
         </div>
 
-        {/* ── Preferences ─────────────────────────────────────────────────── */}
+        {/* -- Preferences --------------------------------------------------- */}
         <SharedPreferences resourceUri="user" />
 
-        {/* ── Teams ───────────────────────────────────────────────────────── */}
+        {/* -- Teams --------------------------------------------------------- */}
         {teams.length > 0 && (
           <div className="gf-form-group">
             <h3 className="page-sub-heading">Teams</h3>
@@ -165,7 +165,7 @@ const ProfilePage: React.FC = () => {
           </div>
         )}
 
-        {/* ── Organizations ───────────────────────────────────────────────── */}
+        {/* -- Organizations ------------------------------------------------- */}
         {orgs.length > 1 && (
           <div className="gf-form-group">
             <h3 className="page-sub-heading">Organizations</h3>

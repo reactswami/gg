@@ -67,7 +67,7 @@ function wrapWithApply(fn: Function, scope: angular.IScope): Function {
   return wrapped;
 }
 
-/** Wraps all function-valued props so React→Angular callbacks trigger digests */
+/** Wraps all function-valued props so React->Angular callbacks trigger digests */
 function applyFunctions(
   props: Record<string, any>,
   scope: angular.IScope,
@@ -115,7 +115,7 @@ function watchProps(
         groupExpressions.push(expr);
         break;
       default:
-        // 'value' — deep watch
+        // 'value' -- deep watch
         scope.$watch(expr, listener, true);
     }
   });

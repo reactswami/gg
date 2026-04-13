@@ -24,7 +24,7 @@ const ExportModal: React.FC<ExportModalProps> = ({ dismiss }) => {
 
   const dash = dashboardSrv.getCurrent();
 
-  // ── Helpers ────────────────────────────────────────────────────────────────
+  // -- Helpers ----------------------------------------------------------------
 
   const applyExportDefaults = useCallback((d: any) => {
     d.uid = d.uid.replace('StatseekerDefault', '');
@@ -79,7 +79,7 @@ const ExportModal: React.FC<ExportModalProps> = ({ dismiss }) => {
     dismiss();
   }, [shareExternally, dash, datasourceSrv, applyExportDefaults, dismiss]);
 
-  // ── Render ─────────────────────────────────────────────────────────────────
+  // -- Render -----------------------------------------------------------------
 
   return (
     <div className="share-modal-header">

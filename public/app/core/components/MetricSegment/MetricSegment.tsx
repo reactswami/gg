@@ -68,7 +68,7 @@ const MetricSegment: React.FC<MetricSegmentProps> = ({
     }
   }, [(segment as any).focus, isOpen]);
 
-  // ── Load options ──────────────────────────────────────────────────────────
+  // -- Load options ----------------------------------------------------------
 
   const loadOptions = useCallback(async (q: string) => {
     setLoading(true);
@@ -88,7 +88,7 @@ const MetricSegment: React.FC<MetricSegmentProps> = ({
     setTimeout(() => inputRef.current?.focus(), 0);
   }, [loadOptions]);
 
-  // ── Select option ─────────────────────────────────────────────────────────
+  // -- Select option ---------------------------------------------------------
 
   const selectOption = useCallback((option: SegmentOption) => {
     if (option.value === segment.value) {
@@ -110,7 +110,7 @@ const MetricSegment: React.FC<MetricSegmentProps> = ({
     onChange(updated);
   }, [segment, onChange]);
 
-  // ── Input handling ────────────────────────────────────────────────────────
+  // -- Input handling --------------------------------------------------------
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
@@ -155,13 +155,13 @@ const MetricSegment: React.FC<MetricSegmentProps> = ({
     }, 200);
   }, [query, segment.value, options, selectOption]);
 
-  // ── Display text ──────────────────────────────────────────────────────────
+  // -- Display text ----------------------------------------------------------
 
   const display = (segment as any).html || segment.text || segment.value || '';
   const cssClass = segment.cssClass || '';
   const isSelectMode = selectMode || (segment as any).selectMode;
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <span style={{ position: 'relative', display: 'inline-block' }}>
@@ -194,7 +194,7 @@ const MetricSegment: React.FC<MetricSegmentProps> = ({
               className="typeahead dropdown-menu"
               style={{ display: 'block', position: 'absolute', top: '100%', left: 0, zIndex: 1000 }}
             >
-              {loading && <li className="disabled"><a>Loading…</a></li>}
+              {loading && <li className="disabled"><a>Loading-</a></li>}
               {options.map((opt, idx) => (
                 <li
                   key={opt.value}

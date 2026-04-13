@@ -1,4 +1,4 @@
-/** @deprecated Superseded by direct imports from app/types (PanelProps, PanelOptionsProps) — sdk.ts re-exports are no longer needed.
+/** @deprecated Superseded by direct imports from app/types (PanelProps, PanelOptionsProps) - sdk.ts re-exports are no longer needed.
  * All panel plugins now export PanelComponent (React). Safe to delete in Phase 3.
  */
 import { MetricsPanelCtrl } from 'app/features/panel/metrics_panel_ctrl';

@@ -1,4 +1,4 @@
-﻿import React, { ReactNode } from 'react';
+-import React, { ReactNode } from 'react';
 
 import { Target } from 'react-popper';
 import withTooltip from './withTooltip';

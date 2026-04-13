@@ -92,7 +92,7 @@ export const DashListPanel: React.FC<Props> = ({ options, panel, refreshCounter 
     { header: 'Search',                     list: [], show: false },
   ]);
 
-  // ── Data fetching ─────────────────────────────────────────────────────────
+  // -- Data fetching ---------------------------------------------------------
 
   const fetchAll = useCallback(async () => {
     const backendSrv = getBackendSrv();
@@ -146,7 +146,7 @@ export const DashListPanel: React.FC<Props> = ({ options, panel, refreshCounter 
   // Refetch on mount and whenever panel refreshes
   useEffect(() => { fetchAll(); }, [fetchAll, refreshCounter]);
 
-  // ── Star/unstar ───────────────────────────────────────────────────────────
+  // -- Star/unstar -----------------------------------------------------------
 
   const handleStar = useCallback(async (dash: DashItem, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -161,7 +161,7 @@ export const DashListPanel: React.FC<Props> = ({ options, panel, refreshCounter 
     );
   }, []);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div className="dashlist">

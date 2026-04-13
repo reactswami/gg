@@ -30,7 +30,7 @@ const QueryTroubleshooter: React.FC<QueryTroubleshooterProps> = ({ isOpen }) => 
 
   const { copy } = useClipboard(() => JSON.stringify(rawData, null, 2));
 
-  // ── Render JSON explorer into DOM ─────────────────────────────────────────
+  // -- Render JSON explorer into DOM -----------------------------------------
 
   const renderExplorer = useCallback((data: any) => {
     if (!jsonContainerRef.current) return;
@@ -40,7 +40,7 @@ const QueryTroubleshooter: React.FC<QueryTroubleshooterProps> = ({ isOpen }) => 
     jsonContainerRef.current.innerHTML = html;
   }, []);
 
-  // ── appEvent listeners ────────────────────────────────────────────────────
+  // -- appEvent listeners ----------------------------------------------------
 
   useEffect(() => {
     const onResponse = (data: any) => {

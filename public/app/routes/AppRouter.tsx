@@ -6,7 +6,7 @@
  * while Angular continues to handle routes still in setupAngularRoutes().
  *
  * Coexistence strategy
- * ────────────────────
+ * --------------------
  * Angular's <ng-view> is the legacy outlet. The React router renders into a
  * separate <div id="react-router-outlet"> injected before <ng-view> by
  * AppRouterMount (see below). When a React route matches, it renders its
@@ -15,12 +15,12 @@
  * renders as normal.
  *
  * Page-class body management
- * ──────────────────────────
+ * --------------------------
  * Angular's $routeChangeSuccess sets body pageClass. For React routes we
  * use the usePageClass hook to do the same thing declaratively.
  *
  * Mount point
- * ───────────
+ * -----------
  * Add <app-router-mount></app-router-mount> once in the main HTML template
  * (index.html, before <ng-view>). It is registered as an Angular directive
  * in angular_wrappers.ts so no Webpack entry change is needed.
@@ -63,7 +63,7 @@ function setAngularViewVisible(visible: boolean) {
 }
 
 // ---------------------------------------------------------------------------
-// RouteGuard — enforces role-based access
+// RouteGuard - enforces role-based access
 // ---------------------------------------------------------------------------
 
 interface RouteGuardProps {
@@ -88,7 +88,7 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ roles, children }) => {
 };
 
 // ---------------------------------------------------------------------------
-// PageClassSetter — sets body class and hides ng-view for active React routes
+// PageClassSetter - sets body class and hides ng-view for active React routes
 // ---------------------------------------------------------------------------
 
 const PageClassSetter: React.FC<{ route: ReactRoute }> = ({ route }) => {
@@ -113,7 +113,7 @@ const PageLoader: React.FC = () => (
 );
 
 // ---------------------------------------------------------------------------
-// Inner router — has access to useLocation / useHistory
+// Inner router - has access to useLocation / useHistory
 // ---------------------------------------------------------------------------
 
 const InnerRouter: React.FC = () => {
@@ -158,7 +158,7 @@ const InnerRouter: React.FC = () => {
 };
 
 // ---------------------------------------------------------------------------
-// AppRouter — public component, wraps everything in BrowserRouter + Provider
+// AppRouter - public component, wraps everything in BrowserRouter + Provider
 // ---------------------------------------------------------------------------
 
 const AppRouter: React.FC = () => {

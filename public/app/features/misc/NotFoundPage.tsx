@@ -1,7 +1,7 @@
 /**
  * NotFoundPage
  *
- * React 404 page — catch-all route in the React router.
+ * React 404 page - catch-all route in the React router.
  * Replaces ErrorCtrl + error.html for routes handled by React.
  */
 

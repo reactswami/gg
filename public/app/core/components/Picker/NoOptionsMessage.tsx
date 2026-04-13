@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+-// @ts-nocheck
 import React, { ReactNode } from 'react';
 
 import { OptionProps } from 'react-select/lib/components/Option';

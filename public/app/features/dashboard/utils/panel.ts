@@ -1,4 +1,4 @@
-﻿import appEvents from 'app/core/app_events';
+-import appEvents from 'app/core/app_events';
 import { DashboardModel } from 'app/features/dashboard/dashboard_model';
 import { PanelModel } from 'app/features/dashboard/panel_model';
 import store from 'app/core/store';

@@ -1,4 +1,4 @@
-/** @deprecated Superseded by React Navbar (components/Navbar/Navbar.tsx) — directive still registered for HTML template compat */
+/** @deprecated Superseded by React Navbar (components/Navbar/Navbar.tsx) - directive still registered for HTML template compat */
 import coreModule from '../../core_module';
 import { NavModel } from '../../nav_model_srv';
 import appEvents from 'app/core/app_events';

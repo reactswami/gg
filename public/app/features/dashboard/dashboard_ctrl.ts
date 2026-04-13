@@ -1,4 +1,4 @@
-/** @deprecated Superseded by React DashboardPage (dashboard/pages/DashboardPage.tsx) — directive still registered for HTML template compat */
+/** @deprecated Superseded by React DashboardPage (dashboard/pages/DashboardPage.tsx) - directive still registered for HTML template compat */
 // Types
 import { DashboardModel } from './dashboard_model';
 import appEvents from 'app/core/app_events';

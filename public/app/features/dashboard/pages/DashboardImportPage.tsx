@@ -5,8 +5,8 @@
  * Routes: /dashboard/import  (and /template/import shares same component)
  *
  * Two-step flow:
- *   Step 1 — Paste JSON or upload file
- *   Step 2 — Configure options (name, folder, UID, datasource inputs) + import
+ *   Step 1 - Paste JSON or upload file
+ *   Step 2 - Configure options (name, folder, UID, datasource inputs) + import
  */
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -71,7 +71,7 @@ const DashboardImportPage: React.FC = () => {
   const nameDebounce = useRef<ReturnType<typeof setTimeout>>();
   const uidDebounce  = useRef<ReturnType<typeof setTimeout>>();
 
-  // ── Step 1: Load JSON ────────────────────────────────────────────────────
+  // -- Step 1: Load JSON ----------------------------------------------------
 
   const loadJsonText = useCallback(() => {
     try {
@@ -132,7 +132,7 @@ const DashboardImportPage: React.FC = () => {
     validateUid(loadedDash.uid, true);
   }, []);
 
-  // ── Validation ───────────────────────────────────────────────────────────
+  // -- Validation -----------------------------------------------------------
 
   const validateTitle = useCallback((title: string) => {
     clearTimeout(nameDebounce.current);
@@ -151,7 +151,7 @@ const DashboardImportPage: React.FC = () => {
 
   const validateUid = useCallback((uid: string, initial = false) => {
     if (initial && uid) {
-      // uid already set from file — mark as "value set" (not auto)
+      // uid already set from file - mark as "value set" (not auto)
       return;
     }
     clearTimeout(uidDebounce.current);
@@ -177,7 +177,7 @@ const DashboardImportPage: React.FC = () => {
     setFolderId(folder.id);
   }, []);
 
-  // ── Import ───────────────────────────────────────────────────────────────
+  // -- Import ---------------------------------------------------------------
 
   const doImport = useCallback(async () => {
     if (!dash || hasNameError || hasUidError || inFolderCreation) return;
@@ -201,7 +201,7 @@ const DashboardImportPage: React.FC = () => {
     }
   }, [dash, hasNameError, hasUidError, inFolderCreation, inputs, folderId, backendSrv, history]);
 
-  // ── Render ───────────────────────────────────────────────────────────────
+  // -- Render ---------------------------------------------------------------
 
   return (
     <>
@@ -209,7 +209,7 @@ const DashboardImportPage: React.FC = () => {
 
       <div className="page-container page-body">
 
-        {/* ── Step 1: Load JSON ─────────────────────────────────────────── */}
+        {/* -- Step 1: Load JSON ------------------------------------------- */}
         {step === 1 && (
           <div className="gf-form-group">
             <p>
@@ -246,7 +246,7 @@ const DashboardImportPage: React.FC = () => {
           </div>
         )}
 
-        {/* ── Step 2: Configure options ──────────────────────────────────── */}
+        {/* -- Step 2: Configure options ------------------------------------ */}
         {step === 2 && dash && (
           <>
             <h3 className="section-heading">Options</h3>
@@ -380,7 +380,7 @@ const DashboardImportPage: React.FC = () => {
                 disabled={hasNameError || hasUidError || !inputsValid || inFolderCreation || submitting}
                 onClick={doImport}
               >
-                {submitting ? 'Importing…' : 'Import'}
+                {submitting ? 'Importing-' : 'Import'}
               </button>
             </div>
           </>

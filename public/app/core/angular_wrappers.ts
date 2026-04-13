@@ -9,7 +9,7 @@
 
 import { react2AngularDirective } from 'app/core/bridge';
 
-// ── Pre-existing React components ──────────────────────────────────────────
+// -- Pre-existing React components ------------------------------------------
 import PageHeader from './components/PageHeader/PageHeader';
 import EmptyListCTA from './components/EmptyListCTA/EmptyListCTA';
 import { SearchResult } from './components/search/SearchResult';
@@ -18,69 +18,69 @@ import { Switch } from './components/Switch/Switch';
 import { DeleteButton } from './components/DeleteButton/DeleteButton';
 import { Tooltip } from './components/Tooltip/Tooltip';
 
-// ── Sprint 2: Navbar + Search ──────────────────────────────────────────────
+// -- Sprint 2: Navbar + Search ----------------------------------------------
 import Navbar from './components/Navbar/Navbar';
 import SearchPanel from './components/Search/SearchPanel';
 import SearchResults from './components/Search/SearchResults';
 
-// ── Sprint 3: ValueSelectDropdown + FormDropdown + GrafanaAppRoot ──────────
+// -- Sprint 3: ValueSelectDropdown + FormDropdown + GrafanaAppRoot ----------
 import ValueSelectDropdown from './components/ValueSelectDropdown/ValueSelectDropdown';
 import FormDropdown from './components/FormDropdown/FormDropdown';
 import GrafanaAppRoot from './components/GrafanaApp/GrafanaAppRoot';
 
 
-// ── Sprint 4: Dashboard directives ─────────────────────────────────────────
+// -- Sprint 4: Dashboard directives -----------------------------------------
 import DashNav from 'app/features/dashboard/components/DashNav/DashNav';
 import FolderPicker from 'app/features/dashboard/components/FolderPicker/FolderPicker';
 import DashboardSubmenu from 'app/features/dashboard/components/DashboardSubmenu/DashboardSubmenu';
 
 
-// ── Sprint 5: Utility components + hooks ───────────────────────────────────
+// -- Sprint 5: Utility components + hooks -----------------------------------
 import InfoPopover from './components/InfoPopover/InfoPopover';
 import GfPage from './components/GfPage/GfPage';
 import PageScrollbar from './components/Scrollbar/PageScrollbar';
 import DashRepeatOption from 'app/features/dashboard/components/DashRepeatOption/DashRepeatOption';
 
 
-// ── Sprint 6: DashboardSettings ────────────────────────────────────────────
+// -- Sprint 6: DashboardSettings --------------------------------------------
 import DashboardSettings from 'app/features/dashboard/components/DashboardSettings/DashboardSettings';
 
 
-// ── Sprint 7: ManageDashboards, TagsInput, RowOptions ──────────────────────
+// -- Sprint 7: ManageDashboards, TagsInput, RowOptions ----------------------
 import ManageDashboards from './components/ManageDashboards/ManageDashboards';
 import TagsInput from './components/TagsInput/TagsInput';
 import RowOptions from 'app/features/dashboard/components/RowOptions/RowOptions';
 
 
-// ── Sprint 8: Modal + link components ──────────────────────────────────────
+// -- Sprint 8: Modal + link components --------------------------------------
 import DashLinksEditor from 'app/features/dashboard/components/DashLinksEditor/DashLinksEditor';
 import SaveDashboardModal from 'app/features/dashboard/components/SaveDashboardModal/SaveDashboardModal';
 import ExportModal from 'app/features/dashboard/components/ExportModal/ExportModal';
 
 
-// ── Sprint 9: ManageTemplates + QueryTroubleshooter ────────────────────────
+// -- Sprint 9: ManageTemplates + QueryTroubleshooter ------------------------
 import ManageTemplates from './components/ManageTemplates/ManageTemplates';
 import QueryTroubleshooter from 'app/features/panel/components/QueryTroubleshooter';
 
 
-// ── Sprint 10: CodeEditor, JsonTree, QueryEditorRow ────────────────────────
+// -- Sprint 10: CodeEditor, JsonTree, QueryEditorRow ------------------------
 import CodeEditor from './components/CodeEditor/CodeEditor';
 import JsonTree from './components/JsonTree/JsonTree';
 import QueryEditorRow from 'app/features/panel/components/QueryEditorRow';
 
 
-// ── Sprint 11: MetricSegment, AdHocFilters, MetricsTab, VizTab ────────────
+// -- Sprint 11: MetricSegment, AdHocFilters, MetricsTab, VizTab ------------
 import MetricSegment from './components/MetricSegment/MetricSegment';
 import AdHocFilters from 'app/features/dashboard/components/AdHocFilters/AdHocFilters';
 import MetricsTab from 'app/features/panel/components/MetricsTab';
 import VizTab from 'app/features/panel/components/VizTab';
 
-// ── Routing ────────────────────────────────────────────────────────────────
-// AppRouterMount self-registers its directive on import — no react2AngularDirective needed
+// -- Routing ----------------------------------------------------------------
+// AppRouterMount self-registers its directive on import -- no react2AngularDirective needed
 import 'app/routes/AppRouterMount';
 
 export function registerAngularDirectives() {
-  // ── Core UI ───────────────────────────────────────────────────────────────
+  // -- Core UI ---------------------------------------------------------------
 
   react2AngularDirective('pageHeader', PageHeader, ['model', 'noTabs']);
   react2AngularDirective('emptyListCta', EmptyListCTA, ['model']);
@@ -91,7 +91,7 @@ export function registerAngularDirectives() {
     ['tagOptions', { watchDepth: 'reference' }],
   ]);
 
-  // ── Form controls ─────────────────────────────────────────────────────────
+  // -- Form controls ---------------------------------------------------------
 
   react2AngularDirective('gfFormSwitch', Switch, [
     'checked',
@@ -103,12 +103,12 @@ export function registerAngularDirectives() {
   ]);
   react2AngularDirective('infoTooltip', Tooltip, ['content', 'placement', 'className']);
 
-  // ── Sprint 2 ──────────────────────────────────────────────────────────────
+  // -- Sprint 2 --------------------------------------------------------------
 
   // navbar: replaces NavbarCtrl + navbar.html
   react2AngularDirective('navbar', Navbar, ['model']);
 
-  // searchPanel: self-contained, no props — drop in once as a singleton
+  // searchPanel: self-contained, no props -- drop in once as a singleton
   react2AngularDirective('searchPanel', SearchPanel, []);
 
   // searchResults: replaces SearchResultsCtrl + search_results.html
@@ -123,7 +123,7 @@ export function registerAngularDirectives() {
     'selectedFolderId',
   ]);
 
-  // ── Sprint 3 ──────────────────────────────────────────────────────────────
+  // -- Sprint 3 --------------------------------------------------------------
 
   // valueSelectDropdown: replaces ValueSelectDropdownCtrl + valueSelectDropdown.html
   // Same directive element name so no .html changes needed.
@@ -146,7 +146,7 @@ export function registerAngularDirectives() {
   react2AngularDirective('grafanaAppRoot', GrafanaAppRoot, []);
 
 
-  // ── Sprint 4: Dashboard directives ─────────────────────────────────────────
+  // -- Sprint 4: Dashboard directives -----------------------------------------
 
   // dashnav: replaces DashNavCtrl + dashnav.html
   react2AngularDirective('dashnav', DashNav, [
@@ -169,7 +169,7 @@ export function registerAngularDirectives() {
   ]);
 
 
-  // ── Sprint 5: Utility components ───────────────────────────────────────────
+  // -- Sprint 5: Utility components -------------------------------------------
 
   // infoPopover: replaces Angular tether-drop directive
   react2AngularDirective('infoPopover', InfoPopover, [
@@ -191,7 +191,7 @@ export function registerAngularDirectives() {
   ]);
 
 
-  // ── Sprint 6 ──────────────────────────────────────────────────────────────
+  // -- Sprint 6 --------------------------------------------------------------
 
   // dashboardSettings: replaces SettingsCtrl + settings.html
   react2AngularDirective('dashboardSettings', DashboardSettings, [
@@ -199,7 +199,7 @@ export function registerAngularDirectives() {
   ]);
 
 
-  // ── Sprint 7 ──────────────────────────────────────────────────────────────
+  // -- Sprint 7 --------------------------------------------------------------
 
   // manageDashboards: replaces ManageDashboardsCtrl + manage_dashboards.html
   react2AngularDirective('manageDashboards', ManageDashboards, [
@@ -223,7 +223,7 @@ export function registerAngularDirectives() {
   ]);
 
 
-  // ── Sprint 8 ──────────────────────────────────────────────────────────────
+  // -- Sprint 8 --------------------------------------------------------------
 
   // dashLinksEditor: replaces DashLinkEditorCtrl + editor.html (Links tab)
   react2AngularDirective('dashLinksEditor', DashLinksEditor, [
@@ -241,7 +241,7 @@ export function registerAngularDirectives() {
   ]);
 
 
-  // ── Sprint 9 ──────────────────────────────────────────────────────────────
+  // -- Sprint 9 --------------------------------------------------------------
 
   // manageTemplates: replaces ManageTemplatesCtrl + manage_templates.html
   react2AngularDirective('manageTemplates', ManageTemplates, []);
@@ -253,7 +253,7 @@ export function registerAngularDirectives() {
   ]);
 
 
-  // ── Sprint 10 ─────────────────────────────────────────────────────────────
+  // -- Sprint 10 -------------------------------------------------------------
 
   // codeEditor: replaces Ace-based Angular directive
   react2AngularDirective('codeEditor', CodeEditor, [
@@ -277,7 +277,7 @@ export function registerAngularDirectives() {
   ]);
 
 
-  // ── Sprint 11 ─────────────────────────────────────────────────────────────
+  // -- Sprint 11 -------------------------------------------------------------
 
   // metricSegment: replaces jQuery typeahead-based Angular directive
   react2AngularDirective('metricSegment', MetricSegment, [
@@ -309,7 +309,7 @@ export function registerAngularDirectives() {
     ['panelCtrl', { watchDepth: 'reference' }],
   ]);
 
-  // ── ⏳ Next up ─────────────────────────────────────────────────────────────
+  // -- - Next up -------------------------------------------------------------
   // Add entries here as components are converted. Pattern:
   //   import MyComp from './components/MyComp/MyComp';
   //   react2AngularDirective('myComp', MyComp, ['propA', 'propB']);

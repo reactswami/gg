@@ -121,7 +121,7 @@ export default TagsInput;
 // ---------------------------------------------------------------------------
 
 /**
- * useTagColor — React hook equivalent of the tag-color-from-name Angular directive.
+ * useTagColor - React hook equivalent of the tag-color-from-name Angular directive.
  * Returns CSS style object to apply to an element.
  *
  * Usage:

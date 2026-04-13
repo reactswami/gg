@@ -1,4 +1,4 @@
-﻿import { Arrow, Manager, Popper } from 'react-popper';
+-import { Arrow, Manager, Popper } from 'react-popper';
 import React, { ReactNode } from 'react';
 
 interface IwithTooltipProps {

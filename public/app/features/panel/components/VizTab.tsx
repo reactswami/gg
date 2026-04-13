@@ -4,7 +4,7 @@
  * React port of VizTabCtrl + template (features/panel/viz_tab.ts).
  * Replaces Angular directive: <viz-tab> (scope: true)
  *
- * VizTypePicker is already React — this just wraps it in the correct
+ * VizTypePicker is already React - this just wraps it in the correct
  * panel tab shell and wires it to panelCtrl.
  */
 

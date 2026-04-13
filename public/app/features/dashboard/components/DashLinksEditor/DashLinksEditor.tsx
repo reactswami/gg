@@ -50,7 +50,7 @@ export interface DashLinksEditorProps {
 }
 
 // ---------------------------------------------------------------------------
-// Tag badge (coloured) — replaces tag-color-from-name directive inline
+// Tag badge (coloured) - replaces tag-color-from-name directive inline
 // ---------------------------------------------------------------------------
 
 const TagBadge: React.FC<{ name: string }> = ({ name }) => {
@@ -59,7 +59,7 @@ const TagBadge: React.FC<{ name: string }> = ({ name }) => {
 };
 
 // ---------------------------------------------------------------------------
-// LinkForm — edit/new form
+// LinkForm - edit/new form
 // ---------------------------------------------------------------------------
 
 interface LinkFormProps {
@@ -247,7 +247,7 @@ const DashLinksEditor: React.FC<DashLinksEditorProps> = ({ dashboard }) => {
     });
   }, []);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div>

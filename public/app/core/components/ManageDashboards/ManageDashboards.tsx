@@ -49,7 +49,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
   const isEditor                  = contextSrv.isEditor;
   const hasEditPermissionInFolders = contextSrv.hasEditPermissionInFolders;
 
-  // ── State ────────────────────────────────────────────────────────────────
+  // -- State ----------------------------------------------------------------
 
   const [queryText, setQueryText]     = useState('');
   const [queryTags, setQueryTags]     = useState<string[]>([]);
@@ -68,7 +68,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
 
   const searchDebounce = useRef<ReturnType<typeof setTimeout>>();
 
-  // ── Search ────────────────────────────────────────────────────────────────
+  // -- Search ----------------------------------------------------------------
 
   const refreshList = useCallback(
     async (
@@ -130,7 +130,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ── Debounced search ──────────────────────────────────────────────────────
+  // -- Debounced search ------------------------------------------------------
 
   const handleQueryChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
@@ -139,7 +139,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
     searchDebounce.current = setTimeout(() => refreshList(val, queryTags, queryStarred), 500);
   }, [refreshList, queryTags, queryStarred]);
 
-  // ── Filter handlers ───────────────────────────────────────────────────────
+  // -- Filter handlers -------------------------------------------------------
 
   const filterByTag = useCallback((tag: string) => {
     if (!queryTags.includes(tag)) {
@@ -185,7 +185,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
     refreshList(queryText, queryTags, starred);
   }, [queryText, queryTags, refreshList]);
 
-  // ── Selection ─────────────────────────────────────────────────────────────
+  // -- Selection -------------------------------------------------------------
 
   const updateCanActions = useCallback((updatedSections: SearchSection[]) => {
     let dashCount = 0;
@@ -219,7 +219,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
     updateCanActions(updated);
   }, [selectAll, sections, updateCanActions]);
 
-  // ── Bulk actions ──────────────────────────────────────────────────────────
+  // -- Bulk actions ----------------------------------------------------------
 
   const getFoldersAndDashboards = useCallback(() => {
     const folders: string[] = [];
@@ -270,7 +270,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
     });
   }, [sections, refreshList]);
 
-  // ── URLs ──────────────────────────────────────────────────────────────────
+  // -- URLs ------------------------------------------------------------------
 
   const createDashUrl = folderId ? `dashboard/new?folderId=${folderId}` : 'dashboard/new';
   const importDashUrl = folderId ? `dashboard/import?folderId=${folderId}` : 'dashboard/import';
@@ -279,11 +279,11 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
   const hasResults = sections.length > 0;
   const showEmptyCta = canSave && folderId && !hasFilters && !hasResults;
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div className="dashboard-list">
-      {/* ── Action bar ─────────────────────────────────────────────────────── */}
+      {/* -- Action bar ------------------------------------------------------- */}
       {!(folderId && !hasFilters && !hasResults) && (
         <div className="page-action-bar page-action-bar--narrow">
           <label className="gf-form gf-form--grow gf-form--has-input-icon">
@@ -317,7 +317,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
         </div>
       )}
 
-      {/* ── Active filter pills ────────────────────────────────────────────── */}
+      {/* -- Active filter pills ---------------------------------------------- */}
       {hasFilters && (
         <div className="page-action-bar page-action-bar--narrow">
           <div className="gf-form-inline">
@@ -357,7 +357,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
         </div>
       )}
 
-      {/* ── Empty states ───────────────────────────────────────────────────── */}
+      {/* -- Empty states ----------------------------------------------------- */}
       {hasFilters && !hasResults && (
         <div className="search-results">
           <em className="muted">No dashboards matching your query were found.</em>
@@ -369,7 +369,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
         </div>
       )}
 
-      {/* ── Results header row ─────────────────────────────────────────────── */}
+      {/* -- Results header row ----------------------------------------------- */}
       {hasResults && (
         <div className="search-results">
           <div className="search-results-filter-row">
@@ -436,7 +436,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
         </div>
       )}
 
-      {/* ── Results list ───────────────────────────────────────────────────── */}
+      {/* -- Results list ----------------------------------------------------- */}
       <div className="search-results-container">
         <SearchResults
           results={sections}
@@ -447,7 +447,7 @@ const ManageDashboards: React.FC<ManageDashboardsProps> = ({ folderId, folderUid
         />
       </div>
 
-      {/* ── Empty folder CTA ───────────────────────────────────────────────── */}
+      {/* -- Empty folder CTA ------------------------------------------------- */}
       {showEmptyCta && (
         <EmptyListCTA model={{
           title: "This folder doesn't have any dashboards yet",

@@ -5,12 +5,12 @@
  * Replaces Angular directive: <metrics-tab> (scope: true, inherits panelCtrl from scope)
  *
  * Note: The individual query editor rows (<plugin-component type="query-ctrl">)
- * are still Angular — they are transcluded through rebuild-on-change which wraps
+ * are still Angular - they are transcluded through rebuild-on-change which wraps
  * the datasource-specific Angular query controller. These remain as Angular until
  * each datasource plugin is migrated.
  *
  * This component provides the datasource selector, Add Query button, and the
- * Options/Help/Query Inspector footer row — all of which are now React.
+ * Options/Help/Query Inspector footer row - all of which are now React.
  */
 
 import React, { useState, useCallback, useEffect } from 'react';
@@ -69,7 +69,7 @@ const MetricsTab: React.FC<MetricsTabProps> = ({ panelCtrl }) => {
   const hasQueryHelp = currentDs?.meta?.hasQueryHelp;
   const isMixed      = currentDs?.meta?.mixed;
 
-  // ── Datasource selection ──────────────────────────────────────────────────
+  // -- Datasource selection --------------------------------------------------
 
   const getDatasourceOptions = useCallback((includeBuiltin = false) => {
     return Promise.resolve(
@@ -109,7 +109,7 @@ const MetricsTab: React.FC<MetricsTabProps> = ({ panelCtrl }) => {
     setAddQueryModel({ text: 'Add Query', value: null, fake: true });
   }, [panelCtrl]);
 
-  // ── Footer toggles ────────────────────────────────────────────────────────
+  // -- Footer toggles --------------------------------------------------------
 
   const toggleOptions = useCallback(() => {
     setHelpOpen(false);
@@ -136,14 +136,14 @@ const MetricsTab: React.FC<MetricsTabProps> = ({ panelCtrl }) => {
     setTroubleshooterOpen(v => !v);
   }, []);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div>
       {/* Datasource selector row */}
       {currentDs && (
         <div className="gf-form-group">
-          {/* Query targets — still Angular plugin-component directives */}
+          {/* Query targets - still Angular plugin-component directives */}
           {/* Rendered by the parent Angular template via ng-repeat + rebuild-on-change */}
 
           {/* Add Query row */}

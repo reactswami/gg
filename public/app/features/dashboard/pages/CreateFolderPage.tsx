@@ -33,7 +33,7 @@ const CreateFolderPage: React.FC = () => {
   const inputRef = useGiveFocus<HTMLInputElement>(true);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // ── Validate name with debounce (400ms, matching original) ───────────────
+  // -- Validate name with debounce (400ms, matching original) ---------------
 
   const validate = useCallback((value: string) => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
@@ -56,7 +56,7 @@ const CreateFolderPage: React.FC = () => {
     validate(value);
   }, [validate]);
 
-  // ── Submit ───────────────────────────────────────────────────────────────
+  // -- Submit ---------------------------------------------------------------
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,7 +72,7 @@ const CreateFolderPage: React.FC = () => {
     }
   }, [hasError, touched, submitting, backendSrv, title, emitAlert, history]);
 
-  // ── Render ───────────────────────────────────────────────────────────────
+  // -- Render ---------------------------------------------------------------
 
   return (
     <>
@@ -116,7 +116,7 @@ const CreateFolderPage: React.FC = () => {
               className="btn btn-success width-12"
               disabled={!touched || hasError || submitting}
             >
-              <i className="fa fa-save" /> {submitting ? 'Creating…' : 'Create'}
+              <i className="fa fa-save" /> {submitting ? 'Creating-' : 'Create'}
             </button>
           </div>
         </form>

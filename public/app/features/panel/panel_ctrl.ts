@@ -1,4 +1,4 @@
-/** @deprecated Superseded by React PanelProps interface (app/types/panel.ts) — PanelCtrl is no longer extended by any active panel.
+/** @deprecated Superseded by React PanelProps interface (app/types/panel.ts) - PanelCtrl is no longer extended by any active panel.
  * All panel plugins now export PanelComponent (React). Safe to delete in Phase 3.
  */
 import config from 'app/core/config';

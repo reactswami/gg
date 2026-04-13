@@ -8,7 +8,7 @@ import { contextSrv } from 'app/core/services/context_srv';
 import { SearchOptions } from 'app/types/search';
 
 // ---------------------------------------------------------------------------
-// SearchPanel — replaces SearchCtrl + search.html
+// SearchPanel - replaces SearchCtrl + search.html
 // ---------------------------------------------------------------------------
 
 const INITIAL_QUERY: SearchOptions = {
@@ -264,7 +264,7 @@ const SearchPanel: React.FC = () => {
           className="search-dropdown"
           onClick={(e) => closeSearch(false, e.target as HTMLElement)}
         >
-          {/* Col 1 — results */}
+          {/* Col 1 - results */}
           <div className="search-dropdown__col_1">
             <div className="search-results-scroller">
               <div className="search-results-container">
@@ -286,7 +286,7 @@ const SearchPanel: React.FC = () => {
             </div>
           </div>
 
-          {/* Col 2 — filters */}
+          {/* Col 2 - filters */}
           <div className="search-dropdown__col_2">
             <div className="search-filter-box" onClick={() => setIsSearchTabFocused(false)}>
               <div className="search-filter-box__header">

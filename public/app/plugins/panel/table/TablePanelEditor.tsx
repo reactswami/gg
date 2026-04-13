@@ -85,7 +85,7 @@ export const TablePanelEditor: React.FC<PanelOptionsProps<TableOptions>> = ({
     [opts.styles, update]
   );
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div>

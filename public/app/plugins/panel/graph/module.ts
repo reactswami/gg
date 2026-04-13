@@ -437,7 +437,7 @@ class GraphCtrl extends MetricsPanelCtrl {
 
 export { GraphCtrl, GraphCtrl as PanelCtrl };
 
-// ── React wrapper (Option A — Flot ref) ───────────────────────────────────
+// -- React wrapper (Option A - Flot ref) -----------------------------------
 // DashboardPanel detects PanelComponent and uses the React render path.
 // GraphElement + all Flot logic runs inside the React ref div unchanged.
 export { GraphPanel as PanelComponent } from './GraphPanel';

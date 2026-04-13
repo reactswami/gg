@@ -6,8 +6,8 @@
  * The Angular directive watched 'dash-scroll' appEvents and managed scroll
  * position on route changes. This React version exposes:
  *
- *   1. <PageScrollbar> — drop-in wrapper component (replaces the attribute directive)
- *   2. usePageScrollbar() — hook for components that manage their own scroll ref
+ *   1. <PageScrollbar> - drop-in wrapper component (replaces the attribute directive)
+ *   2. usePageScrollbar() - hook for components that manage their own scroll ref
  *
  * Usage as component:
  *   <PageScrollbar className="scroll-canvas">

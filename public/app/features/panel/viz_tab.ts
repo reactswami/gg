@@ -1,4 +1,4 @@
-/** @deprecated Superseded by React VizTab (panel/components/VizTab.tsx) — directive still registered for HTML template compat */
+/** @deprecated Superseded by React VizTab (panel/components/VizTab.tsx) - directive still registered for HTML template compat */
 import coreModule from 'app/core/core_module';
 import { DashboardModel } from '../dashboard/dashboard_model';
 import { VizTypePicker } from '../dashboard/dashgrid/VizTypePicker';

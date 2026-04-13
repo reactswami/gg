@@ -98,7 +98,7 @@ const GeneralTab: React.FC<{ dashboard: DashboardModel; onFolderChange: (f: any)
           Tags
           <InfoPopover mode="right-normal">Press enter to add a tag</InfoPopover>
         </label>
-        {/* bootstrap-tagsinput still Angular — bridge or migrate separately */}
+        {/* bootstrap-tagsinput still Angular - bridge or migrate separately */}
         <input
           type="text"
           className="gf-form-input width-30"
@@ -231,7 +231,7 @@ const DashboardSettings: React.FC<DashboardSettingsProps> = ({ dashboard }) => {
   const [canSaveAs] = useState(true); // contextSrv.hasEditPermissionInFolders
   const [canDelete] = useState(dashboard.meta.canSave ?? false);
 
-  // ── Section list ────────────────────────────────────────────────────────
+  // -- Section list --------------------------------------------------------
 
   const sections = useMemo<Section[]>(() => {
     const list: Section[] = [];
@@ -266,7 +266,7 @@ const DashboardSettings: React.FC<DashboardSettingsProps> = ({ dashboard }) => {
     return list;
   }, [dashboard, location.pathname, location.search]);
 
-  // ── Active view from URL ─────────────────────────────────────────────────
+  // -- Active view from URL -------------------------------------------------
 
   const viewId = new URLSearchParams(location.search).get('editview') || sections[0]?.id || '';
 
@@ -294,7 +294,7 @@ const DashboardSettings: React.FC<DashboardSettingsProps> = ({ dashboard }) => {
     }
   }, [viewId, dashboard]);
 
-  // ── Action handlers ──────────────────────────────────────────────────────
+  // -- Action handlers ------------------------------------------------------
 
   const saveDashboard = useCallback(() => dashboardSrv.saveDashboard(), [dashboardSrv]);
 
@@ -348,7 +348,7 @@ const DashboardSettings: React.FC<DashboardSettingsProps> = ({ dashboard }) => {
   // Listen for dashboard-saved to clear unsaved folder change flag
   useAppEvents('dashboard-saved', () => setHasUnsavedFolderChange(false));
 
-  // ── Render active tab content ────────────────────────────────────────────
+  // -- Render active tab content --------------------------------------------
 
   const renderContent = () => {
     switch (viewId) {
@@ -356,7 +356,7 @@ const DashboardSettings: React.FC<DashboardSettingsProps> = ({ dashboard }) => {
         return <GeneralTab dashboard={dashboard} onFolderChange={onFolderChange} />;
 
       case 'templating':
-        // Still Angular-owned (templating/variable editor) — rendered via angular2react bridge
+        // Still Angular-owned (templating/variable editor) - rendered via angular2react bridge
         return <AngularTab id={viewId} />;
 
       case 'links':
@@ -399,7 +399,7 @@ const DashboardSettings: React.FC<DashboardSettingsProps> = ({ dashboard }) => {
     }
   };
 
-  // ── Render ───────────────────────────────────────────────────────────────
+  // -- Render ---------------------------------------------------------------
 
   return (
     <>

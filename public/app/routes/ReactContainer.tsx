@@ -75,7 +75,7 @@ export function reactContainer(
         }
       }
 
-      // Dynamic imports return the whole module — extract default export
+      // Dynamic imports return the whole module -- extract default export
       const Component = resolvedComponent?.default ?? resolvedComponent;
 
       const props = {

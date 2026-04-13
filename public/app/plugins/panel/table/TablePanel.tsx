@@ -4,7 +4,7 @@
  * React replacement for TablePanelCtrl + module.html.
  *
  * TableRenderer and transformers.ts are pure TypeScript with zero Angular
- * coupling — they are reused unchanged. Only the render layer (jQuery DOM
+ * coupling - they are reused unchanged. Only the render layer (jQuery DOM
  * manipulation + $sanitize + pagination) moves to React.
  *
  * Export name PanelComponent is required by DashboardPanel/PanelChrome.
@@ -90,7 +90,7 @@ export const TablePanel: React.FC<Props> = ({ options, panel, dashboard, timeSer
   // Reset page when data changes
   useEffect(() => setPageIndex(0), [timeSeries]);
 
-  // ── Build table model from time series data ───────────────────────────────
+  // -- Build table model from time series data -------------------------------
 
   const tableModel = useMemo<TableModel | null>(() => {
     if (!timeSeries?.length) return null;
@@ -100,7 +100,7 @@ export const TablePanel: React.FC<Props> = ({ options, panel, dashboard, timeSer
     return model;
   }, [timeSeries, opts.transform, opts.columns, sort]);
 
-  // ── Build renderer ────────────────────────────────────────────────────────
+  // -- Build renderer --------------------------------------------------------
 
   const renderer = useMemo(() => {
     if (!tableModel) return null;
@@ -115,7 +115,7 @@ export const TablePanel: React.FC<Props> = ({ options, panel, dashboard, timeSer
     );
   }, [tableModel, opts, dashboard]);
 
-  // ── Pagination ────────────────────────────────────────────────────────────
+  // -- Pagination ------------------------------------------------------------
 
   const pageSize = opts.pageSize || 100;
   const totalRows = tableModel?.rows?.length ?? 0;
@@ -127,7 +127,7 @@ export const TablePanel: React.FC<Props> = ({ options, panel, dashboard, timeSer
     return tableModel.rows.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
   }, [tableModel, pageIndex, pageSize, opts.pageSize]);
 
-  // ── Sort handler ──────────────────────────────────────────────────────────
+  // -- Sort handler ----------------------------------------------------------
 
   const handleSort = useCallback((colIndex: number) => {
     setSort(prev => ({
@@ -137,7 +137,7 @@ export const TablePanel: React.FC<Props> = ({ options, panel, dashboard, timeSer
     setPageIndex(0);
   }, []);
 
-  // ── Column style for a given row/col ─────────────────────────────────────
+  // -- Column style for a given row/col -------------------------------------
 
   const getCellHtml = useCallback((rowIndex: number, colIndex: number, value: any): string => {
     if (!renderer) return String(value ?? '');
@@ -148,7 +148,7 @@ export const TablePanel: React.FC<Props> = ({ options, panel, dashboard, timeSer
     }
   }, [renderer]);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   if (!tableModel || !renderer) {
     return (

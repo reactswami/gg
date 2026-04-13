@@ -111,7 +111,7 @@ const DashboardSubmenu: React.FC<DashboardSubmenuProps> = ({ dashboard }) => {
     []
   );
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div className="submenu-controls">
@@ -149,7 +149,7 @@ const DashboardSubmenu: React.FC<DashboardSubmenuProps> = ({ dashboard }) => {
                 />
               )}
 
-              {/* adhoc filters: still Angular — bridge-wrap when available */}
+              {/* adhoc filters: still Angular - bridge-wrap when available */}
               {variable.type === 'adhoc' && (
                 <ad-hoc-filters-wrapper variable={variable} />
               )}
@@ -180,7 +180,7 @@ const DashboardSubmenu: React.FC<DashboardSubmenuProps> = ({ dashboard }) => {
 
       <div className="gf-form gf-form--grow" />
 
-      {/* Dashboard links — still Angular directive, bridge-wrapped */}
+      {/* Dashboard links - still Angular directive, bridge-wrapped */}
       {dashboard.links.length > 0 && (
         <dash-links-container-wrapper
           links={dashboard.links}

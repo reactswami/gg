@@ -64,7 +64,7 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
   const [baseInfo, setBaseInfo]     = useState<Revision | null>(null);
   const [isNewLatest, setIsNewLatest] = useState(false);
 
-  // ── Helpers ───────────────────────────────────────────────────────────────
+  // -- Helpers ---------------------------------------------------------------
 
   const formatDate = useCallback((date: string) => dashboard.formatDate(date), [dashboard]);
 
@@ -74,7 +74,7 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
     return then.from(now);
   }, [dashboard]);
 
-  // ── Load history ──────────────────────────────────────────────────────────
+  // -- Load history ----------------------------------------------------------
 
   const getLog = useCallback(async (append = false, startOffset = 0) => {
     if (append) setAppending(true);
@@ -110,7 +110,7 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
     getLog(false, 0);
   });
 
-  // ── Selection ─────────────────────────────────────────────────────────────
+  // -- Selection -------------------------------------------------------------
 
   const handleRevisionToggle = useCallback((rev: Revision) => {
     const updated = revisions.map(r => r.id === rev.id ? { ...r, checked: !r.checked } : r);
@@ -119,7 +119,7 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
     setCanCompare(selectedCount === 2);
   }, [revisions]);
 
-  // ── Compare ───────────────────────────────────────────────────────────────
+  // -- Compare ---------------------------------------------------------------
 
   const getDiff = useCallback(async (diffType: 'basic' | 'json') => {
     setDiff(diffType);
@@ -151,7 +151,7 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
     }
   }, [delta, revisions, dashboard, historySrv]);
 
-  // ── Restore ───────────────────────────────────────────────────────────────
+  // -- Restore ---------------------------------------------------------------
 
   const restore = useCallback((version: number) => {
     appEvents.emit('confirm-modal', {
@@ -166,7 +166,7 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
     });
   }, [historySrv, dashboard]);
 
-  // ── Load more ─────────────────────────────────────────────────────────────
+  // -- Load more -------------------------------------------------------------
 
   const addToLog = useCallback(() => {
     const newStart = start + LIMIT;
@@ -176,7 +176,7 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
 
   const isLastPage = revisions.some(r => r.version === 1);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return (
     <div>
@@ -194,10 +194,10 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
         )}
       </h3>
 
-      {/* ── List mode ──────────────────────────────────────────────────────── */}
+      {/* -- List mode -------------------------------------------------------- */}
       {mode === 'list' && (
         <div>
-          {loading && <div><i className="fa fa-spinner fa-spin" /> <em>Fetching history list…</em></div>}
+          {loading && <div><i className="fa fa-spinner fa-spin" /> <em>Fetching history list-</em></div>}
 
           {!loading && (
             <div className="gf-form-group">
@@ -243,7 +243,7 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
                 </tbody>
               </table>
 
-              {appending && <div><i className="fa fa-spinner fa-spin" /> <em>Fetching more entries…</em></div>}
+              {appending && <div><i className="fa fa-spinner fa-spin" /> <em>Fetching more entries-</em></div>}
 
               <div className="gf-form-group">
                 <div className="gf-form-button-row">
@@ -271,10 +271,10 @@ const DashboardHistory: React.FC<DashboardHistoryProps> = ({ dashboard }) => {
         </div>
       )}
 
-      {/* ── Compare mode ───────────────────────────────────────────────────── */}
+      {/* -- Compare mode ----------------------------------------------------- */}
       {mode === 'compare' && (
         <div>
-          {loading && <div><i className="fa fa-spinner fa-spin" /> <em>Calculating diff…</em></div>}
+          {loading && <div><i className="fa fa-spinner fa-spin" /> <em>Calculating diff-</em></div>}
 
           {!loading && delta[diff] && (
             <>

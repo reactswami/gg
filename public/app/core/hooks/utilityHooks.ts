@@ -8,11 +8,11 @@
  * Angular counterparts as templates are converted.
  *
  * Directives replaced:
- *   give-focus        → useGiveFocus
- *   watch-change      → handled natively via onChange in React
- *   rebuild-on-change → useRebuildOnChange
- *   dash-class        → useDashClass
- *   ng-model-onblur   → useOnBlurModel
+ *   give-focus        -> useGiveFocus
+ *   watch-change      -> handled natively via onChange in React
+ *   rebuild-on-change -> useRebuildOnChange
+ *   dash-class        -> useDashClass
+ *   ng-model-onblur   -> useOnBlurModel
  */
 
 import { useEffect, useRef, RefObject, useCallback } from 'react';
@@ -55,7 +55,7 @@ export function useGiveFocus<T extends HTMLElement>(active: boolean): RefObject<
 // useRebuildOnChange
 //
 // Replaces the rebuild-on-change Angular directive.
-// Returns a stable key that increments whenever `value` changes — use it as
+// Returns a stable key that increments whenever `value` changes -- use it as
 // the `key` prop on a component to force a full remount.
 //
 // Usage:

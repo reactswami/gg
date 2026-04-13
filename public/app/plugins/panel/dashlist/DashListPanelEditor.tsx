@@ -85,7 +85,7 @@ export const DashListPanelEditor: React.FC<PanelOptionsProps<DashListOptions>> =
         </div>
       </div>
 
-      {/* Search filters — only shown when search is enabled */}
+      {/* Search filters - only shown when search is enabled */}
       {opts.search && (
         <div className="section gf-form-group">
           <h5 className="section-heading">Search</h5>

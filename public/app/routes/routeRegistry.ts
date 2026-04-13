@@ -5,7 +5,7 @@
  * AppRouter (routes/AppRouter.tsx).
  *
  * Migration guide
- * ───────────────
+ * ---------------
  * 1. Add a new entry to REACT_ROUTES below.
  * 2. Remove the corresponding `.when(...)` block from setupAngularRoutes()
  *    in routes.ts once the React page is verified working.
@@ -13,7 +13,7 @@
  *    setupAngularRoutes from app.ts.
  *
  * Route definition shape
- * ──────────────────────
+ * ----------------------
  *   path        react-router path string (supports :param notation)
  *   component   lazy-imported React page component
  *   pageClass   optional body CSS class applied while this route is active
@@ -32,7 +32,7 @@ export interface ReactRoute {
 }
 
 // ---------------------------------------------------------------------------
-// Page components — all lazy-loaded so unchanged Angular routes pay no cost
+// Page components - all lazy-loaded so unchanged Angular routes pay no cost
 // ---------------------------------------------------------------------------
 
 const DashboardListPage   = lazy(() => import('app/features/manage-dashboards/DashboardListPage'));
@@ -56,7 +56,7 @@ const DashboardImportPage  = lazy(() => import('app/features/dashboard/pages/Das
 // ---------------------------------------------------------------------------
 
 export const REACT_ROUTES: ReactRoute[] = [
-  // ── Folder routes ─────────────────────────────────────────────────────────
+  // -- Folder routes ---------------------------------------------------------
   {
     path: '/dashboards/f/:uid/:slug/permissions',
     component: FolderPermissionsPage,
@@ -74,7 +74,7 @@ export const REACT_ROUTES: ReactRoute[] = [
     component: FolderDashboardsPage,
   },
 
-  // ── Manage pages ──────────────────────────────────────────────────────────
+  // -- Manage pages ----------------------------------------------------------
   {
     path: '/dashboards',
     component: DashboardListPage,
@@ -91,21 +91,21 @@ export const REACT_ROUTES: ReactRoute[] = [
     exact: true,
   },
 
-  // ── Profile ───────────────────────────────────────────────────────────────
+  // -- Profile ---------------------------------------------------------------
   {
     path: '/profile',
     component: ProfilePage,
     exact: true,
   },
 
-  // ── New folder ───────────────────────────────────────────────────────────
+  // -- New folder -----------------------------------------------------------
   {
     path: '/dashboards/folder/new',
     component: CreateFolderPage,
     exact: true,
   },
 
-  // ── Dashboard import ──────────────────────────────────────────────────────
+  // -- Dashboard import ------------------------------------------------------
   {
     path: '/dashboard/import',
     component: DashboardImportPage,
@@ -117,7 +117,7 @@ export const REACT_ROUTES: ReactRoute[] = [
     exact: true,
   },
 
-  // ── Dashboard viewer ─────────────────────────────────────────────────────
+  // -- Dashboard viewer -----------------------------------------------------
   // These replace LoadDashboardCtrl + DashboardCtrl + dashboard.html
   {
     path: '/d/:uid/:slug',
@@ -151,7 +151,7 @@ export const REACT_ROUTES: ReactRoute[] = [
     exact: true,
   },
 
-  // ── 404 catch-all (must be last) ──────────────────────────────────────────
+  // -- 404 catch-all (must be last) ------------------------------------------
   {
     path: '*',
     component: NotFoundPage,

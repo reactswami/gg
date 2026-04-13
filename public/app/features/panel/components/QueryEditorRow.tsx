@@ -117,7 +117,7 @@ const QueryEditorRow: React.FC<QueryEditorRowProps> = ({ queryCtrl, canCollapse 
   const hasQueryHelp     = queryCtrl?.datasourceInstance?.meta?.hasQueryHelp;
   const isSingleStat     = panel?.type === 'singlestat';
 
-  // ── Collapse logic (matches QueryRowCtrl.$onInit) ─────────────────────────
+  // -- Collapse logic (matches QueryRowCtrl.$onInit) -------------------------
 
   useEffect(() => {
     if (!canCollapse) return;
@@ -152,7 +152,7 @@ const QueryEditorRow: React.FC<QueryEditorRowProps> = ({ queryCtrl, canCollapse 
     if (next) updateCollapsedText();
   }, [canCollapse, collapsed, panelCtrl, target, updateCollapsedText]);
 
-  // ── Actions ───────────────────────────────────────────────────────────────
+  // -- Actions ---------------------------------------------------------------
 
   const toggleHide = useCallback(() => {
     if (target) target.hide = !target.hide;
@@ -204,13 +204,13 @@ const QueryEditorRow: React.FC<QueryEditorRowProps> = ({ queryCtrl, canCollapse 
     setTroubleshooterOpen(v => !v);
   }, []);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   if (!queryCtrl) return null;
 
   return (
     <div className="gf-form-query">
-      {/* ── Header row ──────────────────────────────────────────────────────── */}
+      {/* -- Header row -------------------------------------------------------- */}
       <div className="gf-form gf-form-query-letter-cell">
         <label className="gf-form-label">
           <a className="pointer" tabIndex={1} onClick={toggleCollapse}>
@@ -272,7 +272,7 @@ const QueryEditorRow: React.FC<QueryEditorRowProps> = ({ queryCtrl, canCollapse 
         )}
       </div>
 
-      {/* ── Options / Help / Troubleshooter footer ──────────────────────────── */}
+      {/* -- Options / Help / Troubleshooter footer ---------------------------- */}
       <div className="gf-form-inline">
         <div className="gf-form gf-form--grow" />
         {queryOptions && (

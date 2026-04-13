@@ -2,7 +2,7 @@
  * singlestat-utils.ts
  *
  * Pure TypeScript value calculation extracted from SingleStatCtrl.
- * No Angular dependencies — safe to import from React components.
+ * No Angular dependencies - safe to import from React components.
  *
  * Covers: stat aggregation, decimal formatting, value/range mapping,
  * color threshold resolution, sparkline data prep.
@@ -82,7 +82,7 @@ export interface SingleStatPanel {
 }
 
 // ---------------------------------------------------------------------------
-// getDecimalsForValue — direct port from SingleStatCtrl
+// getDecimalsForValue - direct port from SingleStatCtrl
 // ---------------------------------------------------------------------------
 
 export function getDecimalsForValue(
@@ -124,7 +124,7 @@ export function getDecimalsForValue(
 }
 
 // ---------------------------------------------------------------------------
-// getColorForValue — direct port from module.ts (exported function)
+// getColorForValue - direct port from module.ts (exported function)
 // ---------------------------------------------------------------------------
 
 export function getColorForValue(
@@ -159,7 +159,7 @@ export function getColorForValue(
 }
 
 // ---------------------------------------------------------------------------
-// applyValueMapping — direct port of setValueMapping()
+// applyValueMapping - direct port of setValueMapping()
 // ---------------------------------------------------------------------------
 
 function applyValueMapping(
@@ -201,12 +201,12 @@ function applyValueMapping(
 }
 
 // ---------------------------------------------------------------------------
-// computeSingleStatData — main entry point
+// computeSingleStatData - main entry point
 // ---------------------------------------------------------------------------
 
 /**
  * Process a list of time series into a SingleStatData object.
- * Equivalent to SingleStatCtrl.setValues() → setValueMapping().
+ * Equivalent to SingleStatCtrl.setValues() - setValueMapping().
  */
 export function computeSingleStatData(
   seriesList: TimeSeries[],

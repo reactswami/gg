@@ -1,4 +1,4 @@
-/** @deprecated Superseded by React SearchPanel (components/Search/SearchPanel.tsx) — directive still registered for HTML template compat */
+/** @deprecated Superseded by React SearchPanel (components/Search/SearchPanel.tsx) - directive still registered for HTML template compat */
 import { SearchOptions } from 'app/types/search';
 import { SearchSrv } from 'app/core/services/search_srv';
 import _ from 'lodash';

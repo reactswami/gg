@@ -7,7 +7,7 @@
  *
  * Migration path:
  *   Phase 1 (now): Mount <GrafanaAppRoot> via ReactDOM next to <grafana-app>.
- *                  Keep GrafanaCtrl alive — it still owns configureStore(),
+ *                  Keep GrafanaCtrl alive - it still owns configureStore(),
  *                  service singletons, and $rootScope wiring.
  *   Phase 2:       Move service init (setBackendSrv, configureStore, etc.) here.
  *   Phase 3:       Delete GrafanaCtrl and the <grafana-app> Angular directive.
@@ -199,7 +199,7 @@ function useBodyClickHandler() {
 // ---------------------------------------------------------------------------
 // GrafanaAppRoot
 //
-// Headless component — renders nothing, only manages side effects.
+// Headless component - renders nothing, only manages side effects.
 // Mount once near the top of the React tree.
 // ---------------------------------------------------------------------------
 
@@ -216,7 +216,7 @@ const GrafanaAppRoot: React.FC = () => {
     }
   }, []);
 
-  return null; // headless — no DOM output
+  return null; // headless - no DOM output
 };
 
 export default GrafanaAppRoot;

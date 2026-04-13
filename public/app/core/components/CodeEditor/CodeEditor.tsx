@@ -53,7 +53,7 @@ export interface CodeEditorProps {
   content: string;
   /** Language mode: 'sql', 'json', 'text', etc. */
   mode?: string;
-  /** Max visible lines (editor auto-grows 1 → maxLines) */
+  /** Max visible lines (editor auto-grows 1 - maxLines) */
   maxLines?: number;
   /** Show line-number gutter */
   showGutter?: boolean;
@@ -87,7 +87,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const editorRef    = useRef<any>(null);
 
-  // ── Initialize editor on mount ────────────────────────────────────────────
+  // -- Initialize editor on mount --------------------------------------------
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -156,7 +156,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // only on mount
 
-  // ── Sync content changes from outside ────────────────────────────────────
+  // -- Sync content changes from outside ------------------------------------
 
   useEffect(() => {
     const editor = editorRef.current;
@@ -169,13 +169,13 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
     }
   }, [content]);
 
-  // ── Sync mode changes ────────────────────────────────────────────────────
+  // -- Sync mode changes ----------------------------------------------------
 
   useEffect(() => {
     editorRef.current?.getSession().setMode(`ace/mode/${mode}`);
   }, [mode]);
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // -- Render ----------------------------------------------------------------
 
   return <div ref={containerRef} style={{ width: '100%' }} />;
 };

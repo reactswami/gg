@@ -10,7 +10,7 @@
 
 import { angular2React } from 'app/core/bridge/angular2react';
 
-// ── manage-dashboards — now a native React component ──────────────────────
+// -- manage-dashboards -- now a native React component ----------------------
 // Use ManageDashboards from app/core/components/ManageDashboards/ManageDashboards instead.
 // AngularManageDashboards kept only for FolderDashboardsPage during transition.
 interface ManageDashboardsProps {
@@ -23,10 +23,10 @@ export const AngularManageDashboards = angular2React<ManageDashboardsProps>(
   ['folderId', 'folderUid']
 );
 
-// ── manage-templates directive ─────────────────────────────────────────────
+// -- manage-templates directive ---------------------------------------------
 export const AngularManageTemplates = angular2React<{}>('manage-templates', []);
 
-// ── prefs-control directive ────────────────────────────────────────────────
+// -- prefs-control directive ------------------------------------------------
 interface PrefsControlProps {
   resourceUri: string;
 }
