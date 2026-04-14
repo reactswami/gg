@@ -165,19 +165,27 @@ export function react2AngularDirective(
       }, {});
 
       // Collect current prop values from the isolated scope.
-      // For function props (watchDepth:'reference'), the isolated scope '=' binding
-      // copies the parent reference. If it arrives as undefined on the first render
-      // (race between scope setup and link), fall back to $parent.$eval.
+      // Angular '=' bindings copy values from the parent scope. For function
+      // references (e.g. ctrl.getTags), this works IF the parent scope has
+      // already evaluated. On first link() call there can be a timing gap.
+      // We always try $parent.$eval first so function references are resolved
+      // immediately without waiting for the watcher cycle.
       const collectProps = (): Record<string, any> => {
         const raw = propDefs.reduce<Record<string, any>>((acc, prop) => {
           const name = getPropName(prop);
           let value = (scope as any)[name];
-          // Fallback: evaluate from parent scope if undefined and attr exists
-          if (value === undefined && attrs[name]) {
+          // Always try parent evaluation for attrs -- this correctly resolves
+          // function references like "ctrl.getTags" to the actual function.
+          if (attrs[name]) {
             try {
-              value = (scope.$parent as any).$eval(attrs[name]);
+              const parentVal = (scope.$parent as any).$eval(attrs[name]);
+              // Prefer parent eval: it handles function refs and keeps them live.
+              // Only fall back to scope[name] if parent eval gives undefined.
+              if (parentVal !== undefined) {
+                value = parentVal;
+              }
             } catch (e) {
-              // attr expression not evaluable -- leave undefined
+              // Expression not evaluable in parent scope -- use scope value
             }
           }
           acc[name] = value;

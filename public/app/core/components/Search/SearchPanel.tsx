@@ -53,6 +53,7 @@ const SearchPanel: React.FC = () => {
 
   const searchDashboards = useCallback(
     async (currentQuery: SearchOptions) => {
+      if (!searchSrv) { return; }
       setResults([]);
       setIsLoading(true);
 
@@ -224,7 +225,10 @@ const SearchPanel: React.FC = () => {
     emitHideSearch();
   }, [emitHideSearch]);
 
-  const getTags = useCallback(() => searchSrv.getDashboardTags(), [searchSrv]);
+  const getTags = useCallback(
+    () => searchSrv ? searchSrv.getDashboardTags() : Promise.resolve([]),
+    [searchSrv]
+  );
 
   // -------------------------------------------------------------------------
   // Render

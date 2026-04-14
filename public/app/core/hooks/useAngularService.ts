@@ -22,15 +22,9 @@ import angular from 'angular';
 // Lazily resolved injector -- retrieved once and cached for the app lifetime.
 let cachedInjector: angular.auto.IInjectorService | null = null;
 
-function getInjector(): angular.auto.IInjectorService {
+function getInjector(): angular.auto.IInjectorService | null {
   if (!cachedInjector) {
-    cachedInjector = angular.element(document).injector();
-    if (!cachedInjector) {
-      throw new Error(
-        '[useAngularService] Angular $injector not found. ' +
-        'Ensure GrafanaApp.init() has completed before rendering React components.'
-      );
-    }
+    cachedInjector = angular.element(document).injector() || null;
   }
   return cachedInjector;
 }
@@ -39,14 +33,21 @@ function getInjector(): angular.auto.IInjectorService {
  * Returns an Angular service by name.
  * The returned reference is stable across re-renders (stored in a ref).
  */
-export function useAngularService<T = any>(serviceName: string): T {
+export function useAngularService<T = any>(serviceName: string): T | null {
   const ref = useRef<T | null>(null);
 
   if (ref.current === null) {
-    ref.current = getInjector().get<T>(serviceName);
+    const injector = getInjector();
+    if (injector) {
+      try {
+        ref.current = injector.get<T>(serviceName);
+      } catch (e) {
+        // Service not yet registered -- will retry on next render
+      }
+    }
   }
 
-  return ref.current as T;
+  return ref.current;
 }
 
 // ---------------------------------------------------------------------------
