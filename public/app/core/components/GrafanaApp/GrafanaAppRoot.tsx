@@ -26,7 +26,8 @@
  *   - $routeChangeSuccess handler (needs Angular $route)
  */
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import SearchPanel from '../Search/SearchPanel';
 import $ from 'jquery';
 import { useAppEvents } from 'app/core/hooks/useAppEvents';
 import { contextSrv } from 'app/core/services/context_srv';
@@ -216,7 +217,11 @@ const GrafanaAppRoot: React.FC = () => {
     }
   }, []);
 
-  return null; // headless - no DOM output
+  // SearchPanel is a global singleton -- it listens for show-dash-search /
+  // hide-dash-search appEvents and renders the search overlay on any page.
+  // Mounting it here ensures it works regardless of which page shell is used
+  // (PageHeader, GfPage, DashboardPage, etc).
+  return <SearchPanel />;
 };
 
 export default GrafanaAppRoot;

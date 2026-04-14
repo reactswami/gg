@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchPanel from '../Search/SearchPanel';
 import { NavModel } from 'app/types';
 
 // ---------------------------------------------------------------------------
@@ -46,8 +45,6 @@ const Navbar: React.FC<NavbarProps> = ({ model }) => {
   return (
     <div className="page-nav">
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      {/* SearchPanel listens for show-dash-search / hide-dash-search appEvents internally */}
-      <SearchPanel />
     </div>
   );
 };
