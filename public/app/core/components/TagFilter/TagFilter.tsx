@@ -29,13 +29,17 @@ export class TagFilter extends React.Component<Props, State> {
 
   loadOptions() {
     const { tagOptions } = this.props;
+    console.debug('[TagFilter] loadOptions called, tagOptions type:', typeof tagOptions, tagOptions);
     if (typeof tagOptions !== 'function') {
-      // tagOptions not yet available (Angular bridge timing) -- retry on update
+      console.warn('[TagFilter] tagOptions is not a function, skipping. Value:', tagOptions);
       return;
     }
     this.setState({ isLoading: true });
-    tagOptions()
+    const result = tagOptions();
+    console.debug('[TagFilter] tagOptions() returned:', result);
+    Promise.resolve(result)
       .then((raw: any[]) => {
+        console.debug('[TagFilter] getDashboardTags resolved with', raw ? raw.length : 0, 'tags:', raw);
         const options = (raw || []).map(option => ({
           value: option.term,
           label: option.term,
@@ -43,18 +47,19 @@ export class TagFilter extends React.Component<Props, State> {
         }));
         this.setState({ options, isLoading: false });
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('[TagFilter] getDashboardTags failed:', err);
         this.setState({ isLoading: false });
       });
   }
 
   componentDidMount() {
+    console.debug('[TagFilter] componentDidMount, tagOptions type:', typeof this.props.tagOptions, this.props.tagOptions);
     this.loadOptions();
   }
 
   componentDidUpdate(prevProps: Props) {
-    // Retry when tagOptions becomes available (Angular bridge timing fix)
-    // or when the function reference changes
+    console.debug('[TagFilter] componentDidUpdate, tagOptions changed:', prevProps.tagOptions !== this.props.tagOptions, 'type:', typeof this.props.tagOptions);
     if (prevProps.tagOptions !== this.props.tagOptions) {
       this.loadOptions();
     }

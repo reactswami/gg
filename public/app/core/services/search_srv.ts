@@ -213,7 +213,11 @@ export class SearchSrv {
   }
 
   getDashboardTags() {
-    return this.backendSrv.get('/api/dashboards/tags');
+    console.debug('[SearchSrv] getDashboardTags calling /api/dashboards/tags');
+    return this.backendSrv.get('/api/dashboards/tags').then(result => {
+      console.debug('[SearchSrv] /api/dashboards/tags returned:', result);
+      return result;
+    });
   }
 }
 
