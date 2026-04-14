@@ -14,7 +14,6 @@ import PageHeader from './components/PageHeader/PageHeader';
 import EmptyListCTA from './components/EmptyListCTA/EmptyListCTA';
 import { SearchResult } from './components/search/SearchResult';
 import { TagFilter } from './components/TagFilter/TagFilter';
-import { Switch } from './components/Switch/Switch';
 import { DeleteButton } from './components/DeleteButton/DeleteButton';
 import { Tooltip } from './components/Tooltip/Tooltip';
 
@@ -93,11 +92,6 @@ export function registerAngularDirectives() {
 
   // -- Form controls ---------------------------------------------------------
 
-  react2AngularDirective('gfFormSwitch', Switch, [
-    'checked',
-    ['onChange', { watchDepth: 'reference' }],
-    'label', 'labelClass', 'switchClass', 'transparent',
-  ]);
   react2AngularDirective('deleteButton', DeleteButton, [
     ['onConfirm', { watchDepth: 'reference' }],
   ]);
