@@ -24,7 +24,9 @@ let cachedInjector: angular.auto.IInjectorService | null = null;
 
 function getInjector(): angular.auto.IInjectorService | null {
   if (!cachedInjector) {
-    cachedInjector = angular.element(document).injector() || null;
+    const injector = angular.element(document).injector() || null;
+    console.debug('[useAngularService] getInjector() -- angular.element(document).injector():', injector ? 'found' : 'NOT FOUND');
+    cachedInjector = injector;
   }
   return cachedInjector;
 }
@@ -38,13 +40,23 @@ export function useAngularService<T = any>(serviceName: string): T | null {
 
   if (ref.current === null) {
     const injector = getInjector();
+    console.debug(
+      '[useAngularService] resolving "' + serviceName + '", injector available:', !!injector
+    );
     if (injector) {
       try {
         ref.current = injector.get<T>(serviceName);
+        console.debug(
+          '[useAngularService] "' + serviceName + '" resolved:', ref.current ? 'OK' : 'null/undefined'
+        );
       } catch (e) {
-        // Service not yet registered -- will retry on next render
+        console.warn('[useAngularService] "' + serviceName + '" get() threw:', e);
       }
+    } else {
+      console.warn('[useAngularService] "' + serviceName + '" -- injector not yet available');
     }
+  } else {
+    console.debug('[useAngularService] "' + serviceName + '" already cached');
   }
 
   return ref.current;
