@@ -18,8 +18,6 @@ import { DeleteButton } from './components/DeleteButton/DeleteButton';
 import { Tooltip } from './components/Tooltip/Tooltip';
 
 // -- Sprint 2: Navbar + Search ----------------------------------------------
-import Navbar from './components/Navbar/Navbar';
-import SearchPanel from './components/Search/SearchPanel';
 import SearchResults from './components/Search/SearchResults';
 
 // -- Sprint 3: ValueSelectDropdown + FormDropdown + GrafanaAppRoot ----------
@@ -99,11 +97,11 @@ export function registerAngularDirectives() {
 
   // -- Sprint 2 --------------------------------------------------------------
 
-  // navbar: replaces NavbarCtrl + navbar.html
-  react2AngularDirective('navbar', Navbar, ['model']);
-
-  // searchPanel: self-contained, no props -- drop in once as a singleton
-  react2AngularDirective('searchPanel', SearchPanel, []);
+  // NOTE: 'navbar' and 'searchPanel' are NOT registered here.
+  // The Angular navbarDirective (navbar.ts) still owns <navbar> elements used
+  // by gf_page.ts. React pages use <GfPage> or <Navbar> directly as TSX.
+  // <dashboard-search> is removed from navbar.html -- SearchPanel renders
+  // inside the React Navbar component itself.
 
   // searchResults: replaces SearchResultsCtrl + search_results.html
   react2AngularDirective('searchResults', SearchResults, [

@@ -19,7 +19,6 @@ const INITIAL_QUERY: SearchOptions = {
 
 const SearchPanel: React.FC = () => {
   const searchSrv = useAngularService<SearchSrv>('searchSrv');
-  console.debug('[SearchPanel] render, searchSrv:', searchSrv ? 'available' : 'null');
 
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -228,10 +227,8 @@ const SearchPanel: React.FC = () => {
 
   const getTags = useCallback(
     () => {
-      console.debug('[SearchPanel] getTags called, searchSrv:', searchSrv ? 'available' : 'null');
       if (!searchSrv) { return Promise.resolve([]); }
       const result = searchSrv.getDashboardTags();
-      console.debug('[SearchPanel] searchSrv.getDashboardTags() returned:', result);
       return result;
     },
     [searchSrv]
